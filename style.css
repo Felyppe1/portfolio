@@ -1,11 +1,13 @@
 :root {
-    --bg-color: #0e0e0e;
-    --second-color: #fafafa;
-    /* --bg-color: #fafafa;
-    --second-color:#0e0e0e; */
+    /* --bg-color: #0e0e0e;
+    --second-color: #fafafa; */
+    --bg-color: #fafafa;
+    --second-color:#0e0e0e;
     --third-color: #001ec4;
     --texts-font: 'Noto Sans Tamil', sans-serif;
     --section1-font: 'IBM Plex Mono', monospace;
+
+    /*Animation*/
 }
 
 * {
@@ -19,10 +21,22 @@
     font-weight: 700;
 }
 
+.hidden {
+    opacity: 0;
+    /* transform: translateY(20%); */
+    filter: blur(2px);
+    transition: .8s;
+}
+
+.show {
+    opacity: 1;
+    /* transform: translateY(0); */
+    filter: blur(0);
+}
+
 h2 {
     font-size: 34px;
     font-weight: 900;
-    position: relative;
     z-index: 0;
 }
 
@@ -41,6 +55,7 @@ header {
 
 header p {
     font-size: 1.1rem;
+    cursor: pointer;
 }
 
 header div {
@@ -52,9 +67,41 @@ header div {
 .contact-btn {
     background-color: var(--second-color);
     color: var(--bg-color);
-    width: 115px;
+    width: 130px;
     height: 35px;
     border-radius: 20px;
+    animation: shakeBtn 10s 10s infinite;
+    cursor: pointer;
+}
+
+@keyframes shakeBtn {
+    1% {
+        transform: rotateZ(-4deg) scale(1.03);
+    }
+    2% {
+        transform: rotateZ(4deg) scale(1.06);
+    }
+    3% {
+        transform: rotateZ(-4deg) scale(1.09);
+    }
+    4% {
+        transform: rotateZ(4deg) scale(1.09);
+    }
+    5% {
+        transform: rotateZ(-4deg) scale(1.09);
+    }
+    6% {
+        transform: rotateZ(4deg) scale(1.09);
+    }
+    7% {
+        transform: rotateZ(-4deg) scale(1.06);
+    }
+    8% {
+        transform: rotate(4deg) scale(1.03);
+    }
+    9% {
+        transform: scale(1);
+    }
 }
 
 
@@ -63,11 +110,11 @@ header div {
 main {
     font-family: var(--texts-font);
     background-color: var(--bg-color);
+    overflow-y: hidden;
 }
 
 .section1, .section2, .section3, .section4 {
-    height: 100vh;
-    
+    min-height: calc(100vh + 10px);
 }
 
 .section1 {
@@ -126,39 +173,44 @@ main {
     left: 0;
 }
 
+.pause-animation {
+    animation-play-state: paused;
+}
+
 .hello::before {
     animation: typewriter 1s 1s steps(11) forwards;
 }
 
 .hello::after {
+    content: var(--helloContent, '');
     animation: 
         typewriter 1s 1s steps(11) forwards,
-        blink 700ms infinite;
+        blink var(--helloBlink, 700ms) infinite;
     width: 0.3rem;
     background: var(--second-color);
 }
 
 .i-am::before {
-    animation: typewriter 1.8s 3s steps(16) forwards;
+    animation: typewriter 1.3s 2.8s steps(16) forwards;
 }
 
 .i-am::after {
     animation: 
-        typewriter 1.8s 3s steps(16) forwards,
-        blink 700ms 1s infinite;
-    width: 0.3rem;
+        typewriter 1.3s 2.8s steps(16) forwards,
+        blink var(--iAmBlink, 700ms) infinite;
+    width: var(--iAmWidth, 0);
     background: var(--second-color);
 }
 
 .developer::before {
-    animation: typewriter 2.5s 6s steps(24) forwards;
+    animation: typewriter 1.6s 4.9s steps(24) forwards;
 }
 
 .developer::after {
     animation: 
-        typewriter 2.5s 6s steps(24) forwards,
-        blink 700ms 1s infinite;
-    width: 0.3rem;
+        typewriter 1.6s 4.9s steps(24) forwards,
+        blink var(--developerBlink, 700ms) infinite;
+    width: var(--developerWidth, 0);
     background: var(--second-color);
 }
 
@@ -186,9 +238,35 @@ main {
 
 .fa-angles-down {
     position: absolute;
-    bottom: 1rem;
+    bottom: 2rem;
     left: 50%;
-    font-size: 25px;
+    font-size: 20px;
+    transform: translateY(200%);
+    opacity: 0;
+    animation: 
+        appear .5s 7s forwards,
+        bounce 2s 8s infinite;
+}
+
+@keyframes appear {
+    /* 90% {
+        opacity: 0.9;
+    } */
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes bounce {
+    50% {
+        transform: translateY(-100%);
+        opacity: 0.2;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 
@@ -210,7 +288,7 @@ main {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    width: 670px;
+    width: 610px;
     font-weight: 400;
 }
 
@@ -256,10 +334,18 @@ main {
     line-height: 32px;
 }
 
+.subtitle2 {
+    margin-top: 3rem;
+}
+
 .tech-div {
     display: flex;
     align-items: center;
-    gap: 2rem;
+    /* gap: 2rem; */
+}
+
+.tech-div > div {
+    position: relative;
 }
 
 .tech-div .fa-html5, 
@@ -271,10 +357,136 @@ main {
 .tech-div .fa-wordpress {
     font-size: 65px;
     color: #858585;
+    transition: .3s;
+    padding: 0 1.1rem;
+}
+
+.tech-div .fa-html5/* :hover */ {
+    color: #F75421;
+}
+
+.tech-div .fa-css3-alt/* :hover */ {
+    color: #254BDD;
+}
+
+.tech-div .fa-square-js/* :hover */ {
+    color: #EFD81D;
+}
+
+.tech-div .fa-git-alt/* :hover */ {
+    color: #E84D31;
+}
+
+.tech-div .fa-php/* :hover */ {
+    color: #7377AD;
+}
+
+.tech-div .fa-database/* :hover */ {
+    color: #00718B;
+}
+
+.tech-div .fa-wordpress/* :hover */ {
+    color: #1D88B8;
+}
+
+/*Hover quando passa o mouse em cima de cada tecnologia*/
+.tech-div .fa-html5:hover {
+    color: #f75321bc;
+}
+.tech-div .fa-html5:hover ~ p {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.tech-div .fa-css3-alt:hover {
+    color: #254BDDbc;
+}
+.tech-div .fa-css3-alt:hover ~ p {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.tech-div .fa-square-js:hover {
+    color: #EFD81Dbc;
+}
+.tech-div .fa-square-js:hover ~ p {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.tech-div .fa-git-alt:hover {
+    color: #E84D31bc;
+}
+.tech-div .fa-git-alt:hover ~ p {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.tech-div .fa-database:hover {
+    color: #00718Bbc;
+}
+.tech-div .fa-database:hover ~ p {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.tech-div .fa-php:hover {
+    color: #7377ADbc;
+}
+.tech-div .fa-php:hover ~ p {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.tech-div .fa-wordpress:hover {
+    color: #1d87b8bc;
+}
+.tech-div .fa-wordpress:hover ~ p {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.tech-div .fa-html5 ~ p {
+    left: 14px;
+}
+
+.tech-div .fa-css3-alt ~ p {
+    left: 23px;
+}
+
+.tech-div .fa-square-js ~ p {
+    left: 8px;
+}
+
+.tech-div .fa-git-alt ~ p {
+    left: 33px;
+}
+
+.tech-div .fa-database ~ p {
+    left: 15px;
+    bottom: -49px;
+}
+
+.tech-div .fa-php ~ p {
+    left: 42px;
+}
+
+.tech-div .fa-wordpress ~ p {
+    left: 10px;
 }
 
 .tech-div .fa-database {
     font-size: 53px;
+}
+
+.tech-div p {
+    font-size: 16px;
+    position: absolute;
+    bottom: -43px;
+    opacity: 0;
+    transform: translateY(30%);
+    transition: .7s;
+    font-weight: 800;
 }
 
 
@@ -283,9 +495,42 @@ main {
 .section3 {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
+    padding-top: 5rem;
     gap: 2rem;
+    overflow: hidden;
+}
+
+.projects-container {
+    position: relative;
+    width: 100%;
+    min-height: 500px;
+}
+
+.section3 .fa-chevron-right {
+    position: absolute;
+    top: 50%;
+    right: 3.5rem;
+    transform: translate(0, -50%);
+    z-index: 2;
+    font-size: 85px;
+    color: var(--second-color);
+    cursor: pointer;
+    transition: .5s;
+}
+
+.section3 .fa-chevron-left {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    left: 3.5rem;
+    z-index: 2;
+    font-size: 85px;
+    color: var(--second-color);
+    cursor: pointer;
+    transition: .5s;
+    display: none;
 }
 
 .projects-div {
@@ -295,7 +540,8 @@ main {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    box-shadow: 0px 0px 25px 3px #00000042;;
+    box-shadow: 0px 0px 25px 3px #00000042;
+    transition: 1s;
 }
 
 .projects-div p/* , .projects-div a  */{
@@ -305,11 +551,14 @@ main {
 .project-img-div {
     display: flex;
     justify-content: center;
+    object-fit: contain;
+    height: 238px;
+    overflow: hidden;
 }
 
 .project-img {
     background-color: #666;
-    width: 232px;
+    height: 257px;
 }
 
 .project-info-div {
@@ -359,7 +608,7 @@ main {
 }
 
 .live-project, .source-code {
-    background-color: #71FF5A;
+    background-color: #0028c9;
     height: 36px;
     width: 170px;
     display: flex;
@@ -368,20 +617,42 @@ main {
     gap: 10px;
     font-weight: 800;
     position: relative;
-    border: 3px solid #71FF5A;
+    border: 4px solid #0028c9;
     border-radius: 10px;
     box-shadow: 2px 2px 5px #00000024;
 }
 
 .live-project:hover {
     background-color: #fafafa;
-    
+    color: black;
+}
+
+.live-project:hover .fa-desktop {
+    color: black;
 }
 
 .live-project .fa-code {
     font-size: 20px;
 }
 
-.source-code img {
-    font-size: 20px;
+.source-code:hover {
+    background-color: #fafafa;
+    color: black;
+}
+
+.source-code:hover .fa-code {
+    color: black;
+}
+
+.project1 {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.project2 {
+    position: absolute;
+    left: 50%;
+    transform: translate(100%) scale(0.7);
+    opacity: 0.3;
 }

@@ -10,50 +10,71 @@
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@100;200;300;400;500;600;700&family=Noto+Sans+Tamil:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="fontawesome/css/all.min.css">
+    <script defer src="script.js"></script>
 </head>
 <body>
     <header>
-        <p>&#60;/Portfolio&#62;</p>
+        <p onclick="scrollToSection(this)" id="portfolio">&#60;/Portfolio&#62;</p>
         <div>
-            <p>Sobre Mim</p>
-            <p>Projetos</p>
+            <p onclick="scrollToSection(this)" id="aboutMe">Sobre Mim</p>
+            <p onclick="scrollToSection(this)" id="projects">Projetos</p>
             <button class="contact-btn">Contato</button>
         </div>
         
     </header>
     <main>
         <section class="section1">
-            <div class="title">
+            <div class="title hidden">
                 <div>
                     <p class="hello">Olá, mundo!</p>
                     <h1 class="i-am">Eu sou o Felyppe</h1>
                 </div>
                 <p class="developer">desenvolvedor full-stack</p>
                 <div class="social-medias">
-                    <i class="fa-brands fa-instagram"></i>
-                    <i class="fa-brands fa-linkedin"></i>
-                    <i class="fa-brands fa-github"></i>
+                    <a href="https://www.instagram.com/felyppe_nunes1/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/luiz-felyppe-611906244/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://github.com/Felyppe1" target="_blank"><i class="fa-brands fa-github"></i></a>
                 </div>
                 
             </div>
             <i class="fa-solid fa-angles-down"></i>
         </section>
         <section class="section2">
-            <img class="my-photo" src="images/minha-foto-cortada.jpg" alt="Foto do Felyppe">
-            <div class="right-column">
+            <img class="my-photo hidden" src="images/minha-foto-cortada.jpg" alt="Foto do Felyppe">
+            <div class="right-column hidden">
                 <h2 class="subtitle1">Sobre mim</h2>
                 <p>Meu nome é Luiz Felyppe e eu sou programador <span>full-stack</span>.<!--  - faço o front-end, back-end e também mexo com banco de dados.  --> Atualmente, trabalho na empresa júnior da <span>UFF</span> (Universidade Federal Fluminense).</p>
-                <p>Focado na área de <span>desenvolvimento web</span>, sou apaixonado por tecnologia e adoro criar <span>soluções</span> tecnológicas e <span>experiências incríveis</span> para os usuários. <!-- Quer transformar suas ideias em código? <span class="get-in-touch">Entre em contato</span> -->.</p>
+                <p>Focado na área de <span>desenvolvimento web</span>, sou apaixonado por tecnologia e adoro criar <span>soluções</span> tecnológicas e <span>experiências incríveis</span> para os usuários. <!-- Quer transformar suas ideias em código? <span class="get-in-touch">Entre em contato</span> --></p>
                 <h2 class="subtitle2">Tecnologias</h2>
                 <div class="tech-div">
-                    <i class="fa-brands fa-html5"></i>
-                    <i class="fa-brands fa-css3-alt"></i>
-                    <i class="fa-brands fa-square-js"></i>
-                    <i class="fa-brands fa-git-alt"></i>
-                    <i class="fa-solid fa-database"></i>
-                    <i class="fa-brands fa-php"></i>
-                    <i class="fa-brands fa-wordpress"></i>
-
+                    <div>
+                        <i class="fa-brands fa-html5"></i>
+                        <p>HTML5</p>
+                    </div>
+                    <div>
+                        <i class="fa-brands fa-css3-alt"></i>
+                        <p>CSS3</p>
+                    </div>
+                    <div>
+                        <i class="fa-brands fa-square-js"></i>
+                        <p>JavaScript</p>
+                    </div>
+                    <div>
+                        <i class="fa-brands fa-git-alt"></i>
+                        <p>Git</p>
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-database"></i>
+                        <p>MySQL</p>
+                    </div>
+                    <div>
+                        <i class="fa-brands fa-php"></i>
+                        <p>PHP</p>
+                    </div>
+                    <div>
+                        <i class="fa-brands fa-wordpress"></i>
+                        <p>WordPress</p>
+                    </div>
                     <!-- <img id='html-icon' src="images/html-icon.png" alt="">
                     <img id='css-icon' src="images/css-icon.png" alt="">
                     <img id='js-icon' src="images/js-icon.png" alt="">
@@ -64,15 +85,18 @@
                 </div>
             </div>
         </section>
-        <section class="section3">
-            <h2>Projetos</h2>
+        <section class="section3 hidden">
+            <h2 class="">Projetos</h2>
+            
             <div class="projects-container">
+                <i onclick="changeRight()" class="fa-sharp fa-solid fa-chevron-right"></i>
+                <i onclick="changeLeft()" class="fa-sharp fa-solid fa-chevron-left"></i>
                 <div class="projects-div project1">
                     <div class="project-img-div">
-                        <img class='project-img' src="images/calculadora-img.png" alt="">
+                        <img class='project-img' src="images/gif.gif" alt="">
                     </div>
                     <div class="project-info-div">  
-                        <p class="project-name">Nome do Projeto</p>
+                        <p class="project-name">Calculadora</p>
                         <p class="project-description">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Necessitatibus eius distinctio odio natus saepe commodi vero. Molestiae adipisci, optio quidem illum, vero fugiat distinctio modi deserunt eligendi dolores, eos illo.</p>
                         <div class="project-tech-div">
                             <i class="fa-brands fa-html5"></i>
@@ -82,7 +106,28 @@
                         <div>
                             <div class="project-links-div">
                                 <a class='live-project' href=""><i class="fa-sharp fa-solid fa-desktop"></i> Live web</a>
-                                <a class='source-code'href="source-code"><i class="fa-solid fa-code"></i> Código fonte</a>
+                                <a class='source-code' href="source-code"><i class="fa-solid fa-code"></i> Código fonte</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="projects-div project2 hidden">
+                    <div class="project-img-div">
+                        <img class='project-img' src="images/calculadora-img.png" alt="">
+                    </div>
+                    <div class="project-info-div">  
+                        <p class="project-name">Histórico de Mensagens</p>
+                        <p class="project-description">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Necessitatibus eius distinctio odio natus saepe commodi vero. Molestiae adipisci, optio quidem illum, vero fugiat distinctio modi deserunt eligendi dolores, eos illo.</p>
+                        <div class="project-tech-div">
+                            <i class="fa-brands fa-html5"></i>
+                            <i class="fa-brands fa-css3-alt"></i>
+                            <i class="fa-brands fa-square-js"></i>
+                        </div>
+                        <div>
+                            <div class="project-links-div">
+                                <a class='live-project' href=""><i class="fa-sharp fa-solid fa-desktop"></i> Live web</a>
+                                <a class='source-code' href="source-code"><i class="fa-solid fa-code"></i> Código fonte</a>
                             </div>
                         </div>
                     </div>
