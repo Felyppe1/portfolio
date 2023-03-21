@@ -223,35 +223,41 @@ header p {
     height: 400px;
     position: absolute;
     top: 0;
-    right: 0;
+    right: -1px;
     transform: translateX(110%);
     transition: .5s cubic-bezier(.64,.38,.67,1);
     z-index: 0;
-    display: flex;
+    display: none;
     flex-direction: column;
     justify-content: center;
     align-items: start;
-    gap: 2rem;
+    gap: 1rem;
     padding-left: 2rem;
     border-radius: 200px;
+    padding-top: 2rem;
 }
 
-.menu-options > div:first-child {
+.menu-options > div:nth-child(1),
+.menu-options > div:nth-child(5) {
     display: flex;
     flex-direction: column;
     gap: 1rem;
     width: 80%;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
+}
+
+.menu-options > div:nth-child(5) {
+    margin-top: 1rem;
 }
 
 .menu-options > div p {
     font-size: .8rem;
     font-weight: 300;
-    color: #ffffff96;
+    color: #ffffffcf;
 }
 
 .divider {
-    background-color: #ffffff96;
+    background-color: #ffffffcf;
     height: .5px;
 }
 
@@ -920,7 +926,7 @@ main {
         display: none !important;
     }
     
-    .hamburger-menu {
+    .hamburger-menu, .menu-options {
         display: flex;
     }
 
@@ -971,7 +977,7 @@ main {
 
 @media screen and (max-width: 470px) {
     .hello, .developer {
-        font-size: 18px;
+        font-size: 20px;
     }
 
     .i-am {
@@ -1023,5 +1029,11 @@ main {
 
     .tech-div .fa-database {
         font-size: 31px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .hello, .developer {
+        font-size: 18px;
     }
 }

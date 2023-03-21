@@ -57,21 +57,29 @@ function scrollToSection(htmlElement) {
 var darkMode = true
 
 function changeTheme() {
-    let faMoon = document.querySelector('.fa-moon')
-    let faSun = document.querySelector('.fa-sun')
+    let faMoonList = document.querySelectorAll('.fa-moon')
+    let faSunList = document.querySelectorAll('.fa-sun')
     let menuOptions = document.querySelector('.menu-options')
     
     if (darkMode) {
-        faMoon.style.transform = 'translateX(-200%)'
-        faSun.style.transform = 'translateX(0)'
+        for (faMoon of faMoonList) {
+            faMoon.style.transform = 'translateX(-200%)'
+        }
+        for (faSun of faSunList) {
+            faSun.style.transform = 'translateX(0)'
+        }
         document.documentElement.style.setProperty('--bg-color', '#fafafa');
         document.documentElement.style.setProperty('--second-color', '#0e0e0e');
-        menuOptions.style.backgroundColor = 'rgb(104 104 104)'
+        menuOptions.style.backgroundColor = 'rgb(95 95 95)'
         darkMode = false
     }
     else {
-        faMoon.style.transform = 'translateX(0)'
-        faSun.style.transform = 'translateX(200%)'
+        for (faMoon of faMoonList) {
+            faMoon.style.transform = 'translateX(0)'
+        }
+        for (faSun of faSunList) {
+            faSun.style.transform = 'translateX(200%)'
+        }
         document.documentElement.style.setProperty('--bg-color', '#0e0e0e');
         document.documentElement.style.setProperty('--second-color', '#fafafa');
         menuOptions.style.backgroundColor = 'rgb(27 27 27)'
