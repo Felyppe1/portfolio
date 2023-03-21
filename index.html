@@ -35,21 +35,28 @@
             <div class="lines line3"></div>
         </div>
         <div onclick='mostrarMenu()' class="menu-options">
-            <div>
-                <p>Navegação</p>
-                <div class="divider"></div>
+            <div class="menu-column1">
+                <div>
+                    <p>Navegação</p>
+                    <div class="divider"></div>
+                </div>
+                <p onclick="scrollToSection(this)" class="portfolio2" id="portfolio">Portfolio</p>
+                <p onclick="scrollToSection(this)" class="aboutMe2" id="aboutMe">Sobre Mim</p>
+                <p onclick="scrollToSection(this)" class='projects2' id="projects">Projetos</p>
             </div>
-            <p onclick="scrollToSection(this)" class="portfolio2" id="portfolio">Portfolio</p>
-            <p onclick="scrollToSection(this)" class="aboutMe2" id="aboutMe">Sobre Mim</p>
-            <p onclick="scrollToSection(this)" class='projects2' id="projects">Projetos</p>
-            <div>
-                <p>Tema</p>
-                <div class="divider"></div>
+            <div class="menu-column2">
+                <div>
+                    <p>Tema</p>
+                    <div class="divider"></div>
+                </div>
+                <div onclick='changeTheme()' class="theme-div2">
+                    <i class="fa-solid fa-moon"></i>
+                    <i class="fa-solid fa-sun"></i>
+                </div>
             </div>
-            <div onclick='changeTheme()' class="theme-div2">
-                <i class="fa-solid fa-moon"></i>
-                <i class="fa-solid fa-sun"></i>
-            </div>
+            
+            
+            
         </div>
     </header>
     <main>
@@ -75,7 +82,9 @@
             <img class="my-photo hidden" src="images/minha-foto2.jpg" alt="Foto do Felyppe">
             <div class="right-column hidden">
                 <h2 class="subtitle1">Sobre mim</h2>
-                <img class="my-photo2" src="images/minha-foto2.jpg" alt="Foto do Felyppe">
+                <div>
+                    <img class="my-photo2" src="images/minha-foto-3.jpg" alt="Foto do Felyppe">
+                </div>
                 <p>Meu nome é Luiz Felyppe e eu sou programador <span>full-stack</span>.<!--  - faço o front-end, back-end e também mexo com banco de dados.  --> Atualmente, trabalho na empresa júnior da <span>UFF</span> (Universidade Federal Fluminense).</p>
                 <p>Focado na área de <span>desenvolvimento web</span>, sou apaixonado por tecnologia e adoro criar <span>soluções</span> tecnológicas e <span>experiências incríveis</span> para os usuários. <!-- Quer transformar suas ideias em código? <span class="get-in-touch">Entre em contato</span> --></p>
                 <h2 class="subtitle2">Tecnologias</h2>
