@@ -82,7 +82,7 @@ function changeTheme() {
         }
         document.documentElement.style.setProperty('--bg-color', '#0e0e0e');
         document.documentElement.style.setProperty('--second-color', '#f4f4f4');
-        menuOptions.style.backgroundColor = 'rgb(27 27 27)'
+        menuOptions.style.backgroundColor = 'rgb(34 34 34)'
         darkMode = true
     }
 }
@@ -319,16 +319,6 @@ function takeOffAnimation() {
 
 const hello = document.querySelector('.hello')
 hello.addEventListener('animationstart', takeOffAnimation)
-
-
-/* const iAm3 = document.querySelector('.i-am3')
-iAm3.addEventListener('animationstart', teste)
-
-function teste() {
-    setTimeout( ()=>{
-        iAm3.style.setProperty('--iAm3Width', '0rem')
-    }, 500)
-} */
 
 const observer = new IntersectionObserver( (entries)=>{
     entries.forEach((entry)=>{

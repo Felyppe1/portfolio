@@ -218,7 +218,7 @@ header p {
 }
 
 .menu-options {
-    background-color: rgb(27 27 27);
+    background-color: rgb(34 34 34);
     width: 280px;
     height: 400px;
     position: absolute;
@@ -548,7 +548,9 @@ main {
     font-weight: 400;
 }
 
-.right-column p, .right-column span{
+.right-column p,
+.right-column span,
+.right-column a {
     font-size: 1.2rem;
     line-height: 32px;
     font-weight: 500;
@@ -679,11 +681,11 @@ main {
 }
 
 .tech-div .fa-css3-alt ~ p {
-    left: 23px;
+    left: 22px;
 }
 
 .tech-div .fa-square-js ~ p {
-    left: 8px;
+    left: 6px;
 }
 
 .tech-div .fa-git-alt ~ p {
@@ -968,7 +970,7 @@ main {
     }
 
     .right-column {
-        width: 551px;
+        width: 559px;
     }
 }
 
@@ -1094,6 +1096,30 @@ main {
     .tech-div .fa-database {
         font-size: 43px;
     }
+
+    .tech-div .fa-html5 ~ p {
+        left: 6px;
+    }
+
+    .tech-div .fa-css3-alt ~ p {
+        left: 14px;
+    }
+
+    .tech-div .fa-square-js ~ p {
+        left: -3px;
+    }
+
+    .tech-div .fa-database ~ p {
+        left: 9px;
+    }
+
+    .tech-div .fa-php ~ p {
+        left: 29px;
+    }
+
+    .tech-div .fa-wordpress ~ p {
+        left: 0px;
+    }
 }
 
 @media screen and (max-width: 540px) {
@@ -1182,6 +1208,20 @@ main {
 
     .tech-div .fa-database {
         font-size: 31px;
+    }
+}
+
+@media screen and (max-width: 354px) {
+    .projects-div {
+        width: 235px;
+    }
+
+    .project-img-div {
+        height: 133px;
+    }
+
+    .project2 .project-img-div {
+        height: 98px;
     }
 }
 
