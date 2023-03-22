@@ -1053,6 +1053,18 @@ main {
         height: 186px;
     }
 
+    .project1 .project-img {
+        height: 194px;
+    }
+
+    .project2 .project-img-div {
+        height: 150px;
+    }
+
+    .project2 .project-img {
+        height: 152px;
+    }
+
     .project-info-div {
         gap: 1rem;
     }
@@ -1092,6 +1104,18 @@ main {
     .project-img-div {
         height: 167px;
     }
+
+    .project1 .project-img {
+        height: 173px;
+    }
+
+    .project2 .project-img-div {
+        height: 135px;
+    }
+
+    .project2 .project-img {
+        height: 137px;
+    }
 }
 
 @media screen and (max-width: 470px) {
@@ -1119,6 +1143,16 @@ main {
     }
 
     .tech-div .fa-database {
+        font-size: 39px;
+    }
+
+    .projects-container .fa-chevron-left {
+        left: 0.5rem;
+        font-size: 39px;
+    }
+
+    .projects-container .fa-chevron-right {
+        right: 0.5rem;
         font-size: 39px;
     }
 }
@@ -1157,7 +1191,7 @@ main {
     }
 }
 
-@media screen and (max-width: 475px) {
+/* @media screen and (max-width: 475px) {
     .projects-container .fa-chevron-left, 
     .projects-container .fa-chevron-right {
         display: none;
@@ -1167,7 +1201,7 @@ main {
     .pagination .fa-chevron-right {
         display: inline;
     }
-}
+} */
 
 
 /*Para celular deitado*/
