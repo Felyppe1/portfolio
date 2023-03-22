@@ -68,7 +68,7 @@ function changeTheme() {
         for (faSun of faSunList) {
             faSun.style.transform = 'translateX(0)'
         }
-        document.documentElement.style.setProperty('--bg-color', '#fafafa');
+        document.documentElement.style.setProperty('--bg-color', '#f4f4f4');
         document.documentElement.style.setProperty('--second-color', '#0e0e0e');
         menuOptions.style.backgroundColor = 'rgb(95 95 95)'
         darkMode = false
@@ -81,7 +81,7 @@ function changeTheme() {
             faSun.style.transform = 'translateX(200%)'
         }
         document.documentElement.style.setProperty('--bg-color', '#0e0e0e');
-        document.documentElement.style.setProperty('--second-color', '#fafafa');
+        document.documentElement.style.setProperty('--second-color', '#f4f4f4');
         menuOptions.style.backgroundColor = 'rgb(27 27 27)'
         darkMode = true
     }
@@ -90,11 +90,53 @@ function changeTheme() {
 var projects = document.querySelectorAll('.projects-div')
 var visibleProject = 0
 
-function changeRight() {
-    if (visibleProject < projects.length - 1) {
+function changeRight(htmlTag) {
+    /* if (visibleProject < projects.length - 1) {
         let arrowLeft = document.querySelector('.fa-chevron-left')
         arrowLeft.style.display = 'inline'
-        for (var cont = 0; cont < projects.length; cont++) {
+    } */
+    
+    let currentPage = document.querySelector('.current-page')
+    if (visibleProject == 0) {
+        projects[0].style.transform = 'translate(-150%) scale(.7)'
+        projects[0].style.opacity = '.3'
+        projects[1].style.transform = 'translate(-50%)'
+        projects[1].style.opacity = '1'
+        projects[2].style.transform = 'translate(50%) scale(.7)'
+
+        currentPage.children[0].style.transform = 'translateY(-200%)'
+        currentPage.children[1].style.transform = 'translateY(0%)'
+        currentPage.children[2].style.transform = 'translateY(200%)'
+    }
+    else {
+        if (visibleProject == 1) {
+            projects[0].style.transform = 'translate(-230%) scale(.7)'
+            projects[1].style.transform = 'translate(-150%) scale(.7)'
+            projects[1].style.opacity = '.3'
+            projects[2].style.transform = 'translate(-50%) scale(1)'
+            projects[2].style.opacity = '1'
+
+            currentPage.children[0].style.transform = 'translateY(-300%)'
+            currentPage.children[1].style.transform = 'translateY(-150%)'
+            currentPage.children[2].style.transform = 'translateY(0%)'
+        }
+    }
+    visibleProject++
+    if (htmlTag.parentNode.classList[0] == 'projects-container') {
+        if (visibleProject > 0) {
+            let arrowLeft = document.querySelector('.fa-chevron-left')
+            arrowLeft.style.display = 'inline'
+        }
+        if (visibleProject == 2) {
+            let arrowRight = document.querySelector('.fa-chevron-right')
+            arrowRight.style.display = 'none'
+        }
+    }
+    
+
+
+
+        /* for (var cont = 0; cont < projects.length; cont++) {
             if (cont == visibleProject) {
                 projects[cont].style.transform = 'translate(-200%) scale(.7)'
                 projects[cont].style.opacity = '0.3'
@@ -123,19 +165,59 @@ function changeRight() {
             }
         }
         visibleProject++
-    }
-    if (visibleProject == 1) {
+    } */
+    /* if (visibleProject == 2) {
         let arrowRight = document.querySelector('.fa-chevron-right')
         arrowRight.style.display = 'none'
-    }
+    } */
 }
 
-function changeLeft() {
-    if (visibleProject == 1) {
+function changeLeft(htmlTag) {
+    /* if (visibleProject == 1) {
         let arrowLeft = document.querySelector('.fa-chevron-left')
         arrowLeft.style.display = 'none'
-    } 
-    if (visibleProject > 0) {
+    }  */
+    
+    let currentPage = document.querySelector('.current-page')
+    if (visibleProject == 2) {
+        projects[0].style.transform = 'translate(-150%) scale(.7)'
+        projects[1].style.transform = 'translate(-50%) scale(1)'
+        projects[1].style.opacity = '1'
+        projects[2].style.transform = 'translate(50%) scale(.7)'
+        projects[2].style.opacity = '.3'
+
+        currentPage.children[0].style.transform = 'translateY(-200%)'
+        currentPage.children[1].style.transform = 'translateY(0%)'
+        currentPage.children[2].style.transform = 'translateY(200%)'
+    }
+    else {
+        if (visibleProject == 1) {
+            projects[0].style.transform = 'translate(-50%) scale(1)'
+            projects[0].style.opacity = '1'
+            projects[1].style.transform = 'translate(50%) scale(.7)'
+            projects[1].style.opacity = '.3'
+            projects[2].style.transform = 'translate(130%) scale(.7)'
+
+            currentPage.children[0].style.transform = 'translateY(0%)'
+            currentPage.children[1].style.transform = 'translateY(200%)'
+            currentPage.children[2].style.transform = 'translateY(400%)'
+        }
+    }
+    visibleProject--
+    if (htmlTag.parentNode.classList[0] == 'projects-container') {
+        if (visibleProject == 0) {
+            let arrowLeft = document.querySelector('.fa-chevron-left')
+            arrowLeft.style.display = 'none'
+        }
+        if (visibleProject < 2) {
+            let arrowRight = document.querySelector('.fa-chevron-right')
+            arrowRight.style.display = 'inline'
+        }
+    }
+    
+
+    
+    /* if (visibleProject > 0) {
         let arrowRight = document.querySelector('.fa-chevron-right')
         arrowRight.style.display = 'block'
         for (var cont = 0; cont < projects.length; cont++) {
@@ -170,7 +252,7 @@ function changeLeft() {
             }
         }
         visibleProject--
-    }
+    } */
 }
 
 function takeOffAnimation() {
@@ -261,3 +343,9 @@ const observer = new IntersectionObserver( (entries)=>{
 const hiddenElements = document.querySelectorAll('.hidden')
 hiddenElements.forEach( (el)=>observer.observe(el))
 
+const main = document.querySelector('main')
+main.addEventListener('click', ()=>{
+    if (showingMenu) {
+        mostrarMenu()
+    }
+})

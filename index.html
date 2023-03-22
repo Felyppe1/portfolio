@@ -34,15 +34,15 @@
             <div class="lines line2"></div>
             <div class="lines line3"></div>
         </div>
-        <div onclick='mostrarMenu()' class="menu-options">
+        <div class="menu-options">
             <div class="menu-column1">
                 <div>
                     <p>Navegação</p>
                     <div class="divider"></div>
                 </div>
-                <p onclick="scrollToSection(this)" class="portfolio2" id="portfolio">Portfolio</p>
-                <p onclick="scrollToSection(this)" class="aboutMe2" id="aboutMe">Sobre Mim</p>
-                <p onclick="scrollToSection(this)" class='projects2' id="projects">Projetos</p>
+                <p onclick="scrollToSection(this); mostrarMenu();" class="portfolio2" id="portfolio">Portfolio</p>
+                <p onclick="scrollToSection(this); mostrarMenu();" class="aboutMe2" id="aboutMe">Sobre Mim</p>
+                <p onclick="scrollToSection(this); mostrarMenu();" class='projects2' id="projects">Projetos</p>
             </div>
             <div class="menu-column2">
                 <div>
@@ -138,23 +138,20 @@
             <h2 class="">Projetos</h2>
             
             <div class="projects-container">
-                <i onclick="changeRight()" class="fa-sharp fa-solid fa-chevron-right"></i>
-                <i onclick="changeLeft()" class="fa-sharp fa-solid fa-chevron-left"></i>
+                <i onclick="changeRight(this)" class="fa-sharp fa-solid fa-chevron-right"></i>
+                <i onclick="changeLeft(this)" class="fa-sharp fa-solid fa-chevron-left"></i>
                 <div class="projects-div project1">
                     <div class="project-img-div">
-                        <img class='project-img' src="images/calculadora-img.png" alt="">
+                        <img class='project-img' src="images/calculadora2.png" alt="">
                     </div>
                     <div class="project-info-div">  
                         <p class="project-name">Calculadora</p>
                         <p class="project-description">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Necessitatibus eius distinctio odio natus saepe commodi vero. Molestiae adipisci, optio quidem illum, vero fugiat distinctio modi deserunt eligendi dolores, eos illo.</p>
-                        <div class="project-tech-div">
-                            <!-- <i class="fa-brands fa-html5"></i>
-                            <i class="fa-brands fa-css3-alt"></i>
-                            <i class="fa-brands fa-square-js"></i> -->
+                        <!-- <div class="project-tech-div">
                             <p>HTML5</p>
                             <p>CSS3</p>
                             <p>JavaScript</p>
-                        </div>
+                        </div> -->
                         <div>
                             <div class="project-links-div">
                                 <a class='live-project' href=""><i class="fa-sharp fa-solid fa-desktop"></i> Live web</a>
@@ -166,19 +163,16 @@
 
                 <div class="projects-div project2 hidden">
                     <div class="project-img-div">
-                        <img class='project-img' src="images/calculadora-img.png" alt="">
+                        <img class='project-img' src="images/historico-chat.png" alt="">
                     </div>
                     <div class="project-info-div">  
                         <p class="project-name">Histórico de Mensagens</p>
                         <p class="project-description">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Necessitatibus eius distinctio odio natus saepe commodi vero. Molestiae adipisci, optio quidem illum, vero fugiat distinctio modi deserunt eligendi dolores, eos illo.</p>
-                        <div class="project-tech-div">
-                            <!-- <i class="fa-brands fa-html5"></i>
-                            <i class="fa-brands fa-css3-alt"></i>
-                            <i class="fa-brands fa-square-js"></i> -->
+                        <!-- <div class="project-tech-div">
                             <p>HTML5</p>
                             <p>CSS3</p>
                             <p>JavaScript</p>
-                        </div>
+                        </div> -->
                         <div>
                             <div class="project-links-div">
                                 <a class='live-project' href=""><i class="fa-sharp fa-solid fa-desktop"></i> Live web</a>
@@ -187,6 +181,35 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="projects-div project3 hidden">
+                    <p>Em breve</p>
+                    <!--< div class="project-img-div">
+                        <img class='project-img' src="images/historico-chat.png" alt="">
+                    </div>
+                    <div class="project-info-div">  
+                        <p class="project-name">Em breve</p>
+                        <p class="project-description">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Necessitatibus eius distinctio odio natus saepe commodi vero. Molestiae adipisci, optio quidem illum, vero fugiat distinctio modi deserunt eligendi dolores, eos illo.</p>
+                        <div>
+                            <div class="project-links-div">
+                                <a class='live-project' href=""><i class="fa-sharp fa-solid fa-desktop"></i> Live web</a>
+                                <a class='source-code' href="source-code"><i class="fa-solid fa-code"></i> Código fonte</a>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+
+            <div class="pagination">
+                <i onclick="changeLeft(this)" class="fa-sharp fa-solid fa-chevron-left"></i>
+                <div class="current-page">
+                    <p>1</p>
+                    <p>2</p>
+                    <p>3</p>
+                </div>
+                <p>/</p>
+                <p>3</p>
+                <i onclick="changeRight(this)" class="fa-sharp fa-solid fa-chevron-right"></i>
             </div>
         </section>
     </main>
