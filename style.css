@@ -317,7 +317,7 @@ main:not(.form-container) {
 
 .behind-form-container {
     display: none;
-    background-color: rgb(0 0 0 / 90%);
+    background-color: rgba(0, 0, 0, 0.788);
     position: absolute;
     top: 0;
     right: 0;
@@ -327,15 +327,15 @@ main:not(.form-container) {
 }
 
 .form-container {
-    background-color: var(--bg-color)/* rgb(34 34 34) */;
+    background-color: rgb(22 22 22)/* rgb(34 34 34) */;
     width: 600px;
     height: 500px;
     display: flex;
     position: fixed;
     z-index: 5;
-    top: 7rem;
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%) scale(0);
+    transform: translate(-50%, -50%) scale(0);
     flex-direction: column;
     padding: 2rem 1.5rem;
     transition: .5s;
@@ -399,7 +399,7 @@ main:not(.form-container) {
 
 .form > div input,
 .form > div textarea {
-    background-color: var(--bg-color);
+    background-color: rgb(22 22 22);
     border-bottom: 2px solid var(--second-color);
     padding: 0 0 5px 7px;
     font-weight: 300;
@@ -1411,6 +1411,41 @@ main:not(.form-container) {
     .tech-div .fa-database {
         font-size: 31px;
     }
+
+    .tech-div .fa-html5 ~ p,
+    .tech-div .fa-css3-alt ~ p,
+    .tech-div .fa-square-js ~ p,
+    .tech-div .fa-database ~ p,
+    .tech-div .fa-php ~ p,
+    .tech-div .fa-wordpress ~ p {
+        font-size: 12px;
+    }
+
+
+    .tech-div .fa-html5 ~ p {
+        left: 0px;
+    }
+
+    .tech-div .fa-css3-alt ~ p {
+        left: 7px;
+    }
+
+    .tech-div .fa-square-js ~ p {
+        left: -5px;
+    }
+
+    .tech-div .fa-database ~ p {
+        left: 3px;
+        bottom: -45px;
+    }
+
+    .tech-div .fa-php ~ p {
+        left: 18px;
+    }
+
+    .tech-div .fa-wordpress ~ p {
+        left: -5px;
+    }
 }
 
 @media screen and (max-width: 354px) {
@@ -1452,7 +1487,7 @@ main:not(.form-container) {
 } */
 
 
-/*Para celular deitado*/
+/*=========================Para celular deitado=========================*/
 @media screen and (max-height: 400px) {
     .section1 {
         height: calc(100vh + 9rem);

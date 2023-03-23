@@ -60,6 +60,9 @@ function changeTheme() {
     let faMoonList = document.querySelectorAll('.fa-moon')
     let faSunList = document.querySelectorAll('.fa-sun')
     let menuOptions = document.querySelector('.menu-options')
+    let formContainer = document.querySelector('.form-container')
+    let inputList = document.querySelectorAll('input')
+    let textarea = document.querySelector('textarea')
     
     if (darkMode) {
         for (faMoon of faMoonList) {
@@ -71,6 +74,12 @@ function changeTheme() {
         document.documentElement.style.setProperty('--bg-color', '#f4f4f4');
         document.documentElement.style.setProperty('--second-color', '#0e0e0e');
         menuOptions.style.backgroundColor = 'rgb(95 95 95)'
+        formContainer.style.backgroundColor = '#fafafa'
+        for (input of inputList) {
+            input.style.backgroundColor = '#fafafa'
+        }
+        textarea.style.backgroundColor = '#fafafa'
+
         darkMode = false
     }
     else {
@@ -83,6 +92,12 @@ function changeTheme() {
         document.documentElement.style.setProperty('--bg-color', '#0e0e0e');
         document.documentElement.style.setProperty('--second-color', '#f4f4f4');
         menuOptions.style.backgroundColor = 'rgb(34 34 34)'
+        formContainer.style.backgroundColor = 'rgb(22 22 22)'
+        for (input of inputList) {
+            input.style.backgroundColor = 'rgb(22 22 22)'
+        }
+        textarea.style.backgroundColor = 'rgb(22 22 22)'
+
         darkMode = true
     }
 }
@@ -262,7 +277,7 @@ function showForm() {
     behindFormContainer.style.display = 'block'
     const formContainer = document.querySelector('.form-container')
     /* formContainer.style.display = 'flex' */
-    formContainer.style.transform = 'translateX(-50%) scale(1)'
+    formContainer.style.transform = 'translate(-50%, -50%) scale(1)'
     formContainer.style.transition = '.5s'
 
     /* const mainNotForm = document.querySelector('.main:not(.form-container)')
@@ -274,7 +289,7 @@ function closeForm() {
     const behindFormContainer = document.querySelector('.behind-form-container')
     behindFormContainer.style.display = 'none'
     const formContainer = document.querySelector('.form-container')
-    formContainer.style.transform = 'translateX(-50%) scale(0)'
+    formContainer.style.transform = 'translate(-50%, -50%) scale(0)'
     formContainer.style.transition = '0s'
     /* formContainer.style.display = 'none' */
 
