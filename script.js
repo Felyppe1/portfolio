@@ -307,6 +307,8 @@ function losesFocus(htmlTag) {
     if (htmlTag.value == '') {
         htmlTag.previousElementSibling.style.removeProperty('transform')
         htmlTag.previousElementSibling.style.opacity = '.6'
+        htmlTag.nextElementSibling.style.removeProperty('display')
+        htmlTag.nextElementSibling.nextElementSibling.style.removeProperty('display')
     }
     else {
         if (htmlTag.id == 'email') {
