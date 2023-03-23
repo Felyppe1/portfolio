@@ -24,7 +24,7 @@
                 <i class="fa-solid fa-moon"></i>
                 <i class="fa-solid fa-sun"></i>
             </div>
-            <button class="contact-btn">
+            <button onclick='showForm()' class="contact-btn">
                 <p>Contato</p>
             </button>
         </div>
@@ -60,6 +60,38 @@
         </div>
     </header>
     <main>
+        <div class="behind-form-container"></div>
+        <div class="form-container">
+            <p class="not-working">Não está funcionando ainda.</p>
+            <i onclick='closeForm()' class="fa-regular fa-circle-xmark"></i>
+            <h2>Contato</h2>
+            <p>Interessado em trabalharmos juntos? Me envie um email!</p>
+            <form class='form' action="">
+                <div>
+                    <label for="name">Nome</label>
+                    <input onclick='typeForm(this)' onblur="losesFocus(this)" type="text" id="name" name="name">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                </div>
+                <div>
+                    <label for="email">Email</label>
+                    <input onclick='typeForm(this)' onblur="losesFocus(this)" type="text" id="email" name="email">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                </div>
+                <div>
+                    <label for="subject">Assunto</label>
+                    <input onclick='typeForm(this)' onblur="losesFocus(this)" type="text" id="subject" name="subject">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                </div>
+                <div>
+                    <label id="message-label" for="message">Mensagem</label>
+                    <textarea onclick='typeForm(this)' onblur="losesFocus(this)" name="message" id="message" cols="30" rows="3"></textarea>
+                </div>
+                <input type="submit" name='submit' value="Enviar">
+            </form>
+        </div>
         <section class="section1">
             <div class="title hidden">
                 <div>

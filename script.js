@@ -255,6 +255,64 @@ function changeLeft(htmlTag) {
     } */
 }
 
+function showForm() {
+    const behindFormContainer = document.querySelector('.behind-form-container')
+    behindFormContainer.style.display = 'block'
+    const formContainer = document.querySelector('.form-container')
+    /* formContainer.style.display = 'flex' */
+    formContainer.style.transform = 'translateX(-50%) scale(1)'
+    formContainer.style.transition = '.5s'
+}
+
+function closeForm() {
+    const behindFormContainer = document.querySelector('.behind-form-container')
+    behindFormContainer.style.display = 'none'
+    const formContainer = document.querySelector('.form-container')
+    formContainer.style.transform = 'translateX(-50%) scale(0)'
+    formContainer.style.transition = '0s'
+    /* formContainer.style.display = 'none' */
+}
+
+function typeForm(htmlTag) {
+    htmlTag.previousElementSibling.style.transform = 'translate(0)'
+    htmlTag.previousElementSibling.style.opacity = '1'
+}
+
+function losesFocus(htmlTag) {
+    if (htmlTag.value == '') {
+        htmlTag.previousElementSibling.style.removeProperty('transform')
+        htmlTag.previousElementSibling.style.opacity = '.6'
+    }
+    else {
+        if (htmlTag.id == 'email') {
+            let user = htmlTag.value.substring(0, htmlTag.value.indexOf('@'))
+            let domain = htmlTag.value.substring(htmlTag.value.indexOf('@') + 1)
+        
+            //REFAZER USANDO REGEX
+            if ((user.length < 1) ||  
+                (domain.length < 3) ||
+                (user.search('@') != -1) || //if find @
+                (domain.search('@') != -1) || //if find @
+                (user.search(' ') != -1) || //if find ' '
+                (domain.search(' ') != -1) || //if find ' '
+                (domain.search('.') == -1) || //if don't find .
+                (domain.indexOf('.') < 1) || //if . is the first letter
+                (domain.lastIndexOf('.') == domain.length - 1)) { //if . is the last letter
+                    htmlTag.nextElementSibling.style.removeProperty('display')
+                    htmlTag.nextElementSibling.nextElementSibling.style.display = 'inline'
+                    /* let circleExclamation = document.querySelector('.fa-circle-exclamation')
+                    circleExclamation.style.display = 'inline' */
+                }
+            else {
+                htmlTag.nextElementSibling.style.display = 'inline'
+                htmlTag.nextElementSibling.nextElementSibling.style.removeProperty('display')
+            }
+            }
+            
+        }
+        
+}
+
 function takeOffAnimation() {
     setTimeout( ()=>{
         hello.style.setProperty('--helloBlink', '0s')
