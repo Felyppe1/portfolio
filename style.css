@@ -296,7 +296,9 @@ header p {
 
 .portfolio2, .aboutMe2, .projects2 {
     color: #fafafa;
+    width: max-content;
 }
+
 
 
 
@@ -307,6 +309,10 @@ main {
     background-color: var(--bg-color);
     overflow-y: hidden;
     position: relative;
+}
+
+main:not(.form-container) {
+    pointer-events: auto;
 }
 
 .behind-form-container {
@@ -331,18 +337,18 @@ main {
     left: 50%;
     transform: translateX(-50%) scale(0);
     flex-direction: column;
-    padding: 2rem 1rem;
+    padding: 2rem 1.5rem;
     transition: .5s;
     border-radius: 15px;
 }
 
 .not-working {
-    background-color: #ff3333;
+    background-color: #d7a828;
     color: #fafafa;
     padding: 4px 8px;
     border-radius: 10px;
     position: absolute;
-    top: 8px;
+    top: 3px;
     right: 176px;
     font-weight: 400 !important;
 }
@@ -360,7 +366,7 @@ main {
     color: rgb(255, 49, 49);
 }
 
-.form-container > p {
+.form-container > p:not(.not-working) {
     font-weight: 500;
     margin-top: .3rem;
     margin-bottom: 1.5rem;
@@ -384,6 +390,7 @@ main {
     transition: .27s;
     opacity: .6;
     cursor: initial;
+    width: max-content;
 }
 
 #message-label {
@@ -423,6 +430,7 @@ main {
     width: 150px;
     height: 32px;
     cursor: pointer;
+    font-size: 1.2rem;
 }
 /* .form-container::before {
     content: '';
@@ -883,7 +891,6 @@ main {
     font-size: 85px;
     color: var(--second-color);
     cursor: pointer;
-    transition: .5s;
 }
 
 .projects-container .fa-chevron-left {
@@ -895,8 +902,12 @@ main {
     font-size: 85px;
     color: var(--second-color);
     cursor: pointer;
-    transition: .5s;
     display: none;
+}
+
+.projects-container .fa-chevron-left:active,
+.projects-container .fa-chevron-right:active {
+    opacity: .5;
 }
 
 .projects-div {
@@ -1057,6 +1068,7 @@ main {
     display: flex;
     gap: .6rem;
     position: relative;
+    margin-bottom: 1rem;
 }
 
 .pagination .fa-chevron-left,
@@ -1161,6 +1173,12 @@ main {
         width: 440px;
         height: 520px;
     }
+
+    .not-working {
+        right: 123px;
+        font-size: 14px;
+    }
+
     .projects-div {
         width: 430px;
     }
@@ -1260,6 +1278,13 @@ main {
     .form-container {
         width: 300px;
     }
+
+    .not-working {
+        padding: 3px 7px;
+        right: 64px;
+
+    }
+
 }
 
 @media screen and (max-width: 540px) {
@@ -1276,7 +1301,7 @@ main {
     }
 
     .project2 .project-img-div {
-        height: 135px;
+        height: 133px;
     }
 
     .project2 .project-img {
@@ -1311,6 +1336,43 @@ main {
     .tech-div .fa-database {
         font-size: 39px;
     }
+
+    .tech-div .fa-html5 ~ p,
+    .tech-div .fa-css3-alt ~ p,
+    .tech-div .fa-square-js ~ p,
+    .tech-div .fa-database ~ p,
+    .tech-div .fa-php ~ p,
+    .tech-div .fa-wordpress ~ p {
+        font-size: 14px;
+    }
+
+
+    .tech-div .fa-html5 ~ p {
+        left: 2px;
+    }
+
+    .tech-div .fa-css3-alt ~ p {
+        left: 9px;
+    }
+
+    .tech-div .fa-square-js ~ p {
+        left: -4px;
+    }
+
+    .tech-div .fa-database ~ p {
+        left: 5px;
+        bottom: -47px;
+    }
+
+    .tech-div .fa-php ~ p {
+        left: 23px;
+    }
+
+    .tech-div .fa-wordpress ~ p {
+        left: -3px;
+    }
+
+
 
     .projects-container .fa-chevron-left {
         left: 0.5rem;

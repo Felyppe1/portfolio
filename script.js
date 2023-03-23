@@ -255,6 +255,8 @@ function changeLeft(htmlTag) {
     } */
 }
 
+var showingForm = false
+
 function showForm() {
     const behindFormContainer = document.querySelector('.behind-form-container')
     behindFormContainer.style.display = 'block'
@@ -262,6 +264,10 @@ function showForm() {
     /* formContainer.style.display = 'flex' */
     formContainer.style.transform = 'translateX(-50%) scale(1)'
     formContainer.style.transition = '.5s'
+
+    /* const mainNotForm = document.querySelector('.main:not(.form-container)')
+    mainNotForm.style.pointerEvents = 'none' */
+    showingForm = true
 }
 
 function closeForm() {
@@ -271,6 +277,10 @@ function closeForm() {
     formContainer.style.transform = 'translateX(-50%) scale(0)'
     formContainer.style.transition = '0s'
     /* formContainer.style.display = 'none' */
+
+    /* const mainNotForm = document.querySelector('.main:not(.form-container)')
+    mainNotForm.style.removeProperty('pointerEvents') */
+    showingForm = false
 }
 
 function typeForm(htmlTag) {
@@ -391,9 +401,31 @@ const observer = new IntersectionObserver( (entries)=>{
 const hiddenElements = document.querySelectorAll('.hidden')
 hiddenElements.forEach( (el)=>observer.observe(el))
 
-const main = document.querySelector('main')
-main.addEventListener('click', ()=>{
+/* const main = document.querySelector('main')
+main.addEventListener('click', (e)=>{
     if (showingMenu) {
         mostrarMenu()
     }
+}) */
+
+
+const body = document.querySelector('body')
+body.addEventListener('click', (e)=>{
+    let menuOptions = document.querySelector('.menu-options')
+    if (showingMenu && 
+        e.target.classList[0] != 'hamburger-menu' && 
+        e.target.classList[0] != 'lines' &&
+        e.target != menuOptions &&
+        menuOptions.contains(e.target) != true
+        ) {
+        mostrarMenu()
+    }
+
+    let formContainer = document.querySelector('.form-container')
+    if (showingForm &&
+        e.target.innerText != 'Contato' &&
+        e.target != formContainer &&
+        formContainer.contains(e.target) != true) {
+            closeForm()
+        }
 })
