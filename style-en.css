@@ -555,60 +555,60 @@ main:not(.form-container) {
 }
 
 .hello::before {
-    animation: typewriter 1s 1s steps(11) forwards;
+    animation: typewriter 1s 1s steps(13) forwards;
 }
 
 .hello::after {
     content: var(--helloContent, '');
     animation: 
-        typewriter 1s 1s steps(11) forwards,
+        typewriter 1s 1s steps(13) forwards,
         blink var(--helloBlink, 700ms) infinite;
     width: 0.3rem;
     background: var(--second-color);
 }
 
 .i-am::before {
-    animation: typewriter 1.3s 2.8s steps(16) forwards;
+    animation: typewriter 1.3s 2.8s steps(18) forwards;
 }
 
 .i-am::after {
     animation: 
-        typewriter 1.3s 2.8s steps(16) forwards,
+        typewriter 1.3s 2.8s steps(18) forwards,
         blink var(--iAmBlink, 700ms) infinite;
     width: var(--iAmWidth, 0);
     background: var(--second-color);
 }
 
 .i-am2::before {
-    animation: typewriter .6s 2.8s steps(6) forwards;
+    animation: typewriter .6s 2.8s steps(7) forwards;
 }
 
 .i-am2::after {
     animation: 
-        typewriter .6s 2.8s steps(6) forwards,
+        typewriter .6s 2.8s steps(7) forwards,
         blink var(--iAm2Blink, 700ms) infinite;
     width: var(--iAm2Width, 0);
     background: var(--second-color);
 }
 
 .i-am3::before {
-    animation: typewriter .7s 3.4s steps(9) forwards;
+    animation: typewriter .7s 3.4s steps(10) forwards;
 }
 
 .i-am3::after {
     animation: 
-        typewriter .7s 3.4s steps(9) forwards;
+        typewriter .7s 3.4s steps(10) forwards;
     width: var(--iAm3Width, 0);
     background: var(--second-color);
 }
 
 .developer::before {
-    animation: typewriter 1.6s 4.9s steps(24) forwards;
+    animation: typewriter 1.6s 4.9s steps(20) forwards;
 }
 
 .developer::after {
     animation: 
-        typewriter 1.6s 4.9s steps(24) forwards,
+        typewriter 1.6s 4.9s steps(20) forwards,
         blink var(--developerBlink, 700ms) infinite;
     width: var(--developerWidth, 0);
     background: var(--second-color);
@@ -1151,6 +1151,16 @@ main:not(.form-container) {
     }
 }
 
+@media screen and (max-width: 980px) {
+    .hello, .developer {
+        font-size: 26px;
+    }
+
+    .i-am {
+        font-size: 64px;
+    }
+}
+
 @media screen and (max-width: 950px) {
     .projects-container .fa-chevron-right {
         right: 1.5rem;
@@ -1193,14 +1203,6 @@ main:not(.form-container) {
         justify-content: space-between;
         padding: 0 10%;
     }
-
-    .hello, .developer {
-        font-size: 26px;
-    }
-
-    .i-am {
-        font-size: 64px;
-    }
 }
 
 @media screen and (max-width: 790px) {
@@ -1212,6 +1214,14 @@ main:not(.form-container) {
     .not-working {
         right: 123px;
         font-size: 14px;
+    }
+
+    .hello, .developer {
+        font-size: 22px;
+    }
+
+    .i-am {
+        font-size: 45px;
     }
 
     .projects-div {
@@ -1323,6 +1333,14 @@ main:not(.form-container) {
 }
 
 @media screen and (max-width: 540px) {
+    .hello, .developer {
+        font-size: 20px;
+    }
+
+    .i-am {
+        font-size: 36px;
+    }
+
     .projects-div {
         width: 280px;
     }
@@ -1345,14 +1363,6 @@ main:not(.form-container) {
 }
 
 @media screen and (max-width: 470px) {
-    .hello, .developer {
-        font-size: 20px;
-    }
-
-    .i-am {
-        font-size: 36px;
-    }
-
     .right-column {
         width: 350px;
     }
@@ -1500,6 +1510,10 @@ main:not(.form-container) {
 @media screen and (max-width: 320px) {
     .hello, .developer {
         font-size: 18px;
+    }
+
+    .i-am2, .i-am3 {
+        font-size: 40px;
     }
 }
 

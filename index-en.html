@@ -8,30 +8,31 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@100;200;300;400;500;600;700&family=Noto+Sans+Tamil:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style-en.css">
     <link rel="stylesheet" href="fontawesome/css/all.min.css">
-    <script defer src="script.js"></script>
+    <script defer src="script-en.js"></script>
 </head>
 <body>
     <header>
         <div class="navigation">
             <p onclick="scrollToSection(this)" class="portfolio" id="portfolio">&#60;/Portfolio&#62;</p>
-            <p onclick="scrollToSection(this)" class='aboutMe' id="aboutMe">Sobre Mim</p>
-            <p onclick="scrollToSection(this)" class='projects' id="projects">Projetos</p>
+            <p onclick="scrollToSection(this)" class='aboutMe' id="aboutMe">About Me</p>
+            <p onclick="scrollToSection(this)" class='projects' id="projects">Projects</p>
         </div>
         <div class="buttons-header">
             <div class="lang-div">
                 <div>
-                    <img src="images/usa-icon.png" alt="USA flag icon">
+                    <img src="images/brazil-icon.png" alt="Brazilian flag icon">
                 </div>
-                <a href="index-en.html">English</a>
+                <a href="index.html">Português</a>
             </div>
+            
             <div onclick='changeTheme()' class="theme-div">
                 <i class="fa-solid fa-moon"></i>
                 <i class="fa-solid fa-sun"></i>
             </div>
             <button onclick='showForm()' class="contact-btn">
-                <p>Contato</p>
+                <p>Contact</p>
             </button>
         </div>
 
@@ -43,17 +44,17 @@
         <div class="menu-options">
             <div class="menu-column1">
                 <div>
-                    <p>Navegação</p>
+                    <p>Navigation</p>
                     <div class="divider"></div>
                 </div>
                 <p onclick="scrollToSection(this); mostrarMenu();" class="portfolio2" id="portfolio">Portfolio</p>
-                <p onclick="scrollToSection(this); mostrarMenu();" class="aboutMe2" id="aboutMe">Sobre Mim</p>
-                <p onclick="scrollToSection(this); mostrarMenu();" class='projects2' id="projects">Projetos</p>
+                <p onclick="scrollToSection(this); mostrarMenu();" class="aboutMe2" id="aboutMe">About Me</p>
+                <p onclick="scrollToSection(this); mostrarMenu();" class='projects2' id="projects">Projects</p>
             </div>
             <div class="menu-column2">
                 <div class="theme-menu-div">
                     <div>
-                        <p>Tema</p>
+                        <p>Theme</p>
                         <div class="divider"></div>
                     </div>
                     <div onclick='changeTheme()' class="theme-div2">
@@ -61,16 +62,17 @@
                         <i class="fa-solid fa-sun"></i>
                     </div>
                 </div>
+                
                 <div class="lang-menu-div">
                     <div>
-                        <p>Idioma</p>
+                        <p>Language</p>
                         <div class="divider"></div>
                     </div>
                     <div class="lang-div2">
                         <div>
-                            <img src="images/usa-icon.png" alt="USA flag icon">
+                            <img src="images/brazil-icon.png" alt="Brazilian flag icon">
                         </div>
-                        <a href="index-en.html">English</a>
+                        <a href="index.html">Português</a>
                     </div>
                 </div>
             </div>
@@ -82,13 +84,13 @@
     <main>
         <div class="behind-form-container"></div>
         <div class="form-container">
-            <p class="not-working">Não está funcionando ainda.</p>
+            <p class="not-working">Not working yet.</p>
             <i onclick='closeForm()' class="fa-regular fa-circle-xmark"></i>
-            <h2>Contato</h2>
-            <p>Interessado em trabalharmos juntos? Me envie um email!</p>
+            <h2>Contact</h2>
+            <p>Interested in working together? Send me an email!</p>
             <form class='form' action="">
                 <div>
-                    <label for="name">Nome</label>
+                    <label for="name">Name</label>
                     <input onfocus='typeForm(this)' onblur="losesFocus(this)" type="text" id="name" name="name" autocomplete="off" required>
                     <!-- <i class="fa-solid fa-circle-check"></i>
                     <i class="fa-solid fa-circle-exclamation"></i> -->
@@ -100,28 +102,28 @@
                     <i class="fa-solid fa-circle-exclamation"></i>
                 </div>
                 <div>
-                    <label for="subject">Assunto</label>
+                    <label for="subject">Subject</label>
                     <input onfocus='typeForm(this)' onblur="losesFocus(this)" type="text" id="subject" name="subject" autocomplete="off" required>
                     <!-- <i class="fa-solid fa-circle-check"></i>
                     <i class="fa-solid fa-circle-exclamation"></i> -->
                 </div>
                 <div>
-                    <label id="message-label" for="message">Mensagem</label>
+                    <label id="message-label" for="message">Message</label>
                     <textarea onfocus='typeForm(this)' onblur="losesFocus(this)" name="message" id="message" cols="30" rows="3" autocomplete="off" required></textarea>
                 </div>
-                <input type="submit" name='submit' value="Enviar">
+                <input type="submit" name='submit' value="Send">
             </form>
         </div>
 
         <section class="section1">
             <div class="title hidden">
                 <div>
-                    <p class="hello">Olá, mundo!</p>
-                    <h1 class="i-am">Eu sou o Felyppe</h1>
-                    <h1 class="i-am2">Eu sou</h1>
-                    <h1 class="i-am3">o Felyppe</h1>
+                    <p class="hello">Hello, World!</p>
+                    <h1 class="i-am">My name is Felyppe</h1>
+                    <h1 class="i-am2">My name</h1>
+                    <h1 class="i-am3">is Felyppe</h1>
                 </div>
-                <p class="developer">desenvolvedor full-stack</p>
+                <p class="developer">full-stack developer</p>
                 <div class="social-medias">
                     <a href="https://www.instagram.com/felyppe_nunes1/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
                     <a href="https://www.linkedin.com/in/luiz-felyppe-611906244/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
@@ -134,13 +136,13 @@
         <section class="section2">
             <img class="my-photo hidden" src="images/minha-foto2.jpg" alt="Foto do Felyppe">
             <div class="right-column hidden">
-                <h2 class="subtitle1">Sobre mim</h2>
+                <h2 class="subtitle1">About Me</h2>
                 <div>
                     <img class="my-photo2" src="images/minha-foto-3.jpg" alt="Foto do Felyppe">
                 </div>
-                <p>Meu nome é Luiz Felyppe e eu sou programador full-stack. Atualmente, faço Sistemas de Informação na UFF (Universidade Federal Fluminense) e estou ingressando na <a href="https://injunior.com.br/" target="_blank">IN Júnior <i class="fa-solid fa-arrow-up-right-from-square"></i></a>.</p>
-                <p>Focado na área de desenvolvimento web, sou apaixonado por tecnologia e estou em constante aprendizado visando a melhorar minhas habilidades na programação. <!-- Quer transformar suas ideias em código? <span class="get-in-touch">Entre em contato</span> --></p>
-                <h2 class="subtitle2">Tecnologias</h2>
+                <p>My name is Luiz Felyppe and I'm a full-stack programmer. I'm currently doing bachelor in Information Systems at UFF (Fluminense Federal University) and I'm joining the <a href="https://injunior.com.br/" target="_blank">IN Júnior <i class="fa-solid fa-arrow-up-right-from-square"></i></a>.</p>
+                <p>Focused on the web development field, I'm in love with technology and I'm constantly learning in order to improve my programming abilities <!-- Quer transformar suas ideias em código? <span class="get-in-touch">Entre em contato</span> --></p>
+                <h2 class="subtitle2">Technologies</h2>
                 <div class="tech-div">
                     <div class="tech-row1">
                         <div>
@@ -175,7 +177,7 @@
             </div>
         </section>
         <section class="section3 hidden">
-            <h2 class="">Projetos</h2>
+            <h2 class="">Projects</h2>
             
             <div class="projects-container">
                 <i onclick="changeRight(this)" class="fa-sharp fa-solid fa-chevron-right"></i>
@@ -185,12 +187,12 @@
                         <img class='project-img' src="images/calculadora2.png" alt="">
                     </div>
                     <div class="project-info-div">  
-                        <p class="project-name">Calculadora</p>
-                        <p class="project-description">A réplica de uma calculadora que tenho em casa com praticamente as mesmas funcionalidades. Na próxima versão estará completa. Projeto realizado para praticar JavaScript.</p>
+                        <p class="project-name">Calculator</p>
+                        <p class="project-description">A copy of a calculator I have at home with pretty much the same functionalities. At the next version it will be totally complete. Project made to practice JavaScript</p>
                         <div>
                             <div class="project-links-div">
-                                <a class='live-project' href="https://felyppe1.github.io/calculadora/" target="_blank"><i class="fa-sharp fa-solid fa-desktop"></i> Live web</a>
-                                <a class='source-code' href="https://github.com/Felyppe1/calculadora" target="_blank"><i class="fa-solid fa-code"></i> Código fonte</a>
+                                <a class='live-project' href="https://felyppe1.github.io/calculadora/" target="_blank"><i class="fa-sharp fa-solid fa-desktop"></i> Live Web</a>
+                                <a class='source-code' href="https://github.com/Felyppe1/calculadora" target="_blank"><i class="fa-solid fa-code"></i> Source Code</a>
                             </div>
                         </div>
                     </div>
@@ -201,19 +203,19 @@
                         <img class='project-img' src="images/historico-chat.png" alt="">
                     </div>
                     <div class="project-info-div">  
-                        <p class="project-name">Histórico de Mensagens</p>
-                        <p class="project-description">Um simples histórico de mensagens. Projeto realizado no processo seletivo da IN Júnior com o objetivo de aplicar os conhecimentos aprendidos de JavaScript <!-- Lorem ipsum dolor, sit amet consectetur adipisicing elit. Necessitatibus eius distinctio odio natus saepe commodi vero. Molestiae adipisci, optio quidem illum, vero fugiat distinctio modi deserunt eligendi dolores, eos illo. --></p>
+                        <p class="project-name">History of Messages</p>
+                        <p class="project-description">A simple history of messages. Project made in the selection process of IN Júnior aiming at apllying the JavaScript knowledges learned <!-- Lorem ipsum dolor, sit amet consectetur adipisicing elit. Necessitatibus eius distinctio odio natus saepe commodi vero. Molestiae adipisci, optio quidem illum, vero fugiat distinctio modi deserunt eligendi dolores, eos illo. --></p>
                         <div>
                             <div class="project-links-div">
-                                <a class='live-project' href="https://felyppe1.github.io/historico-de-mensagens/" target="_blank"><i class="fa-sharp fa-solid fa-desktop"></i> Live web</a>
-                                <a class='source-code' href="https://github.com/Felyppe1/historico-de-mensagens" target="_blank"><i class="fa-solid fa-code"></i> Código fonte</a>
+                                <a class='live-project' href="https://felyppe1.github.io/historico-de-mensagens/" target="_blank"><i class="fa-sharp fa-solid fa-desktop"></i> Live Web</a>
+                                <a class='source-code' href="https://github.com/Felyppe1/historico-de-mensagens" target="_blank"><i class="fa-solid fa-code"></i> Source Code</a>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="projects-div project3 hidden">
-                    <p>Em breve</p>
+                    <p>Soon</p>
                 </div>
             </div>
 

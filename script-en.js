@@ -440,9 +440,11 @@ body.addEventListener('click', (e)=>{
 
     let formContainer = document.querySelector('.form-container')
     if (showingForm &&
-        e.target.innerText != 'Contato' &&
+        e.target.innerText != 'Contact' &&
         e.target != formContainer &&
         formContainer.contains(e.target) != true) {
             closeForm()
         }
 })
+
+ElementIn
