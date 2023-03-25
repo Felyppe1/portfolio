@@ -198,10 +198,6 @@ header p {
     content: '';
     background: #1c4fae;
     position: absolute;
-    /* top: 0px; */
-    /* right: 0; */
-    /* bottom: 0; */
-    /* left: -17px; */
     width: 178px;
     height: 168px;
     border-radius: 77px;
@@ -254,7 +250,7 @@ header p {
     position: relative;
     cursor: pointer;
     display: none;
-    z-index: 1;
+    z-index: 6;
 }
 
 .menu-options {
@@ -266,7 +262,7 @@ header p {
     right: -1px;
     transform: translateX(110%);
     transition: .5s cubic-bezier(.64,.38,.67,1);
-    z-index: 0;
+    z-index: 5;
     display: none;
     flex-direction: column;
     align-items: start;
