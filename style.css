@@ -170,20 +170,31 @@ header p {
     color: var(--bg-color);
     width: 130px;
     height: 35px;
+    border: 2px solid var(--second-color);
     border-radius: 20px;
     animation: shakeBtn 10s 10s infinite;
     cursor: pointer;
     position: relative;
     overflow: hidden;
+    transition: .3s;
 }
 
 .contact-btn p {
     color: var(--bg-color);
     z-index: 2;
     position: relative;
+    transition: .3s;
 }
 
-.contact-btn::before {
+.contact-btn:hover {
+    background-color: var(--bg-color);
+}
+
+.contact-btn:hover p {
+    color: var(--second-color);
+}
+
+/* .contact-btn::before {
     content: '';
     background: #1c4fae;
     position: absolute;
@@ -201,7 +212,7 @@ header p {
 
 .contact-btn:hover::before {
     transform: translate(-50%, -50%);
-}
+} */
 
 /* .contact-btn:hover p {
     color: #fafafa;
@@ -358,7 +369,7 @@ main:not(.form-container) {
 }
 
 .form-container {
-    background-color: rgb(22 22 22)/* rgb(34 34 34) */;
+    background-color: rgb(27 27 27)/* rgb(34 34 34) */;
     width: 600px;
     height: 500px;
     display: flex;
@@ -431,7 +442,7 @@ main:not(.form-container) {
 
 .form > div input,
 .form > div textarea {
-    background-color: rgb(22 22 22);
+    background-color: rgb(27 27 27);
     border: 2px solid var(--second-color);
     /* border-bottom: 2px solid var(--second-color); */
     padding: 6px 7px 4px 7px;
@@ -442,11 +453,15 @@ main:not(.form-container) {
     resize: none;
 }
 
+#email {
+    padding: 6px 34px 4px 7px;
+}
+
 .form > div .fa-circle-check,
 .form > div .fa-circle-exclamation {
     position: absolute;
-    right: 15px;
-    top: 30px;
+    right: 10px;
+    top: 31px;
     /* top: 27px; */
     display: none;
 }

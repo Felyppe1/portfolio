@@ -1,3 +1,4 @@
+var showingMenu = false
 function mostrarMenu() {
     let line1 = document.querySelector('.line1')
     let line2 = document.querySelector('.line2')
@@ -16,11 +17,6 @@ function mostrarMenu() {
         showingMenu = false
     }
     else {
-        /* line1.style.transform = 'rotate(37deg) translate(4px, 12px)'
-        line1.style.width = '40px'
-        line3.style.transform = 'rotate(-38deg) translate(3px, -10px)'
-        line3.style.width = '40px' */
-
         line2.style.opacity = '0'
 
         line1.style.transform = 'rotate(42deg) translate(6px, 9px)'
@@ -34,8 +30,6 @@ function mostrarMenu() {
         showingMenu = true
     }
 }
-
-var showingMenu = false
 
 function scrollToSection(htmlElement) {
     if (htmlElement.id == 'portfolio') {
@@ -55,7 +49,6 @@ function scrollToSection(htmlElement) {
 }
 
 var darkMode = true
-
 function changeTheme() {
     let faMoonList = document.querySelectorAll('.fa-moon')
     let faSunList = document.querySelectorAll('.fa-sun')
@@ -92,11 +85,11 @@ function changeTheme() {
         document.documentElement.style.setProperty('--bg-color', '#0e0e0e');
         document.documentElement.style.setProperty('--second-color', '#f4f4f4');
         menuOptions.style.backgroundColor = 'rgb(34 34 34)'
-        formContainer.style.backgroundColor = 'rgb(22 22 22)'
+        formContainer.style.backgroundColor = 'rgb(27 27 27)'
         for (input of inputList) {
-            input.style.backgroundColor = 'rgb(22 22 22)'
+            input.style.backgroundColor = 'rgb(27 27 27)'
         }
-        textarea.style.backgroundColor = 'rgb(22 22 22)'
+        textarea.style.backgroundColor = 'rgb(27 27 27)'
 
         darkMode = true
     }
@@ -104,13 +97,7 @@ function changeTheme() {
 
 var projects = document.querySelectorAll('.projects-div')
 var visibleProject = 0
-
 function changeRight(htmlTag) {
-    /* if (visibleProject < projects.length - 1) {
-        let arrowLeft = document.querySelector('.fa-chevron-left')
-        arrowLeft.style.display = 'inline'
-    } */
-    
     let currentPage = document.querySelector('.current-page')
     if (visibleProject == 0) {
         projects[0].style.transform = 'translate(-150%) scale(.7)'
@@ -147,52 +134,9 @@ function changeRight(htmlTag) {
             arrowRight.style.display = 'none'
         }
     }
-    
-
-
-
-        /* for (var cont = 0; cont < projects.length; cont++) {
-            if (cont == visibleProject) {
-                projects[cont].style.transform = 'translate(-200%) scale(.7)'
-                projects[cont].style.opacity = '0.3'
-                console.log(cont)
-            }
-            else {
-                if (cont < visibleProject) {
-                    projects[cont].style.transform = 'translate(-300%) scale(.7)'
-                    console.log(cont)
-                }
-                else {
-                    if (cont == visibleProject + 1) {
-                        projects[cont].style.transform = 'translate(-50%)'
-                        projects[cont].style.opacity = '1'
-                        console.log(cont)
-                    }
-                    else {
-                        if (cont == visibleProject + 2) {
-                            projects[cont].style.transform = 'translate(100%) scale(.7)'
-                            console.log(cont)
-                        }
-                        projects[cont].style.transform = 'translate(200%) scale(.7)'
-                        console.log(cont)
-                    }
-                }
-            }
-        }
-        visibleProject++
-    } */
-    /* if (visibleProject == 2) {
-        let arrowRight = document.querySelector('.fa-chevron-right')
-        arrowRight.style.display = 'none'
-    } */
 }
 
 function changeLeft(htmlTag) {
-    /* if (visibleProject == 1) {
-        let arrowLeft = document.querySelector('.fa-chevron-left')
-        arrowLeft.style.display = 'none'
-    }  */
-    
     let currentPage = document.querySelector('.current-page')
     if (visibleProject == 2) {
         projects[0].style.transform = 'translate(-150%) scale(.7)'
@@ -229,75 +173,35 @@ function changeLeft(htmlTag) {
             arrowRight.style.display = 'inline'
         }
     }
-    
-
-    
-    /* if (visibleProject > 0) {
-        let arrowRight = document.querySelector('.fa-chevron-right')
-        arrowRight.style.display = 'block'
-        for (var cont = 0; cont < projects.length; cont++) {
-            if (cont == visibleProject) {
-                projects[cont].style.transform = 'translate(100%) scale(.7)'
-                projects[cont].style.opacity = '0.3'
-                console.log(cont)
-            }
-            else {
-                if (cont > visibleProject) {
-                    projects[cont].style.transform = 'translate(200%) scale(.7)'
-                    console.log(cont)
-                }
-                else {
-                    if (cont == visibleProject - 1) {
-                        projects[cont].style.transform = 'translate(-50%)'
-                        projects[cont].style.opacity = '1'
-                        console.log(cont)
-                    }
-                    else {
-                        if (cont == visibleProject - 2) {
-                            projects[cont].style.transform = 'translate(-200%) scale(.7)'
-                            console.log(cont)
-                            break
-                        }
-                        projects[cont].style.transform = 'translate(-300%) scale(.7)'
-                        console.log(cont)
-                    }
-                    
-
-                }
-            }
-        }
-        visibleProject--
-    } */
 }
 
+/*Show and close form*/
 var showingForm = false
-
 function showForm() {
     const behindFormContainer = document.querySelector('.behind-form-container')
     behindFormContainer.style.display = 'block'
+
     const formContainer = document.querySelector('.form-container')
-    /* formContainer.style.display = 'flex' */
     formContainer.style.transform = 'translate(-50%, -50%) scale(1)'
     formContainer.style.transition = '.5s'
 
-    /* const mainNotForm = document.querySelector('.main:not(.form-container)')
-    mainNotForm.style.pointerEvents = 'none' */
+    body.style.overflow = 'hidden' /*Body was created down the code*/
     showingForm = true
 }
 
 function closeForm() {
     const behindFormContainer = document.querySelector('.behind-form-container')
     behindFormContainer.style.display = 'none'
+
     const formContainer = document.querySelector('.form-container')
     formContainer.style.transform = 'translate(-50%, -50%) scale(0)'
     formContainer.style.transition = '0s'
-    /* formContainer.style.display = 'none' */
 
-    /* const mainNotForm = document.querySelector('.main:not(.form-container)')
-    mainNotForm.style.removeProperty('pointerEvents') */
+    body.style.removeProperty('overflow') /*Body was created down the code*/
     showingForm = false
 }
 
+/*Animation of the form labels*/
 function typeForm(htmlTag) {
     htmlTag.previousElementSibling.style.transform = 'translate(0)'
     htmlTag.previousElementSibling.style.opacity = '1'
@@ -340,6 +244,9 @@ function losesFocus(htmlTag) {
         
 }
 
+/*Section 1 animation orchestra*/
+const hello = document.querySelector('.hello')
+hello.addEventListener('animationstart', takeOffAnimation)
 function takeOffAnimation() {
     setTimeout( ()=>{
         hello.style.setProperty('--helloBlink', '0s')
@@ -402,9 +309,7 @@ function takeOffAnimation() {
     }, 6500)
 }
 
-const hello = document.querySelector('.hello')
-hello.addEventListener('animationstart', takeOffAnimation)
-
+/*When the div is on the screen, the animation starts*/
 const observer = new IntersectionObserver( (entries)=>{
     entries.forEach((entry)=>{
         if (entry.isIntersecting) {
@@ -418,14 +323,7 @@ const observer = new IntersectionObserver( (entries)=>{
 const hiddenElements = document.querySelectorAll('.hidden')
 hiddenElements.forEach( (el)=>observer.observe(el))
 
-/* const main = document.querySelector('main')
-main.addEventListener('click', (e)=>{
-    if (showingMenu) {
-        mostrarMenu()
-    }
-}) */
-
-
+/*When click outsite the popup, it closes*/
 const body = document.querySelector('body')
 body.addEventListener('click', (e)=>{
     let menuOptions = document.querySelector('.menu-options')
@@ -446,5 +344,3 @@ body.addEventListener('click', (e)=>{
             closeForm()
         }
 })
-
-ElementIn
