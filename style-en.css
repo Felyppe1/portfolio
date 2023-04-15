@@ -194,7 +194,7 @@ header p {
     color: var(--second-color);
 }
 
-.contact-btn::before {
+/* .contact-btn::before {
     content: '';
     background: #1c4fae;
     position: absolute;
@@ -208,7 +208,7 @@ header p {
 
 .contact-btn:hover::before {
     transform: translate(-50%, -50%);
-}
+} */
 
 /* .contact-btn:hover p {
     color: #fafafa;

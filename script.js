@@ -247,7 +247,11 @@ function losesFocus(htmlTag) {
 /*Section 1 animation orchestra*/
 const hello = document.querySelector('.hello')
 hello.addEventListener('animationstart', takeOffAnimation)
+let debugar = 0
 function takeOffAnimation() {
+
+
+
     setTimeout( ()=>{
         hello.style.setProperty('--helloBlink', '0s')
     }, 1000)
@@ -291,8 +295,15 @@ function takeOffAnimation() {
     }, 3400)
 
     setTimeout( ()=>{
-        iAm3.style.setProperty('--iAm3Width', '0rem')
+            iAm3.style.setProperty('--iAm3Width', '0rem')
     }, 4450)
+    /* setTimeout( ()=>{
+        debugar++
+        if (debugar == 1) {
+            console.log('oi')
+            iAm3.style.setProperty('--iAm3Width', '0rem')
+        }
+    }, 4150) */
 
 
     const developer = document.querySelector('.developer')
@@ -345,3 +356,5 @@ body.addEventListener('click', (e)=>{
             closeForm()
         }
 })
+
+
