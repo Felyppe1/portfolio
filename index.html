@@ -24,14 +24,14 @@
                 <div>
                     <img src="images/usa-icon.png" alt="USA flag icon">
                 </div>
-                <a href="index-en.html">English</a>
+                <a class="langName" href="index-en.html">English</a>
             </div>
             <div onclick='changeTheme()' class="theme-div">
                 <i class="fa-solid fa-moon"></i>
                 <i class="fa-solid fa-sun"></i>
             </div>
             <button onclick='showForm()' class="contact-btn">
-                <p>Contato</p>
+                <p class="contactBtnText">Contato</p>
             </button>
         </div>
 
@@ -43,7 +43,7 @@
         <div class="menu-options">
             <div class="menu-column1">
                 <div>
-                    <p>Navegação</p>
+                    <p class="menuText1">Navegação</p>
                     <div class="divider"></div>
                 </div>
                 <p onclick="scrollToSection(this); mostrarMenu();" class="portfolio2" id="portfolio">Portfolio</p>
@@ -53,7 +53,7 @@
             <div class="menu-column2">
                 <div class="theme-menu-div">
                     <div>
-                        <p>Tema</p>
+                        <p class="menuText5">Tema</p>
                         <div class="divider"></div>
                     </div>
                     <div onclick='changeTheme()' class="theme-div2">
@@ -63,14 +63,14 @@
                 </div>
                 <div class="lang-menu-div">
                     <div>
-                        <p>Idioma</p>
+                        <p class="menuText6">Idioma</p>
                         <div class="divider"></div>
                     </div>
                     <div class="lang-div2">
                         <div>
                             <img src="images/usa-icon.png" alt="USA flag icon">
                         </div>
-                        <a href="index-en.html">English</a>
+                        <a class="langName2" href="index-en.html">English</a>
                     </div>
                 </div>
             </div>
@@ -83,15 +83,14 @@
         <div class="behind-form-container"></div>
         <div class="form-container">
             <p class="not-working">Não está funcionando ainda.</p>
+
             <i onclick='closeForm()' class="fa-regular fa-circle-xmark"></i>
-            <h2>Contato</h2>
-            <p>Interessado em trabalharmos juntos? Me envie um email!</p>
-            <form class='form' action="https://formsubmit.co/felyppe.nunes1@gmail.com" method="POST">
+            <h2 class="formSubtitle">Contato</h2>
+            <p class="formText3">Interessado em trabalharmos juntos? Me envie um email!</p>
+            <form class='form'>
                 <div>
-                    <label for="name">Nome</label>
+                    <label class="nameLabel" for="name">Nome</label>
                     <input onfocus='typeForm(this)' onblur="losesFocus(this)" type="text" id="name" name="name" autocomplete="off" required>
-                    <!-- <i class="fa-solid fa-circle-check"></i>
-                    <i class="fa-solid fa-circle-exclamation"></i> -->
                 </div>
                 <div>
                     <label for="email">Email</label>
@@ -100,10 +99,8 @@
                     <i class="fa-solid fa-circle-exclamation"></i>
                 </div>
                 <div>
-                    <label for="subject">Assunto</label>
+                    <label class="subjectLabel" for="subject">Assunto</label>
                     <input onfocus='typeForm(this)' onblur="losesFocus(this)" type="text" id="subject" name="subject" autocomplete="off" required>
-                    <!-- <i class="fa-solid fa-circle-check"></i>
-                    <i class="fa-solid fa-circle-exclamation"></i> -->
                 </div>
                 <div>
                     <label id="message-label" for="message">Mensagem</label>
@@ -135,8 +132,8 @@
             <img class="my-photo hidden" src="images/minha-foto2.jpg" alt="Foto do Felyppe">
             <div class="right-column hidden">
                 <h2 class="subtitle1">Sobre mim</h2>
-                <p>Meu nome é Luiz Felyppe e eu sou programador full-stack. Atualmente, faço Sistemas de Informação na UFF (Universidade Federal Fluminense) e trabalho na <a href="https://injunior.com.br/" target="_blank">IN Júnior <i class="fa-solid fa-arrow-up-right-from-square"></i></a>.</p>
-                <p>Focado na área de desenvolvimento web, sou apaixonado por tecnologia e estou em constante aprendizado visando a melhorar minhas habilidades na programação. <!-- Quer transformar suas ideias em código? <span class="get-in-touch">Entre em contato</span> --></p>
+                <p class="section2Text2">Meu nome é Luiz Felyppe e eu sou programador full-stack. Atualmente, faço Sistemas de Informação na UFF (Universidade Federal Fluminense) e trabalho na <a href="https://injunior.com.br/" target="_blank">IN Júnior <i class="fa-solid fa-arrow-up-right-from-square"></i></a>.</p>
+                <p class="section2Text3">Focado na área de desenvolvimento web, sou apaixonado por tecnologia e estou em constante aprendizado visando a melhorar minhas habilidades na programação. <!-- Quer transformar suas ideias em código? <span class="get-in-touch">Entre em contato</span> --></p>
                 <h2 class="subtitle2">Tecnologias</h2>
                 <div class="tech-div">
                     <div class="tech-row1">
@@ -172,11 +169,12 @@
             </div>
         </section>
         <section class="section3 hidden">
-            <h2 class="">Projetos</h2>
+            <h2 class="section3Subtitle">Projetos</h2>
             
             <div class="projects-container">
-                <i onclick="changeRight(this)" class="fa-sharp fa-solid fa-chevron-right"></i>
-                <i onclick="changeLeft(this)" class="fa-sharp fa-solid fa-chevron-left"></i>
+                <i onclick="handleToRight(this)" class="fa-sharp fa-solid fa-chevron-right shownButton"></i>
+                <i onclick="handleToLeft(this)" class="fa-sharp fa-solid fa-chevron-left hiddenButton"></i>
+
                 <div class="projects-div project1">
                     <div class="project-img-div">
                         <img class='project-img' src="images/delivery.png" alt="">
@@ -193,7 +191,7 @@
                     </div>
                 </div>
 
-                <div class="projects-div project2 hidden">
+                <div class="projects-div project2">
                     <div class="project-img-div">
                         <img class='project-img' src="images/calculadora2.png" alt="">
                     </div>
@@ -209,21 +207,17 @@
                     </div>
                 </div>
 
-                <div class="projects-div project3 hidden">
-                    <p>Em breve</p>
+                <div class="projects-div project3">
+                    <p class="soon">Em breve</p>
                 </div>
             </div>
 
             <div class="pagination">
-                <i onclick="changeLeft(this)" class="fa-sharp fa-solid fa-chevron-left"></i>
                 <div class="current-page">
-                    <p>1</p>
-                    <p>2</p>
-                    <p>3</p>
+
                 </div>
                 <p>/</p>
-                <p>3</p>
-                <i onclick="changeRight(this)" class="fa-sharp fa-solid fa-chevron-right"></i>
+                <p class="pages-total-number">   </p>
             </div>
         </section>
     </main>

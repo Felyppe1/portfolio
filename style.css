@@ -930,6 +930,12 @@ main:not(.form-container) {
     position: relative;
     width: 100%;
     min-height: 500px;
+    display: flex;
+    justify-content: center;
+}
+
+.hiddenButton {
+    display: none !important;
 }
 
 .projects-container .fa-chevron-right {
@@ -952,7 +958,6 @@ main:not(.form-container) {
     font-size: 85px;
     color: var(--second-color);
     cursor: pointer;
-    display: none;
 }
 
 .projects-container .fa-chevron-left:active,
@@ -1089,22 +1094,22 @@ main:not(.form-container) {
 
 .project1 {
     position: absolute;
-    left: 50%;
-    transform: translate(-50%);
+    /* left: 50%;
+    transform: translate(-50%); */
 }
 
 .project2 {
     position: absolute;
-    left: 50%;
-    transform: translate(50%) scale(0.7);
-    opacity: 0.3;
+    /* left: 50%;
+    transform: translate(50%) scale(0.7); */
+    /* opacity: 0.3; */
 }
 
 .project3 {
     position: absolute;
-    left: 50%;
-    transform: translate(130%) scale(0.7);
-    opacity: 0.3;
+    /* left: 50%;
+    transform: translate(130%) scale(0.7); */
+    /* opacity: 0.3; */
     justify-content: center;
     align-items: center;
     background-color: #bbb;
@@ -1121,22 +1126,6 @@ main:not(.form-container) {
     margin-bottom: 1rem;
 }
 
-.pagination .fa-chevron-left,
-.pagination .fa-chevron-right {
-    font-size: 34px;
-    position: absolute;
-    top: -7px;
-    display: none;
-}
-
-.pagination .fa-chevron-left {
-    left: -83px;
-}
-
-.pagination .fa-chevron-right {
-    right: -83px;
-}
-
 .current-page {
     position: relative;
     width: 10px;
@@ -1146,14 +1135,6 @@ main:not(.form-container) {
 .current-page p {
     position: absolute;
     transition: .4s;
-}
-
-.current-page p:nth-child(2) {
-    transform: translateY(200%);
-}
-
-.current-page p:nth-child(3) {
-    transform: translateY(400%);
 }
 
 @media screen and (max-width: 1060px) {

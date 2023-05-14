@@ -95,7 +95,7 @@ function changeTheme() {
     }
 }
 
-var projects = document.querySelectorAll('.projects-div')
+/* var projects = document.querySelectorAll('.projects-div')
 var visibleProject = 0
 function changeRight(htmlTag) {
     let currentPage = document.querySelector('.current-page')
@@ -173,7 +173,142 @@ function changeLeft(htmlTag) {
             arrowRight.style.display = 'inline'
         }
     }
+} */
+function handleToRight() {
+    let indice = 0
+    if (visibleProject < projects.length - 1) {
+        projects.forEach(project => {
+            let pagesList = document.querySelectorAll('.pages')
+
+            if (indice == visibleProject) {
+                project.style.translate = '-100%'
+                project.style.scale = '.7'
+                project.style.opacity = '.3'
+
+                pagesList[indice].style.translate = '0 -200%'
+            }
+            else if (indice == visibleProject + 1) {
+                project.style.translate = '0'
+                project.style.scale = '1'
+                project.style.opacity = '1'
+
+                pagesList[indice].style.translate = '0 0'
+            }
+            else if (indice > visibleProject + 1) {
+                //let translateNumber = Number(window.getComputedStyle(project).translate.replace(/\W+/g, ''))
+                //project.style.translate = `${translateNumber - 85}%` 
+
+                project.style.translate = `${100 + (85 * ((indice - visibleProject) - 2))}%`
+                project.style.scale = '.7'
+                project.style.opacity = '.3'
+            }
+            else if (indice < visibleProject) {
+                //let translateNumber = Number(window.getComputedStyle(project).translate.replace(/\W+/g, ''))
+                //project.style.translate = `${-translateNumber - 85}%`
+                
+                project.style.translate = `${-100 + (-85 * (visibleProject - indice))}%`
+                project.style.scale = '.7'
+                project.style.opacity = '.3'
+            }
+            indice++         
+        })
+        visibleProject++
+
+        let leftButton = document.querySelector('.fa-chevron-left')
+        leftButton.classList.remove('hiddenButton')
+
+        if (visibleProject == projects.length - 1) {
+            let rightButton = document.querySelector('.fa-chevron-right')
+            rightButton.classList.add('hiddenButton')
+        }
+    }
 }
+
+function handleToLeft() {
+    let indice = 0
+    if (visibleProject > 0) {
+        let pagesList = document.querySelectorAll('.pages')
+
+        projects.forEach(project => {
+            if (indice == visibleProject) {
+                project.style.translate = '100%'
+                project.style.scale = '.7'
+                project.style.opacity = '.3'
+
+                pagesList[indice].style.translate = '0 200%'
+            }
+            else if (indice > visibleProject) {
+                //let translateNumber = Number(window.getComputedStyle(project).translate.replace(/\W+/g, ''))
+                //project.style.translate = `${translateNumber + 85}%`
+                
+                project.style.translate = `${100 + (85 * (indice - visibleProject))}%`
+                project.style.scale = '.7'
+                project.style.opacity = '.3'
+            }
+            else if (indice == visibleProject - 1) {
+                project.style.translate = '0'
+                project.style.scale = '1'
+                project.style.opacity = '1'
+
+                pagesList[indice].style.translate = '0 0'
+            }
+            else if (indice < visibleProject - 1) {
+                //let translateNumber = Number(window.getComputedStyle(project).translate.replace(/\W+/g, ''))
+                //project.style.translate = `${-translateNumber + 85}%`
+
+                project.style.translate = `${-100 + (85 * ((indice - visibleProject) + 2))}%`
+                project.style.scale = '.7'
+                project.style.opacity = '.3'
+            }
+            indice++
+        })
+        visibleProject--
+
+        let rightButton = document.querySelector('.fa-chevron-right')
+        rightButton.classList.remove('hiddenButton')
+
+        if (visibleProject == 0) {
+            let leftButton = document.querySelector('.fa-chevron-left')
+            leftButton.classList.add('hiddenButton')
+        }
+    }
+}
+
+let projects = document.querySelectorAll('.projects-div')
+let currentPage = document.querySelector('.current-page')
+let indice = 0
+projects.forEach(project => {
+    if (indice == 0) {
+        project.style.translate = '0'
+    }
+    else {
+        if (indice == 1) {
+            project.style.translate = '100%'
+            project.style.scale = '.7'
+            project.style.opacity = '.3'
+        }
+        else {
+            project.style.translate = `${((indice - 1) * 85) + 100}%`
+            project.style.scale = '.7'
+            project.style.opacity = '.3'
+        }
+    }
+
+    //CRIA AS TAGS <p> PARA CADA PÁGINA
+    let pageElement = document.createElement('p')
+    pageElement.innerText = indice + 1
+    if (indice != 0) {
+        pageElement.style.translate = '0 200%'
+    }
+    pageElement.classList.add('pages')
+    currentPage.append(pageElement)
+
+    indice++
+})
+const pagesTotalNumber = document.querySelector('.pages-total-number')
+pagesTotalNumber.innerText = projects.length
+
+let visibleProject = 0
 
 /*Show and close form*/
 var showingForm = false
@@ -357,4 +492,44 @@ body.addEventListener('click', (e)=>{
         }
 })
 
+function handleChangeLanguage() {
+    let aboutMe = document.querySelector('.aboutMe')
+    let projects = document.querySelector('.projects')
+    let langName = document.querySelector('.langName')
+    let contactBtnText = document.querySelector('.contactBtnText')
+    let menuText1 = document.querySelector('.menuText1')
+    let portfolio2 = document.querySelector('.portfolio2')
+    let aboutMe2 = document.querySelector('.aboutMe2')
+    let projects2 = document.querySelector('.projects2')
+    let menuText5 = document.querySelector('.menuText5')
+    let menuText6 = document.querySelector('.menuText6')
+    let langName2 = document.querySelector('.langName2')
+    let notWorking = document.querySelector('.not-working')
+    let formSubtitle = document.querySelector('.formSubtitle')
+    let formText3 = document.querySelector('.formText3')
+    let nameLabel = document.querySelector('.nameLabel')
+    let subjectLabel = document.querySelector('.subjectLabel')
+    let messageLabel = document.querySelector('#message-label')
+    let subtitle1 = document.querySelector('.subtitle1')
+    let section2Text2 = document.querySelector('.section2Text2')
+    let section2Text3 = document.querySelector('.section2Text3')
+    let subtitle2 = document.querySelector('.subtitle2')
+    let projectDescription = document.querySelector('.project-description')
+    let sourceCode = document.querySelector('.source-code')
+    let projectName = document.querySelector('.project-name')
+    let soon = document.querySelector('.soon')
 
+    aboutMe.innerText = englishData.header.aboutMe
+    projects.innerText = englishData.header.projects
+    langName.innerText = englishData.header.langName
+    contactBtnText.innerText = englishData.header.contactBtnText
+    menuText1.innerText = englishData.header.menuText1
+    portfolio2.innerText= englishData.header.portfolio2
+    aboutMe2.innerText = englishData.header.aboutMe2
+    projects2.innerText = englishData.header.projects2
+    menuText5.innerText = englishData.header.menuText5
+    menuText6.innerText = englishData.header.menuText6
+    langName2.innerText = englishData.header.langName2
+    notWorking.innerText = englishData.header.notWorking
+    formSubtitle.innerText = englishData.formContainer.formSubtitle
+}

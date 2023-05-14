@@ -95,7 +95,7 @@ function changeTheme() {
     }
 }
 
-var projects = document.querySelectorAll('.projects-div')
+/* var projects = document.querySelectorAll('.projects-div')
 var visibleProject = 0
 function changeRight(htmlTag) {
     let currentPage = document.querySelector('.current-page')
@@ -173,7 +173,142 @@ function changeLeft(htmlTag) {
             arrowRight.style.display = 'inline'
         }
     }
+} */
+function handleToRight() {
+    let indice = 0
+    if (visibleProject < projects.length - 1) {
+        projects.forEach(project => {
+            let pagesList = document.querySelectorAll('.pages')
+
+            if (indice == visibleProject) {
+                project.style.translate = '-100%'
+                project.style.scale = '.7'
+                project.style.opacity = '.3'
+
+                pagesList[indice].style.translate = '0 -200%'
+            }
+            else if (indice == visibleProject + 1) {
+                project.style.translate = '0'
+                project.style.scale = '1'
+                project.style.opacity = '1'
+
+                pagesList[indice].style.translate = '0 0'
+            }
+            else if (indice > visibleProject + 1) {
+                //let translateNumber = Number(window.getComputedStyle(project).translate.replace(/\W+/g, ''))
+                //project.style.translate = `${translateNumber - 85}%` 
+
+                project.style.translate = `${100 + (85 * ((indice - visibleProject) - 2))}%`
+                project.style.scale = '.7'
+                project.style.opacity = '.3'
+            }
+            else if (indice < visibleProject) {
+                //let translateNumber = Number(window.getComputedStyle(project).translate.replace(/\W+/g, ''))
+                //project.style.translate = `${-translateNumber - 85}%`
+                
+                project.style.translate = `${-100 + (-85 * (visibleProject - indice))}%`
+                project.style.scale = '.7'
+                project.style.opacity = '.3'
+            }
+            indice++         
+        })
+        visibleProject++
+
+        let leftButton = document.querySelector('.fa-chevron-left')
+        leftButton.classList.remove('hiddenButton')
+
+        if (visibleProject == projects.length - 1) {
+            let rightButton = document.querySelector('.fa-chevron-right')
+            rightButton.classList.add('hiddenButton')
+        }
+    }
 }
+
+function handleToLeft() {
+    let indice = 0
+    if (visibleProject > 0) {
+        let pagesList = document.querySelectorAll('.pages')
+
+        projects.forEach(project => {
+            if (indice == visibleProject) {
+                project.style.translate = '100%'
+                project.style.scale = '.7'
+                project.style.opacity = '.3'
+
+                pagesList[indice].style.translate = '0 200%'
+            }
+            else if (indice > visibleProject) {
+                //let translateNumber = Number(window.getComputedStyle(project).translate.replace(/\W+/g, ''))
+                //project.style.translate = `${translateNumber + 85}%`
+                
+                project.style.translate = `${100 + (85 * (indice - visibleProject))}%`
+                project.style.scale = '.7'
+                project.style.opacity = '.3'
+            }
+            else if (indice == visibleProject - 1) {
+                project.style.translate = '0'
+                project.style.scale = '1'
+                project.style.opacity = '1'
+
+                pagesList[indice].style.translate = '0 0'
+            }
+            else if (indice < visibleProject - 1) {
+                //let translateNumber = Number(window.getComputedStyle(project).translate.replace(/\W+/g, ''))
+                //project.style.translate = `${-translateNumber + 85}%`
+
+                project.style.translate = `${-100 + (85 * ((indice - visibleProject) + 2))}%`
+                project.style.scale = '.7'
+                project.style.opacity = '.3'
+            }
+            indice++
+        })
+        visibleProject--
+
+        let rightButton = document.querySelector('.fa-chevron-right')
+        rightButton.classList.remove('hiddenButton')
+
+        if (visibleProject == 0) {
+            let leftButton = document.querySelector('.fa-chevron-left')
+            leftButton.classList.add('hiddenButton')
+        }
+    }
+}
+
+let projects = document.querySelectorAll('.projects-div')
+let currentPage = document.querySelector('.current-page')
+let indice = 0
+projects.forEach(project => {
+    if (indice == 0) {
+        project.style.translate = '0'
+    }
+    else {
+        if (indice == 1) {
+            project.style.translate = '100%'
+            project.style.scale = '.7'
+            project.style.opacity = '.3'
+        }
+        else {
+            project.style.translate = `${((indice - 1) * 85) + 100}%`
+            project.style.scale = '.7'
+            project.style.opacity = '.3'
+        }
+    }
+
+    //CRIA AS TAGS <p> PARA CADA PÁGINA
+    let pageElement = document.createElement('p')
+    pageElement.innerText = indice + 1
+    if (indice != 0) {
+        pageElement.style.translate = '0 200%'
+    }
+    pageElement.classList.add('pages')
+    currentPage.append(pageElement)
+
+    indice++
+})
+const pagesTotalNumber = document.querySelector('.pages-total-number')
+pagesTotalNumber.innerText = projects.length
+
+let visibleProject = 0
 
 /*Show and close form*/
 var showingForm = false
