@@ -570,63 +570,157 @@ main:not(.form-container) {
 }
 
 .hello::before {
-    animation: typewriter 1s 1s steps(11) forwards;
+    animation: typewriter .7s 1s steps(11) forwards;
 }
 
 .hello::after {
-    content: var(--helloContent, '');
+    content: '';
     animation: 
-        typewriter 1s 1s steps(11) forwards,
-        blink var(--helloBlink, 700ms) infinite;
+        typewriter .7s 1s steps(11) forwards,
+        blink 500ms 3,
+        stay 0s 1s forwards,
+        disappear 0s 1.8s forwards;
     width: 0.3rem;
-    background: var(--second-color);
+    background: transparent;
+}
+
+@keyframes blink {
+    100% {
+        background: var(--second-color);
+    }
+}
+
+@keyframes stay {
+    100% {
+        background: var(--second-color);
+    }
+}
+
+@keyframes disappear {
+    100% {
+        background: transparent;
+    }
 }
 
 .i-am::before {
-    animation: typewriter 1.3s 2.8s steps(16) forwards;
+    animation: typewriter 1s 2.4s steps(16) forwards;
 }
 
 .i-am::after {
     animation: 
-        typewriter 1.3s 2.8s steps(16) forwards,
-        blink var(--iAmBlink, 700ms) infinite;
-    width: var(--iAmWidth, 0);
-    background: var(--second-color);
+        typewriter 1s 2.4s steps(16) forwards,
+        blink2 500ms 1.8s 2,
+        stay2 0s 2.5s forwards,
+        disappear2 0s 3.5s forwards;
+    width: .3rem;
+    background: transparent;
+}
+
+@keyframes blink2 {
+    100% {
+        background: var(--second-color);
+    }
+}
+
+@keyframes stay2 {
+    100% {
+        background: var(--second-color);
+    }
+}
+
+@keyframes disappear2 {
+    100% {
+        background: transparent;
+    }
 }
 
 .i-am2::before {
-    animation: typewriter .6s 2.8s steps(6) forwards;
+    animation: typewriter .4s 2.4s steps(6) forwards;
 }
 
 .i-am2::after {
     animation: 
-        typewriter .6s 2.8s steps(6) forwards,
-        blink var(--iAm2Blink, 700ms) infinite;
-    width: var(--iAm2Width, 0);
-    background: var(--second-color);
+        typewriter .4s 2.4s steps(6) forwards,
+        blink5 500ms 1.8s 2,
+        stay5 0s 2.4s forwards,
+        disappear5 0s 2.8s forwards;
+    width: .3rem;
+    background: transparent;
+}
+
+@keyframes blink5 {
+    100% {
+        background: var(--second-color);
+    }
+}
+
+@keyframes stay5 {
+    100% {
+        background: var(--second-color);
+    }
+}
+
+@keyframes disappear5 {
+    100% {
+        background: transparent;
+    }
 }
 
 .i-am3::before {
-    animation: typewriter .7s 3.4s steps(9) forwards;
+    animation: typewriter .6s 2.8s steps(9) forwards;
 }
 
 .i-am3::after {
     animation: 
-        typewriter .7s 3.4s steps(9) forwards;
-    width: var(--iAm3Width, 0);
-    background: var(--second-color);
+        typewriter .6s 2.8s steps(9) forwards,
+        stay6 0s 2.8s forwards,
+        disappear6 0s 3.45s forwards;
+    width: .3rem;
+    background: transparent;
+}
+
+@keyframes stay6 {
+    100% {
+        background: var(--second-color);
+    }
+}
+
+@keyframes disappear6 {
+    100% {
+        background: transparent;
+    }
 }
 
 .developer::before {
-    animation: typewriter 1.6s 4.9s steps(24) forwards;
+    animation: typewriter 1.2s 4.1s steps(24) forwards;
 }
 
 .developer::after {
     animation: 
-        typewriter 1.6s 4.9s steps(24) forwards,
-        blink var(--developerBlink, 700ms) infinite;
-    width: var(--developerWidth, 0);
-    background: var(--second-color);
+        typewriter 1.2s 4.1s steps(24) forwards,
+        blink3 500ms 3.5s 2,
+        stay3 0s 4.5s forwards,
+        blink4 500ms 5.4s infinite;
+    width: .3rem;
+    background: transparent;
+}
+
+@keyframes blink3 {
+    100% {
+        background: var(--second-color);
+    }
+}
+
+@keyframes stay3 {
+    100% {
+        background: var(--second-color);
+    }
+}
+
+@keyframes blink4 {
+    100% {
+        background: transparent;
+    }
 }
 
 @keyframes typewriter {
@@ -635,11 +729,6 @@ main:not(.form-container) {
     }
 }
 
-@keyframes blink {
-    100% {
-        background: transparent;
-    }
-}
 
 .social-medias {
     display: flex;
