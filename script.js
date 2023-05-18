@@ -393,7 +393,7 @@ function handleChangeLanguage() {
 let themeDiv2 = document.querySelector(".theme-div2")
 themeDiv2.addEventListener('touchend', () => {
     if (darkMode == true) {
-        themeDiv2.style.backgroundColor = '0e0e0e'
+        themeDiv2.style.backgroundColor = '#0e0e0e'
     }
     else {
         themeDiv2.style.backgroundColor = '#f4f4f4'
