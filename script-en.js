@@ -48,7 +48,15 @@ function scrollToSection(htmlElement) {
     }
 }
 
-var darkMode = true
+var darkMode = true 
+if (JSON.parse(sessionStorage.getItem('@portfolio:theme-1.0.0')) != null) {
+    darkMode = JSON.parse(sessionStorage.getItem('@portfolio:theme-1.0.0'))
+}
+if (darkMode == false) {
+    darkMode = true
+    changeTheme();
+}
+console.log(darkMode)
 function changeTheme() {
     let faMoonList = document.querySelectorAll('.fa-moon')
     let faSunList = document.querySelectorAll('.fa-sun')
@@ -93,6 +101,9 @@ function changeTheme() {
 
         darkMode = true
     }
+
+    let darkModeStrigified = JSON.stringify(darkMode)
+    sessionStorage.setItem('@portfolio:theme-1.0.0', darkModeStrigified)
 }
 
 /* var projects = document.querySelectorAll('.projects-div')
