@@ -56,7 +56,6 @@ if (darkMode == false) {
     darkMode = true
     changeTheme();
 }
-console.log(darkMode)
 function changeTheme() {
     let faMoonList = document.querySelectorAll('.fa-moon')
     let faSunList = document.querySelectorAll('.fa-sun')
