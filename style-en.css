@@ -1193,7 +1193,7 @@ main:not(.form-container) {
     opacity: 0.3; */
 }
 
-.project3 {
+.projectSoon {
     position: absolute;
     /* left: 50%;
     transform: translate(130%) scale(0.7);
@@ -1203,7 +1203,7 @@ main:not(.form-container) {
     background-color: #bbb;
 }
 
-.project3 p {
+.projectSoon p {
     font-size: 45px;
 }
 
@@ -1437,12 +1437,16 @@ main:not(.form-container) {
         height: 173px;
     }
 
-    .project2 .project-img-div {
+    /* .project2 .project-img-div {
         height: 133px;
-    }
+    } */
 
     .project2 .project-img {
         height: 137px;
+    }
+
+    .project3 .project-img {
+        height: 165px;
     }
 }
 
