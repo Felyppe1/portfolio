@@ -42,7 +42,7 @@ function scrollToSection(htmlElement) {
             section2.scrollIntoView( {behavior : 'smooth'})
         }
         else {
-            let section3 = document.querySelector('.section3')
+            let projectsContainer = document.querySelector('.section3')
             section3.scrollIntoView( {behavior : 'smooth'})
         }
     }
@@ -389,6 +389,29 @@ function handleChangeLanguage() {
     notWorking.innerText = englishData.header.notWorking
     formSubtitle.innerText = englishData.formContainer.formSubtitle
 }
+
+var startX, startY
+let projectsContainer = document.querySelector('.projects-container')
+projectsContainer.addEventListener('touchstart', (event)=>{
+    startX = event.touches[0].clientX
+    startY = event.touches[0].clientY
+})
+  
+projectsContainer.addEventListener('touchend', function(event) {
+    var endX = event.changedTouches[0].clientX
+    var endY = event.changedTouches[0].clientY
+
+    var deltaX = endX - startX
+    var deltaY = endY - startY
+
+    if (Math.abs(deltaX) > Math.abs(deltaY)) {
+        if (deltaX > 0) {
+            handleToLeft()
+        } else {
+            handleToRight()
+        }
+    }
+})
 
 /* let themeDiv2 = document.querySelector(".theme-div2")
 themeDiv2.addEventListener('touchend', () => {

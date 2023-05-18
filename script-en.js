@@ -346,3 +346,26 @@ body.addEventListener('click', (e)=>{
             closeForm()
         }
 })
+
+var startX, startY
+let projectsContainer = document.querySelector('.projects-container')
+projectsContainer.addEventListener('touchstart', (event)=>{
+    startX = event.touches[0].clientX
+    startY = event.touches[0].clientY
+})
+  
+projectsContainer.addEventListener('touchend', function(event) {
+    var endX = event.changedTouches[0].clientX
+    var endY = event.changedTouches[0].clientY
+
+    var deltaX = endX - startX
+    var deltaY = endY - startY
+
+    if (Math.abs(deltaX) > Math.abs(deltaY)) {
+        if (deltaX > 0) {
+            handleToLeft()
+        } else {
+            handleToRight()
+        }
+    }
+})
