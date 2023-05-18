@@ -148,7 +148,7 @@ header p {
     transition: .3s;
 }
 
-@media (hover: hover) {
+@media (hover: hover) and (pointer: fine) {
     .theme-div:hover, .theme-div2:hover {
         background-color: var(--bg-color);
     }
@@ -188,7 +188,7 @@ header p {
     transition: background-color .3s;
 }
 
-@media (hover: hover) {
+@media (hover: hover) and (pointer: fine) {
     .contact-btn:hover {
         background-color: var(--bg-color);
     }
