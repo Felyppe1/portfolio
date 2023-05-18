@@ -363,9 +363,13 @@ projectsContainer.addEventListener('touchend', function(event) {
 
     if (Math.abs(deltaX) > Math.abs(deltaY)) {
         if (deltaX > 0) {
-            handleToLeft()
+            if (event.target.classList[0] != 'fa-sharp') {
+                handleToLeft()
+            }
         } else {
-            handleToRight()
+            if (event.target.classList[0] != 'fa-sharp') {
+                handleToRight()
+            }
         }
     }
 })
