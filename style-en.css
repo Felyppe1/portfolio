@@ -176,14 +176,14 @@ header p {
     cursor: pointer;
     position: relative;
     overflow: hidden;
-    transition: .3s;
+    transition: background-color .3s;
 }
 
 .contact-btn p {
     color: var(--bg-color);
     z-index: 2;
     position: relative;
-    transition: .3s;
+    transition: background-color .3s;
 }
 
 .contact-btn:hover {
@@ -261,7 +261,10 @@ header p {
     top: 0;
     right: -1px;
     transform: translateX(110%);
-    transition: .5s cubic-bezier(.64,.38,.67,1);
+    transition: 
+        transform .5s cubic-bezier(.64,.38,.67,1),
+        border-radius .5s cubic-bezier(.64,.38,.67,1),
+        background-color .5s cubic-bezier(.64,.38,.67,1);
     z-index: 5;
     display: none;
     flex-direction: column;
@@ -376,7 +379,9 @@ main:not(.form-container) {
     transform: translate(-50%, -50%) scale(0);
     flex-direction: column;
     padding: 2rem 1.5rem;
-    transition: .5s;
+    transition: 
+        transform .5s,
+        background-color .5s;
     border-radius: 15px;
 }
 
@@ -566,74 +571,162 @@ main:not(.form-container) {
 }
 
 .hello::before {
-    animation: typewriter 1s 1s steps(13) forwards;
+    animation: typewriter .7s 1.5s steps(13) forwards;
 }
 
 .hello::after {
-    content: var(--helloContent, '');
+    content: '';
     animation: 
-        typewriter 1s 1s steps(13) forwards,
-        blink var(--helloBlink, 700ms) infinite;
+        typewriter .7s 1.5s steps(13) forwards,
+        blink 700ms 4,
+        stay 0s 1.5s forwards,
+        disappear 0s 2.3s forwards;
     width: 0.3rem;
-    background: var(--second-color);
+    background: transparent;
+}
+
+@keyframes blink {
+    100% {
+        background: var(--second-color);
+    }
+}
+
+@keyframes stay {
+    100% {
+        background: var(--second-color);
+    }
+}
+
+@keyframes disappear {
+    100% {
+        background: transparent;
+    }
 }
 
 .i-am::before {
-    animation: typewriter 1.3s 2.8s steps(18) forwards;
+    animation: typewriter 1s 3.1s steps(18) forwards;
 }
 
 .i-am::after {
     animation: 
-        typewriter 1.3s 2.8s steps(18) forwards,
-        blink var(--iAmBlink, 700ms) infinite;
-    width: var(--iAmWidth, 0);
-    background: var(--second-color);
+        typewriter 1s 3.1s steps(18) forwards,
+        blink2 700ms 2.3s 2,
+        stay2 0s 3.1s forwards,
+        disappear2 0s 4.2s forwards;
+    width: .3rem;
+    background: transparent;
+}
+
+@keyframes blink2 {
+    100% {
+        background: var(--second-color);
+    }
+}
+
+@keyframes stay2 {
+    100% {
+        background: var(--second-color);
+    }
+}
+
+@keyframes disappear2 {
+    100% {
+        background: transparent;
+    }
 }
 
 .i-am2::before {
-    animation: typewriter .6s 2.8s steps(7) forwards;
+    animation: typewriter .4s 3.2s steps(7) forwards;
 }
 
 .i-am2::after {
     animation: 
-        typewriter .6s 2.8s steps(7) forwards,
-        blink var(--iAm2Blink, 700ms) infinite;
-    width: var(--iAm2Width, 0);
-    background: var(--second-color);
+        typewriter .4s 3.2s steps(7) forwards,
+        blink5 700ms 2.3s 2,
+        stay5 0s 3.2s forwards,
+        disappear5 0s 3.7s forwards;
+    width: .3rem;
+    background: transparent;
+}
+
+@keyframes blink5 {
+    100% {
+        background: var(--second-color);
+    }
+}
+
+@keyframes stay5 {
+    100% {
+        background: var(--second-color);
+    }
+}
+
+@keyframes disappear5 {
+    100% {
+        background: transparent;
+    }
 }
 
 .i-am3::before {
-    animation: typewriter .7s 3.4s steps(10) forwards;
+    animation: typewriter .6s 3.65s steps(10) forwards;
 }
 
 .i-am3::after {
     animation: 
-        typewriter .7s 3.4s steps(10) forwards;
-    width: var(--iAm3Width, 0);
-    background: var(--second-color);
+        typewriter .6s 3.65s steps(10) forwards,
+        stay6 0s 3.65s forwards,
+        disappear6 0s 4.4s forwards;
+    width: .3rem;
+    background: transparent;
+}
+
+@keyframes stay6 {
+    100% {
+        background: var(--second-color);
+    }
+}
+
+@keyframes disappear6 {
+    100% {
+        background: transparent;
+    }
 }
 
 .developer::before {
-    animation: typewriter 1.6s 4.9s steps(20) forwards;
+    animation: typewriter 1.2s 5.2s steps(20) forwards;
 }
 
 .developer::after {
     animation: 
-        typewriter 1.6s 4.9s steps(20) forwards,
-        blink var(--developerBlink, 700ms) infinite;
-    width: var(--developerWidth, 0);
-    background: var(--second-color);
+        typewriter 1.2s 5.2s steps(20) forwards,
+        blink3 700ms 4.4s 2,
+        stay3 0s 5.2s forwards,
+        blink4 500ms 6.4s infinite;
+    width: .3rem;
+    background: transparent;
+}
+
+@keyframes blink3 {
+    100% {
+        background: var(--second-color);
+    }
+}
+
+@keyframes stay3 {
+    100% {
+        background: var(--second-color);
+    }
+}
+
+@keyframes blink4 {
+    100% {
+        background: transparent;
+    }
 }
 
 @keyframes typewriter {
     100% {
         left: 100%;
-    }
-}
-
-@keyframes blink {
-    100% {
-        background: transparent;
     }
 }
 
@@ -645,14 +738,10 @@ main:not(.form-container) {
 
 .fa-linkedin, .fa-instagram, .fa-github {
     font-size: 23px;
-    transition: .2s;
+    transition: transform .2s;
 }
 
 .fa-instagram:hover {
-    /* background-image: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent; */
     transform: scale(1.2);
 }
 
@@ -972,7 +1061,10 @@ main:not(.form-container) {
     box-shadow: 
         0px 15px 20px 0px rgba(0,0,0,.2),
         0px 3px 3px 0px rgba(0,0,0,.10);
-    transition: 1s;
+    transition: 
+        translate 1s,
+        scale 1s,
+        opacity 1s;
 }
 
 .projects-div p/* , .projects-div a  */{
