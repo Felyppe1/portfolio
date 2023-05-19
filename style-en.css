@@ -148,12 +148,14 @@ header p {
     transition: .3s;
 }
 
-.theme-div:hover, .theme-div2:hover {
-    background-color: var(--bg-color);
-}
-
-.theme-div:hover i, .theme-div2:hover i {
-    color: var(--second-color);
+@media (hover: hover) and (pointer: fine) {
+    .theme-div:hover, .theme-div2:hover {
+        background-color: var(--bg-color);
+    }
+    
+    .theme-div:hover i, .theme-div2:hover i {
+        color: var(--second-color);
+    }
 }
 
 .fa-moon {
@@ -186,12 +188,14 @@ header p {
     transition: background-color .3s;
 }
 
-.contact-btn:hover {
-    background-color: var(--bg-color);
-}
-
-.contact-btn:hover p {
-    color: var(--second-color);
+@media (hover: hover) and (pointer: fine) {
+    .contact-btn:hover {
+        background-color: var(--bg-color);
+    }
+    
+    .contact-btn:hover p {
+        color: var(--second-color);
+    }
 }
 
 /* .contact-btn::before {
