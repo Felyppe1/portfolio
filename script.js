@@ -228,12 +228,14 @@ projects.forEach(project => {
 })
 const pagesTotalNumber = document.querySelector('.pages-total-number')
 pagesTotalNumber.innerText = projects.length
-
 let visibleProject = 0
+
 
 /*Show and close form*/
 var showingForm = false
+const body = document.querySelector('body')
 function showForm() {
+    console.log('showForm')
     const behindFormContainer = document.querySelector('.behind-form-container')
     behindFormContainer.style.display = 'block'
 
@@ -317,26 +319,23 @@ hiddenElements.forEach( (el)=>observer.observe(el))
 
 
 /*When click outside the popup, it closes*/ 
-const body = document.querySelector('body')
-/* body.addEventListener('click', (e)=>{
-    let menuOptions = document.querySelector('.menu-options')
-    if (showingMenu && 
-        e.target.classList[0] != 'hamburger-menu' && 
-        e.target.classList[0] != 'lines' &&
-        e.target != menuOptions &&
-        menuOptions.contains(e.target) != true
-        ) {
-        mostrarMenu()
-    }
+document.addEventListener('click', (event)=>{
+    const formContainer = document.querySelector('.form-container')
+    const contactBtn = document.querySelector('.contact-btn')
+    const menuOptions = document.querySelector('.menu-options')
+    const hamburgerMenu = document.querySelector('.hamburger-menu')
 
-    let formContainer = document.querySelector('.form-container')
-    if (showingForm &&
-        e.target.innerText != 'Contato' &&
-        e.target != formContainer &&
-        formContainer.contains(e.target) != true) {
+    if (!formContainer.contains(event.target) && 
+        !contactBtn.contains(event.target) &&
+        showingForm) {
             closeForm()
-        }
-}) */
+    }
+    if (!menuOptions.contains(event.target) && 
+        !hamburgerMenu.contains(event.target) &&
+        showingMenu) {
+            mostrarMenu()
+    }
+})
 
 let portuguese = true
 function handleChangeLanguage() {
