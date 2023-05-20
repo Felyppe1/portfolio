@@ -1291,6 +1291,16 @@ main:not(.form-container) {
     } */
 }
 
+@media screen and (max-width: 980px) {
+    .hello, .developer {
+        font-size: 26px;
+    }
+
+    .i-am {
+        font-size: 64px;
+    }
+}
+
 @media screen and (max-width: 880px) {
     .navigation, .theme-div, .lang-div {
         display: none !important;
@@ -1303,14 +1313,6 @@ main:not(.form-container) {
     header {
         justify-content: space-between;
         padding: 0 10%;
-    }
-
-    .hello, .developer {
-        font-size: 26px;
-    }
-
-    .i-am {
-        font-size: 64px;
     }
 }
 
@@ -1334,7 +1336,7 @@ main:not(.form-container) {
     }
 }
 
-@media screen and (max-width: 690px) {
+@media screen and (max-width: 735px) {
     .hello, .developer {
         font-size: 22px;
     }
@@ -1459,7 +1461,7 @@ main:not(.form-container) {
     }
 }
 
-@media screen and (max-width: 470px) {
+@media screen and (max-width: 525px) {
     .hello, .developer {
         font-size: 20px;
     }
@@ -1467,7 +1469,9 @@ main:not(.form-container) {
     .i-am {
         font-size: 36px;
     }
+}
 
+@media screen and (max-width: 470px) {
     .right-column {
         width: 350px;
     }
