@@ -258,6 +258,7 @@ function showForm() {
 function closeForm() {
     const behindFormContainer = document.querySelector('.behind-form-container')
     behindFormContainer.style.display = 'none'
+    console.log('entrei aqui')
 
     const formContainer = document.querySelector('.form-container')
     formContainer.style.transform = 'translate(-50%, -50%) scale(0)'
@@ -327,7 +328,7 @@ hiddenElements.forEach( (el)=>observer.observe(el))
 
 /*When click outside the popup, it closes*/ 
 const body = document.querySelector('body')
-body.addEventListener('click', (e)=>{
+/* body.addEventListener('click', (e)=>{
     let menuOptions = document.querySelector('.menu-options')
     if (showingMenu && 
         e.target.classList[0] != 'hamburger-menu' && 
@@ -345,48 +346,56 @@ body.addEventListener('click', (e)=>{
         formContainer.contains(e.target) != true) {
             closeForm()
         }
-})
+}) */
 
+let portuguese = true
 function handleChangeLanguage() {
-    let aboutMe = document.querySelector('.aboutMe')
-    let projects = document.querySelector('.projects')
-    let langName = document.querySelector('.langName')
-    let contactBtnText = document.querySelector('.contactBtnText')
-    let menuText1 = document.querySelector('.menuText1')
-    let portfolio2 = document.querySelector('.portfolio2')
-    let aboutMe2 = document.querySelector('.aboutMe2')
-    let projects2 = document.querySelector('.projects2')
-    let menuText5 = document.querySelector('.menuText5')
-    let menuText6 = document.querySelector('.menuText6')
-    let langName2 = document.querySelector('.langName2')
-    let notWorking = document.querySelector('.not-working')
-    let formSubtitle = document.querySelector('.formSubtitle')
-    let formText3 = document.querySelector('.formText3')
-    let nameLabel = document.querySelector('.nameLabel')
-    let subjectLabel = document.querySelector('.subjectLabel')
-    let messageLabel = document.querySelector('#message-label')
-    let subtitle1 = document.querySelector('.subtitle1')
-    let section2Text2 = document.querySelector('.section2Text2')
-    let section2Text3 = document.querySelector('.section2Text3')
-    let subtitle2 = document.querySelector('.subtitle2')
-    let projectDescription = document.querySelector('.project-description')
-    let sourceCode = document.querySelector('.source-code')
-    let projectName = document.querySelector('.project-name')
-    let soon = document.querySelector('.soon')
+    let textsList = document.querySelectorAll(".texts")
 
-    aboutMe.innerText = englishData.header.aboutMe
-    projects.innerText = englishData.header.projects
-    langName.innerText = englishData.header.langName
-    contactBtnText.innerText = englishData.header.contactBtnText
-    menuText1.innerText = englishData.header.menuText1
-    portfolio2.innerText= englishData.header.portfolio2
-    aboutMe2.innerText = englishData.header.aboutMe2
-    projects2.innerText = englishData.header.projects2
-    menuText5.innerText = englishData.header.menuText5
-    menuText6.innerText = englishData.header.menuText6
-    langName2.innerText = englishData.header.langName2
-    notWorking.innerText = englishData.header.notWorking
-    formSubtitle.innerText = englishData.formContainer.formSubtitle
+    let portugueseAnimation = document.querySelector('.portugueseAnimation')
+    let englishAnimation = document.querySelector('.englishAnimation')
+
+    let usaFlags = document.querySelectorAll('.usaFlag')
+    let brazilFlags = document.querySelectorAll('.brazilFlag')
+
+    if (portuguese) {
+        let cont = 1
+        textsList.forEach(text => {
+            text.innerText = englishData2[`text${cont}`]
+            cont++
+        })
+
+        portugueseAnimation.classList.add('hideAnimation')
+        englishAnimation.classList.remove('hideAnimation')
+
+        usaFlags.forEach(flag => {
+            flag.classList.add('hideFlag')
+        })
+        brazilFlags.forEach(flag => {
+            flag.classList.remove('hideFlag')
+        })
+
+        portuguese = false
+    }
+    else {
+        let cont = 1
+        textsList.forEach(text => {
+            text.innerText = portugueseData2[`text${cont}`]
+            cont++
+        })
+
+        portugueseAnimation.classList.remove('hideAnimation')
+        englishAnimation.classList.add('hideAnimation')
+
+        usaFlags.forEach(flag => {
+            flag.classList.remove('hideFlag')
+        })
+        brazilFlags.forEach(flag => {
+            flag.classList.add('hideFlag')
+        })
+
+        portuguese = true
+    }
 }
 
 var startX, startY

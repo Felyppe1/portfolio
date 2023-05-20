@@ -98,6 +98,7 @@ header p {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    cursor: pointer;
 }
 
 .lang-div > div, .lang-div2 > div {
@@ -110,15 +111,21 @@ header p {
     justify-content: center;
 }
 
-.lang-div img, .lang-div2 img {
+.usaFlag, .brazilFlag {
     height: 29px;
 }
 
-.lang-div a, .lang-div2 a {
+.hideFlag {
+    display: none;
+}
+
+.lang-div button, .lang-div2 button {
+    cursor: pointer;
+    background-color: transparent;
     font-size: 1.1rem;
 }
 
-.lang-div2 a {
+.lang-div2 button {
     color: #fafafa;
 }
 
@@ -516,6 +523,19 @@ main:not(.form-container) {
     gap: 1rem;
 }
 
+.portugueseAnimation,
+.portugueseAnimation > div,
+.englishAnimation, 
+.englishAnimation > div {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.hideAnimation {
+    display: none !important;
+}
+
 .title > div:nth-child(1) {
     display: flex;
     flex-direction: column;
@@ -746,6 +766,10 @@ main:not(.form-container) {
     transition: transform .2s;
 }
 
+/* .fa-instagram {
+    background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%) !important;
+} */
+
 .fa-instagram:hover {
     transform: scale(1.2);
 }
@@ -825,6 +849,7 @@ main:not(.form-container) {
 .right-column p,
 .right-column span,
 .right-column a {
+    display: inline;
     font-size: 1.2rem;
     line-height: 32px;
     font-weight: 500;
@@ -1098,6 +1123,7 @@ main:not(.form-container) {
 .project-name {
     font-size: 28px;
     font-weight: 800;
+    text-align: center;
 }
 
 .project-description {
@@ -1232,7 +1258,7 @@ main:not(.form-container) {
     }
 
     .right-column {
-        width: 559px;
+        width: 565px;
     }
 }
 
