@@ -42,7 +42,7 @@ function scrollToSection(htmlElement) {
             section2.scrollIntoView( {behavior : 'smooth'})
         }
         else {
-            let projectsContainer = document.querySelector('.section3')
+            let section3 = document.querySelector('.section3')
             section3.scrollIntoView( {behavior : 'smooth'})
         }
     }
