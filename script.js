@@ -270,8 +270,10 @@ function losesFocus(htmlTag) {
     if (htmlTag.value == '') {
         htmlTag.previousElementSibling.style.removeProperty('transform')
         htmlTag.previousElementSibling.style.opacity = '.6'
-        htmlTag.nextElementSibling.style.removeProperty('display')
-        htmlTag.nextElementSibling.nextElementSibling.style.removeProperty('display')
+        if (htmlTag.id == 'email') {
+            htmlTag.nextElementSibling.style.removeProperty('display')
+            htmlTag.nextElementSibling.nextElementSibling.style.removeProperty('display')
+        }
     }
     else {
         if (htmlTag.id == 'email') {
@@ -415,23 +417,32 @@ projectsContainer.addEventListener('touchend', function(event) {
 })
 
 function sendEmail() {
+    let nameInput = document.querySelector('#name')
+    let emailInput = document.querySelector('#email')
+    let subjectInput = document.querySelector('#subject')
+    let messageInput = document.querySelector('#message')
     var params = {
-        name: document.querySelector('#name').value,
-        email: document.querySelector('#email').value,
-        subject: document.querySelector('#subject').value,
-        message: document.querySelector('#message').value
+        name: nameInput.value,
+        email: emailInput.value,
+        subject: subjectInput.value,
+        message: messageInput.value
     }
-    const serviceId = 'service_sh5qn8c'
-    const templateId = 'template_9qgvdbs'
+    const serviceId = "service_sh5qn8c"
+    const templateId = "template_9qgvdbs"
 
     emailjs.send(serviceId, templateId, params)
         .then(resp => {
-            document.querySelector('#name').value = ''
-            document.querySelector('#email').value = ''
-            document.querySelector('#subject').value = ''
-            document.querySelector('#message').value = ''
-            console.log(resp)
+            nameInput.value = ''
+            emailInput.value = ''
+            subjectInput.value = ''
+            messageInput.value = ''
+
             alert('Your message was sent successfully!')
+
+            losesFocus(nameInput)
+            losesFocus(emailInput)
+            losesFocus(subjectInput)
+            losesFocus(messageInput)
         })
         .catch(error => console.log(error))
 }
