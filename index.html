@@ -8,6 +8,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@100;200;300;400;500;600;700&family=Noto+Sans+Tamil:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init("z-rl9nbSzgGvjO2Nh");
+        })();
+    </script>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="fontawesome/css/all.min.css">
     <script defer src="lang/en-us.js"></script>
@@ -91,7 +100,7 @@
             <i onclick='closeForm()' class="fa-regular fa-circle-xmark"></i>
             <h2 class="formSubtitle texts text12">Contato</h2>
             <p class="formText3 texts text13">Interessado em trabalharmos juntos? Me envie um email!</p>
-            <form class='form'>
+            <form onsubmit="sendEmail()" class='form'>
                 <div>
                     <label class="nameLabel texts text14" for="name">Nome</label>
                     <input onfocus='typeForm(this)' onblur="losesFocus(this)" type="text" id="name" name="name" autocomplete="off" required>

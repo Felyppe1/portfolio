@@ -414,13 +414,24 @@ projectsContainer.addEventListener('touchend', function(event) {
     }
 })
 
-/* let themeDiv2 = document.querySelector(".theme-div2")
-themeDiv2.addEventListener('touchend', () => {
-    if (darkMode == true) {
-        themeDiv2.style.backgroundColor = '#0e0e0e'
+function sendEmail() {
+    var params = {
+        name: document.querySelector('#name').value,
+        email: document.querySelector('#email').value,
+        subject: document.querySelector('#subject').value,
+        message: document.querySelector('#message').value
     }
-    else {
-        themeDiv2.style.backgroundColor = '#f4f4f4'
-    }
-    
-}) */
+    const serviceId = 'service_sh5qn8c'
+    const templateId = 'template_9qgvdbs'
+
+    emailjs.send(serviceId, templateId, params)
+        .then(resp => {
+            document.querySelector('#name').value = ''
+            document.querySelector('#email').value = ''
+            document.querySelector('#subject').value = ''
+            document.querySelector('#message').value = ''
+            console.log(resp)
+            alert('Your message was sent successfully!')
+        })
+        .catch(error => console.log(error))
+}
