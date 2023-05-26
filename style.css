@@ -1203,7 +1203,7 @@ main:not(.form-container) {
     color: #fafafa;
 }
 
-.source-code:hover .fa-code {
+.source-code:hover .fa-code,.source-code:hover p {
     color: #fafafa;
 }
 
