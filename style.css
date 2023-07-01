@@ -550,12 +550,20 @@ main:not(.form-container) {
 }
 
 .form > input {
-    background-color: #0e347d !important;
+    background-color: #043593 !important;
     color: #fafafa;
     width: 150px;
     height: 32px;
     cursor: pointer;
     font-size: 1.2rem;
+}
+
+.form > input:hover {
+    opacity: .8;
+}
+
+.form > input:focus {
+    opacity: .8;
 }
 /* .form-container::before {
     content: '';
@@ -1635,6 +1643,23 @@ main:not(.form-container) {
 }
 
 @media screen and (max-width: 400px) {
+    .email-sent {
+        width: 17rem;
+    }
+
+    .email-sent p {
+        font-size: 1.1rem;
+        width: 69%;
+    }
+
+    .email-sent button {
+        right: 1.3rem;
+    }
+
+    .email-sent i {
+        font-size: 1.8rem;
+    }
+
     .i-am {
         display: none;
     }
