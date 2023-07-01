@@ -423,6 +423,11 @@ main:not(.form-container) {
     }
 }
 
+.email-sent p,
+.email-sent i {
+    color: #f4f4f4;
+}
+
 .email-sent p {
     font-size: 1.3rem;
     width: 77%;
@@ -435,6 +440,11 @@ main:not(.form-container) {
     top: 2.1rem;
     right: 1.5rem;
     cursor: pointer;
+    transition: .1s;
+}
+
+.email-sent button:hover {
+    scale: 1.2;
 }
 
 .email-sent i {
