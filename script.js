@@ -1,5 +1,5 @@
 var showingMenu = false
-function mostrarMenu() {
+function showMenu() {
     let line1 = document.querySelector('.line1')
     let line2 = document.querySelector('.line2')
     let line3 = document.querySelector('.line3')
@@ -335,7 +335,7 @@ document.addEventListener('click', (event)=>{
     if (!menuOptions.contains(event.target) && 
         !hamburgerMenu.contains(event.target) &&
         showingMenu) {
-            mostrarMenu()
+            showMenu()
     }
 })
 
@@ -437,12 +437,24 @@ function sendEmail() {
             subjectInput.value = ''
             messageInput.value = ''
 
-            alert('Your message was sent successfully!')
-
             losesFocus(nameInput)
             losesFocus(emailInput)
             losesFocus(subjectInput)
             losesFocus(messageInput)
+            closeForm()
+
+            let successMessage = document.querySelector('.email-sent')
+            successMessage.style.display = 'flex'
+
+            setTimeout(()=>{
+                successMessage.style.display = 'none'
+            }, 5000)
         })
         .catch(error => console.log(error))
+}
+
+
+function closeMessage() {
+    let successMessage = document.querySelector('.email-sent')
+    successMessage.style.display = 'none'
 }

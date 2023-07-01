@@ -50,7 +50,7 @@
             </button>
         </div>
 
-        <div onclick="mostrarMenu()" class="hamburger-menu">
+        <div onclick="showMenu()" class="hamburger-menu">
             <div class="lines line1"></div>
             <div class="lines line2"></div>
             <div class="lines line3"></div>
@@ -61,9 +61,9 @@
                     <p class="menuText1 texts text5">Navegação</p>
                     <div class="divider"></div>
                 </div>
-                <p onclick="scrollToSection(this); mostrarMenu();" class="portfolio2" id="portfolio">Portfolio</p>
-                <p onclick="scrollToSection(this); mostrarMenu();" class="aboutMe2 texts text6" id="aboutMe">Sobre Mim</p>
-                <p onclick="scrollToSection(this); mostrarMenu();" class='projects2 texts text7' id="projects">Projetos</p>
+                <p onclick="scrollToSection(this); showMenu();" class="portfolio2" id="portfolio">Portfolio</p>
+                <p onclick="scrollToSection(this); showMenu();" class="aboutMe2 texts text6" id="aboutMe">Sobre Mim</p>
+                <p onclick="scrollToSection(this); showMenu();" class='projects2 texts text7' id="projects">Projetos</p>
             </div>
             <div class="menu-column2">
                 <div class="theme-menu-div">
@@ -96,10 +96,15 @@
         </div>
     </header>
     <main>
+        <div class="email-sent">
+            <p>Seu email foi enviado com sucesso!</p>
+            <button onclick="closeMessage()"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        
         <div class="behind-form-container"></div>
+        
         <div class="form-container">
-            <!-- <p class="not-working texts text11">Não está funcionando ainda.</p> -->
-
+            <p class="email-sent">Seu email foi enviado com sucesso!</p>
             <i onclick='closeForm()' class="fa-regular fa-circle-xmark"></i>
             <h2 class="formSubtitle texts text12">Contato</h2>
             <p class="formText3 texts text13">Interessado em trabalharmos juntos? Me envie um email!</p>
@@ -149,13 +154,13 @@
                 
                 <div class="social-medias">
                     <a href="https://www.instagram.com/felyppe_nunes1/" target="_blank">
-                        <i class="fa-brands fa-instagram"></i>
+                        <img class="instagram-icon" src="images/icons8-instagram.svg" alt="">
                     </a>
                     <a href="https://www.linkedin.com/in/luiz-felyppe-611906244/" target="_blank">
-                        <i class="fa-brands fa-linkedin"></i>
+                        <i class="fa-brands fa-linkedin linkedin-icon"></i>
                     </a>
                     <a href="https://github.com/Felyppe1" target="_blank">
-                        <i class="fa-brands fa-github"></i>
+                        <i class="fa-brands fa-github github-icon"></i>
                     </a>
                 </div>
                 
@@ -170,15 +175,14 @@
                     <p class="section2Text2 texts text18">Meu nome é Luiz Felyppe e eu sou programador full-stack. Atualmente, faço Sistemas de Informação na UFF (Universidade Federal Fluminense) e trabalho na</p> 
                     <a href="https://injunior.com.br/" target="_blank">
                         IN Júnior
-                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                        .
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>.
                     </a>
                 </div>
                 
                 <p class="section2Text3 texts text19">Focado na área de desenvolvimento web, sou apaixonado por tecnologia e estou em constante aprendizado visando a melhorar minhas habilidades na programação. <!-- Quer transformar suas ideias em código? <span class="get-in-touch">Entre em contato</span> --></p>
                 <h2 class="subtitle2 texts text20">Tecnologias</h2>
                 <div class="tech-div">
-                    <div class="tech-row1">
+                    <!-- <div class="tech-row1">
                         <div>
                             <i class="fa-brands fa-html5"></i>
                             <p>HTML5</p>
@@ -206,7 +210,15 @@
                             <i class="fa-brands fa-wordpress"></i>
                             <p>WordPress</p>
                         </div>
-                    </div>
+                    </div> -->
+                    <img class="tech-icons" src="images/icons8-html.svg" alt="">
+                    <img class="tech-icons" src="images/icons8-css.svg" alt="">
+                    <img class="tech-icons" src="images/icons8-javascript.svg" alt=""> 
+                    <img class="tech-icons" src="images/icons8-typescript.svg" alt="">
+                    <img class="tech-icons" src="data:image/png;base64,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">
+                    <img class="tech-icons" src="images/icons8-c.svg" alt="">
+                    <img class="tech-icons" src="images/icons8-nativo-de-reagir.svg" alt="">
+                    <img class="tech-icons" src="images/icons8-python.svg" alt="">
                 </div>
             </div>
         </section>

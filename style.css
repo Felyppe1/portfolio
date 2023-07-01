@@ -378,6 +378,69 @@ main:not(.form-container) {
     z-index: 3;
 }
 
+.email-sent {
+    background-color: #187a18;
+    position: fixed;
+    top: 2rem;
+    z-index: 5;
+    width: 21rem;
+    padding: 1.7rem 0;
+    border-radius: 0 5px 5px 0;
+    overflow: hidden;
+    translate: -100%;
+    animation: appear-message .3s 0s forwards ease-in;
+    display: none;
+}
+
+@keyframes appear-message {
+    100% {
+        translate: 0;
+    }
+}
+
+@keyframes close-message {
+    100% {
+        translate: -100%;
+    }
+}
+
+.email-sent::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 0.3rem;
+    width: 100%;
+    background-color: #5ebf5e;
+    border-radius: 0 0 5px 0;
+    animation: loading 5s .3s forwards ease-out;
+}
+
+@keyframes loading {
+    100% {
+        translate: 100%;
+    }
+}
+
+.email-sent p {
+    font-size: 1.3rem;
+    width: 77%;
+    margin-left: 1rem;
+}
+
+.email-sent button {
+    background-color: transparent;
+    position: absolute;
+    top: 2.1rem;
+    right: 1.5rem;
+    cursor: pointer;
+}
+
+.email-sent i {
+    font-size: 2rem;
+}
+
 .form-container {
     background-color: rgb(27 27 27)/* rgb(34 34 34) */;
     width: 600px;
@@ -761,21 +824,31 @@ main:not(.form-container) {
     margin-top: 4rem;
 }
 
-.fa-linkedin, .fa-instagram, .fa-github {
-    font-size: 23px;
+.social-medias > a {
+    display: flex;
+    align-items: center;
+}
+
+.instagram-icon {
+    width: 1.5rem;
     transition: transform .2s;
 }
 
-/* .fa-instagram {
-    background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%) !important;
-} */
+.linkedin-icon, .github-icon {
+    font-size: 1.5rem;
+    transition: transform .2s;
+}
 
-.fa-instagram:hover {
+.linkedin-icon {
+    color: #239AFC;
+}
+
+.instagram-icon:hover {
     transform: scale(1.2);
 }
 
-.fa-github:hover,
-.fa-linkedin:hover {
+.github-icon:hover,
+.linkedin-icon:hover {
     transform: scale(1.2);
 }
 
@@ -789,6 +862,7 @@ main:not(.form-container) {
     animation: 
         appear .5s 7s forwards,
         bounce 2s 8s infinite;
+    cursor: pointer;
 }
 
 .fa-angles-down:hover {
@@ -866,6 +940,11 @@ main:not(.form-container) {
 
 .tech-div {
     display: flex;
+    gap: 0.3rem;
+}
+
+.tech-icons {
+    width: 4.5rem;
 }
 
 .tech-row1, .tech-row2 {
@@ -1260,6 +1339,10 @@ main:not(.form-container) {
     .right-column {
         width: 565px;
     }
+
+    .tech-icons {
+        width: 4.1rem;
+    }
 }
 
 @media screen and (max-width: 950px) {
@@ -1382,6 +1465,10 @@ main:not(.form-container) {
         width: 430px;
     }
 
+    .tech-icons {
+        width: 3rem;
+    }
+
     .tech-div .fa-html5,
     .tech-div .fa-css3-alt,
     .tech-div .fa-square-js,
@@ -1476,6 +1563,14 @@ main:not(.form-container) {
         width: 350px;
     }
 
+    .tech-div {
+        gap: 0;
+    }
+
+    .tech-icons {
+        width: 2.7rem;
+    }
+
     .tech-div .fa-html5,
     .tech-div .fa-css3-alt,
     .tech-div .fa-square-js,
@@ -1552,6 +1647,10 @@ main:not(.form-container) {
         width: 270px;
     }
 
+    .tech-icons {
+        width: 2.2rem;
+    }
+
     .tech-div .fa-html5,
     .tech-div .fa-css3-alt,
     .tech-div .fa-square-js,
@@ -1625,6 +1724,10 @@ main:not(.form-container) {
 @media screen and (max-width: 300px) {
     .form-container {
         width: 100%;
+    }
+
+    .tech-icons {
+        width: 2.1rem;
     }
 }
 
