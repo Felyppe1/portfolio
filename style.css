@@ -878,7 +878,7 @@ main:not(.form-container) {
 
 .fa-angles-down {
     position: absolute;
-    bottom: 5rem;
+    bottom: 8rem;
     left: 50%;
     font-size: 1.25rem;
     transform: translateY(200%);
@@ -989,6 +989,7 @@ main:not(.form-container) {
 .section3 {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     padding-top: 5rem;
     gap: 2rem;
