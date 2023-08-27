@@ -21,7 +21,7 @@ function showMenu() {
 
         line1.style.transform = 'rotate(42deg) translate(0.375rem, 0.563rem)'
         line1.style.width = '2.5rem'
-        line3.style.transform = 'rotate(-43deg) translate(0.375rem, -0.625rem)'
+        line3.style.transform = 'rotate(-42deg) translate(0.375rem, -0.563rem)'
         line3.style.width = '2.5rem'
 
         menuOptions.style.transform = 'translateX(0)'
