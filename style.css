@@ -454,7 +454,7 @@ main:not(.form-container) {
 .form-container {
     background-color: rgb(27 27 27)/* rgb(34 34 34) */;
     max-width: 37.5rem;
-    width: 80%;
+    width: 85%;
     min-height: 31.25rem;
     display: flex;
     position: fixed;
@@ -1237,11 +1237,11 @@ main:not(.form-container) {
     }
 }
 
-@media (max-width: 810px) {
+/* @media (max-width: 810px) {
     .PROPORTION1 {
         font-size: .75rem;
     }
-}
+} */
 
 @media screen and (max-width: 790px) {
     html {
@@ -1249,21 +1249,27 @@ main:not(.form-container) {
     }
 }
 
-@media (max-width: 685px) {
-    html {
-        font-size: 80%;
+@media (max-width: 710px) {
+    .PROPORTION1 {
+        font-size: .65rem;
     }
 }
 
-@media (max-width: 610px) {
+@media (max-width: 685px) {
     .projects-div {
         width: 70%;
     }
 }
 
-@media (max-width: 590px) {
+/* @media (max-width: 590px) {
     .PROPORTION1 {
         font-size: .65rem;
+    }
+} */
+
+@media (max-width: 570px) {
+    .PROPORTION1 {
+        font-size: .55rem;
     }
 }
 
@@ -1276,10 +1282,18 @@ main:not(.form-container) {
 }
 
 @media (max-width: 510px) {
-    .PROPORTION1 {
-        font-size: .75rem;
-    }
+    
 
+    .project-links-div {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 490px) {
+    .PROPORTION1 {
+        font-size: .65rem;
+    }
+    
     .i-am {
         display: none;
     }
@@ -1310,10 +1324,6 @@ main:not(.form-container) {
         height: 13.25rem;
     }
 
-    .project-links-div {
-        flex-direction: column;
-    }
-
     .project-info-div {
         gap: 1.5rem;
     }
@@ -1335,10 +1345,6 @@ main:not(.form-container) {
 
     .email-sent i {
         font-size: 1.8rem;
-    }
-
-    .PROPORTION1 {
-        font-size: .65rem;
     }
 
     .tech-icons {
