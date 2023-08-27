@@ -1016,13 +1016,20 @@ main:not(.form-container) {
 .projects-container .fa-chevron-left {
     position: absolute;
     top: 50%;
-    right: 3.5rem;
     transform: translate(0, -50%);
     z-index: 2;
     font-size: 5.313rem;
     color: var(--second-color);
     cursor: pointer;
     width: fit-content;
+}
+
+.projects-container .fa-chevron-right {
+    right: 3.5rem;
+}
+
+.projects-container .fa-chevron-left {
+    left: 3.5rem;
 }
 
 .projects-container .fa-chevron-left:active,
