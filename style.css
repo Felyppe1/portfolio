@@ -6,7 +6,6 @@
     --third-color: #239AFC;
     --texts-font: 'Noto Sans Tamil', sans-serif;
     --section1-font: 'IBM Plex Mono', monospace;
-    /*Animation*/
 }
 
 * {
@@ -1184,6 +1183,7 @@ main:not(.form-container) {
     box-shadow: 
         0px 15px 20px 0px rgba(0,0,0,.2),
         0px 3px 3px 0px rgba(0,0,0,.10);
+    position: absolute;
     transition: 
         translate 1s,
         scale 1s,
@@ -1302,19 +1302,6 @@ main:not(.form-container) {
 
 .source-code:hover .fa-code,.source-code:hover p {
     color: #fafafa;
-}
-
-.project1 {
-    position: absolute;
-    /* left: 50%;
-    transform: translate(-50%); */
-}
-
-.project2 {
-    position: absolute;
-    /* left: 50%;
-    transform: translate(50%) scale(0.7); */
-    /* opacity: 0.3; */
 }
 
 .projectSoon {
