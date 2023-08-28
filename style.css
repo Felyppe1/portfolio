@@ -958,6 +958,10 @@ main:not(.form-container) {
     padding: 0 .125rem;
 }
 
+.right-column a {
+    text-decoration: underline;
+}
+
 .subtitle2 {
     margin-top: 3rem;
 }
