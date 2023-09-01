@@ -9,7 +9,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@100;200;300;400;500;600;700&family=Noto+Sans+Tamil:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
     <script type="text/javascript"
         src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
     </script>
@@ -22,16 +21,15 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="fontawesome/css/all.min.css">
     <!-- <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon"> -->
-    <script defer src="lang/en-us.js"></script>
-    <script defer src="lang/pt-br.js"></script>
+    <script src="languages.js"></script>
     <script defer src="script.js"></script>
 </head>
 <body>
     <header>
         <div class="navigation">
             <p onclick="scrollToSection(this)" class="portfolio" id="portfolio">Portfolio</p>
-            <p onclick="scrollToSection(this)" class='aboutMe texts text1' id="aboutMe">Sobre Mim</p>
-            <p onclick="scrollToSection(this)" class='projects texts text2' id="projects">Projetos</p>
+            <p onclick="scrollToSection(this)" class='aboutMe texts' id="aboutMe">Sobre Mim</p>
+            <p onclick="scrollToSection(this)" class='projects texts' id="projects">Projetos</p>
         </div>
         <div class="buttons-header">
             <div class="lang-div">
@@ -39,14 +37,14 @@
                     <img class="usaFlag" src="images/usa-icon.png" alt="USA flag icon">
                     <img class="brazilFlag hideFlag" src="images/brazil-icon.png" alt="Brazilian flag icon">
                 </div>
-                <button class='texts text3' onclick="handleChangeLanguage()">English</button>
+                <button class='texts' onclick="handleChangeLanguage()">English</button>
             </div>
             <div onclick='changeTheme()' class="theme-div">
                 <i class="fa-solid fa-moon"></i>
                 <i class="fa-solid fa-sun"></i>
             </div>
             <button onclick='showForm()' class="contact-btn">
-                <p class="contactBtnText texts text4">Contato</p>
+                <p class="contactBtnText texts">Contato</p>
             </button>
         </div>
 
@@ -58,17 +56,17 @@
         <div class="menu-options">
             <div class="menu-column1">
                 <div>
-                    <p class="menuText1 texts text5">Navegação</p>
+                    <p class="menuText1 texts">Navegação</p>
                     <div class="divider"></div>
                 </div>
                 <p onclick="scrollToSection(this); showMenu();" class="portfolio2" id="portfolio">Portfolio</p>
-                <p onclick="scrollToSection(this); showMenu();" class="aboutMe2 texts text6" id="aboutMe">Sobre Mim</p>
-                <p onclick="scrollToSection(this); showMenu();" class='projects2 texts text7' id="projects">Projetos</p>
+                <p onclick="scrollToSection(this); showMenu();" class="aboutMe2 texts" id="aboutMe">Sobre Mim</p>
+                <p onclick="scrollToSection(this); showMenu();" class='projects2 texts' id="projects">Projetos</p>
             </div>
             <div class="menu-column2">
                 <div class="theme-menu-div">
                     <div>
-                        <p class="menuText5 texts text8">Tema</p>
+                        <p class="menuText5 texts">Tema</p>
                         <div class="divider"></div>
                     </div>
                     <div onclick='changeTheme()' class="theme-div2">
@@ -78,7 +76,7 @@
                 </div>
                 <div class="lang-menu-div">
                     <div>
-                        <p class="menuText6 texts text9">Idioma</p>
+                        <p class="menuText6 texts">Idioma</p>
                         <div class="divider"></div>
                     </div>
                     <div class="lang-div2">
@@ -86,7 +84,7 @@
                             <img class="usaFlag" src="images/usa-icon.png" alt="USA flag icon">
                             <img class="brazilFlag hideFlag" src="images/brazil-icon.png" alt="USA flag icon">
                         </div>
-                        <button class='texts text10' onclick="handleChangeLanguage()">English</button>
+                        <button class='texts' onclick="handleChangeLanguage()">English</button>
                     </div>
                 </div>
             </div>
@@ -97,7 +95,7 @@
     </header>
     <main>
         <div class="email-sent">
-            <p class="texts text11">Seu email foi enviado com sucesso!</p>
+            <p class="texts">Seu email foi enviado com sucesso!</p>
             <button onclick="closeMessage()"><i class="fa-solid fa-xmark"></i></button>
         </div>
         
@@ -105,11 +103,11 @@
         
         <div class="form-container">
             <i onclick='closeForm()' class="fa-regular fa-circle-xmark"></i>
-            <h2 class="formSubtitle texts text12">Contato</h2>
-            <p class="formText3 texts text13">Interessado em trabalharmos juntos? Me envie um email!</p>
+            <h2 class="formSubtitle texts">Contato</h2>
+            <p class="formText3 texts">Interessado em trabalharmos juntos? Me envie um email!</p>
             <div class='form'>
                 <div>
-                    <label class="nameLabel texts text14" for="name">Nome</label>
+                    <label class="nameLabel texts" for="name">Nome</label>
                     <input onfocus='typeForm(this)' onblur="losesFocus(this)" type="text" id="name" name="name" autocomplete="off" required>
                 </div>
                 <div>
@@ -119,11 +117,11 @@
                     <i class="fa-solid fa-circle-exclamation"></i>
                 </div>
                 <div>
-                    <label class="subjectLabel texts text15" for="subject">Assunto</label>
+                    <label class="subjectLabel texts" for="subject">Assunto</label>
                     <input onfocus='typeForm(this)' onblur="losesFocus(this)" type="text" id="subject" name="subject" autocomplete="off" required>
                 </div>
                 <div>
-                    <label class='texts text16' id="message-label" for="message">Mensagem</label>
+                    <label class='texts' id="message-label" for="message">Mensagem</label>
                     <textarea onfocus='typeForm(this)' onblur="losesFocus(this)" name="message" id="message" cols="30" rows="3" autocomplete="off" required></textarea>
                 </div>
                 <input onclick="sendEmail()" type="submit" name='submit' value="Enviar">
@@ -169,17 +167,17 @@
         <section class="section2">
             <img class="my-photo hidden" src="images/selfie.jpg" alt="Foto do Felyppe">
             <div class="right-column hidden">
-                <h2 class="subtitle1 texts text17">Sobre mim</h2>
+                <h2 class="subtitle1 texts">Sobre mim</h2>
                 <div>
-                    <p class="section2Text2 texts text18">Meu nome é Luiz Felyppe e eu sou programador full-stack. Atualmente, faço Sistemas de Informação na UFF (Universidade Federal Fluminense) e trabalho na</p> 
+                    <p class="section2Text2 texts">Meu nome é Luiz Felyppe e eu sou programador full-stack. Atualmente, faço Sistemas de Informação na UFF (Universidade Federal Fluminense) e trabalho na</p> 
                     <a href="https://injunior.com.br/" target="_blank">
                         IN Júnior
                         <i class="fa-solid fa-arrow-up-right-from-square"></i>.
                     </a>
                 </div>
                 
-                <p class="section2Text3 texts text19">Focado na área de desenvolvimento web, sou apaixonado por tecnologia e estou em constante aprendizado visando a melhorar minhas habilidades na programação. <!-- Quer transformar suas ideias em código? <span class="get-in-touch">Entre em contato</span> --></p>
-                <h2 class="subtitle2 texts text20">Tecnologias</h2>
+                <p class="section2Text3 texts">Focado na área de desenvolvimento web, sou apaixonado por tecnologia e estou em constante aprendizado visando a melhorar minhas habilidades na programação. <!-- Quer transformar suas ideias em código? <span class="get-in-touch">Entre em contato</span> --></p>
+                <h2 class="subtitle2 texts">Tecnologias</h2>
                 <div class="tech-div">
                     <!-- <div class="tech-row1">
                         <div>
@@ -224,7 +222,7 @@
             </div>
         </section>
         <section class="PROPORTION3 section3 hidden">
-            <h2 class="section3Subtitle texts text21">Projetos</h2>
+            <h2 class="section3Subtitle texts">Projetos</h2>
             
             <div class="PROPORTION3 projects-container">
                 <i onclick="handleToRight(this)" class="fa-sharp fa-solid fa-chevron-right shownButton"></i>
@@ -237,13 +235,13 @@
                     <!-- </div> -->
                     <div class="PROPORTION3 project-info-div">  
                         <p class="project-name">Coffee Delivery</p>
-                        <p class="project-description  texts text22">Um e-commerce de cafés proposto como desafio no curso da Rocketseat. Esse projeto foi realizado para fixar conceitos de React JS com TypeScript.</p>
+                        <p class="project-description  texts">Um e-commerce de cafés proposto como desafio no curso da Rocketseat. Esse projeto foi realizado para fixar conceitos de React JS com TypeScript.</p>
                         <div clas="PROPORTION3 ">
                             <div class="PROPORTION3 project-links-div">
                                 <a class='live-project' href="https://coffee-delivery-seven-mu.vercel.app/" target="_blank"><i class="fa-sharp fa-solid fa-desktop"></i> Website</a>
                                 <a class='PROPORTION3 source-code' href="https://github.com/Felyppe1/coffee-delivery" target="_blank">
                                     <i class="fa-solid fa-code"></i> 
-                                    <p class="texts text23">Código fonte</p>
+                                    <p class="texts">Código fonte</p>
                                 </a>
                             </div>
                         </div>
@@ -255,14 +253,14 @@
                         <img class='project-img' src="images/calculadora.png" alt="">
                     <!-- </div> -->
                     <div class="PROPORTION3 project-info-div">  
-                        <p class="project-name texts text24">Calculadora</p>
-                        <p class="project-description texts text25">A réplica de uma calculadora que tenho em casa com praticamente as mesmas funcionalidades. Na próxima versão estará completa. Projeto realizado para praticar JavaScript.</p>
+                        <p class="project-name texts">Calculadora</p>
+                        <p class="project-description texts">A réplica de uma calculadora que tenho em casa com praticamente as mesmas funcionalidades. Na próxima versão estará completa. Projeto realizado para praticar JavaScript.</p>
                         <div class="PROPORTION3 ">
                             <div class="PROPORTION3 project-links-div">
                                 <a class='live-project' href="https://felyppe1.github.io/calculadora/" target="_blank"><i class="fa-sharp fa-solid fa-desktop"></i> Website</a>
                                 <a class='PROPORTION3 source-code' href="https://github.com/Felyppe1/calculadora" target="_blank">
                                     <i class="fa-solid fa-code"></i>
-                                    <p class="texts text26">Código fonte</p> 
+                                    <p class="texts">Código fonte</p> 
                                 </a>
                             </div>
                         </div>
@@ -274,14 +272,14 @@
                         <img class='project-img' src="images/lista-afazeres.png" alt="">
                     <!-- </div> -->
                     <div class="PROPORTION3 project-info-div">  
-                        <p class="project-name texts text27">Lista de Afazeres</p>
-                        <p class="project-description texts text28">Uma lista de afazeres para você não esquecer das suas tarefas! Esse projeto foi feito no curso da Rocketseat e foi o meu primeiro usando React JS.</p>
+                        <p class="project-name texts">Lista de Afazeres</p>
+                        <p class="project-description texts">Uma lista de afazeres para você não esquecer das suas tarefas! Esse projeto foi feito no curso da Rocketseat e foi o meu primeiro usando React JS.</p>
                         <div class="PROPORTION3 ">
                             <div class="PROPORTION3 project-links-div">
                                 <a class='live-project' href="https://lista-de-afazeres-wheat.vercel.app" target="_blank"><i class="fa-sharp fa-solid fa-desktop"></i> Website</a>
                                 <a class='PROPORTION3 source-code' href="https://github.com/Felyppe1/lista-de-afazeres" target="_blank">
                                     <i class="fa-solid fa-code"></i>
-                                    <p class="texts text29">Código fonte</p> 
+                                    <p class="texts">Código fonte</p> 
                                 </a>
                             </div>
                         </div>
@@ -293,14 +291,14 @@
                         <img class='project-img' src="images/formulario.png" alt="">
                     <!-- </div> -->
                     <div class="PROPORTION3 project-info-div">  
-                        <p class="project-name texts text30">Formulário Paginado</p>
-                        <p class="project-description texts text31">Um formulário multietapas qualquer que eu fiz para treinar validações de input do usuário usando a biblioteca zod (estava sem programar em React).</p>
+                        <p class="project-name texts">Formulário Paginado</p>
+                        <p class="project-description texts">Um formulário multietapas qualquer que eu fiz para treinar validações de input do usuário usando a biblioteca zod (estava sem programar em React).</p>
                         <div class="PROPORTION3 ">
                             <div class="PROPORTION3 project-links-div">
                                 <a class='live-project' href="https://multi-step-form-three-gamma.vercel.app/" target="_blank"><i class="fa-sharp fa-solid fa-desktop"></i> Website</a>
                                 <a class='PROPORTION3 source-code' href="https://github.com/Felyppe1/multi-step-form" target="_blank">
                                     <i class="fa-solid fa-code"></i>
-                                    <p class="texts text32">Código fonte</p> 
+                                    <p class="texts">Código fonte</p> 
                                 </a>
                             </div>
                         </div>
@@ -308,7 +306,7 @@
                 </div>
 
                 <div class="PROPORTION3 projects-div projectSoon">
-                    <p class="soon texts text33">Em breve</p>
+                    <p class="soon texts">Em breve</p>
                 </div>
             </div>
 

@@ -350,10 +350,8 @@ function handleChangeLanguage() {
     let brazilFlags = document.querySelectorAll('.brazilFlag')
 
     if (portuguese) {
-        let cont = 1
-        textsList.forEach(text => {
-            text.innerText = englishData2[`text${cont}`]
-            cont++
+        textsList.forEach((text, index) => {
+            text.innerText = language.english[index]
         })
 
         portugueseAnimation.classList.add('hideAnimation')
@@ -369,10 +367,8 @@ function handleChangeLanguage() {
         portuguese = false
     }
     else {
-        let cont = 1
-        textsList.forEach(text => {
-            text.innerText = portugueseData2[`text${cont}`]
-            cont++
+        textsList.forEach((text, index) => {
+            text.innerText = language.portuguese[index]
         })
 
         portugueseAnimation.classList.remove('hideAnimation')
