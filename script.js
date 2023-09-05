@@ -306,18 +306,18 @@ function losesFocus(htmlTag) {
 }
 
 /*When the div is on the screen, the animation starts */
-const observer = new IntersectionObserver( (entries)=>{
-    entries.forEach((entry)=>{
-        if (entry.isIntersecting) {
-            entry.target.classList.add('show')
-        }
-        else {
-            entry.target.classList.remove('show')
-        }
-    })
-})
+const observer = new IntersectionObserver(
+    entries => {
+        entries.forEach((entry)=>{
+            entry.target.classList.toggle('show', entry.isIntersecting)
+        })
+    }, 
+    {
+        threshold: 0.2
+    }
+)
 const hiddenElements = document.querySelectorAll('.hidden')
-hiddenElements.forEach( (el)=>observer.observe(el))
+hiddenElements.forEach(el => observer.observe(el))
 
 
 /*When click outside the popup, it closes*/ 

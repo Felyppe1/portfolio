@@ -24,14 +24,12 @@
 
 .hidden {
     opacity: 0;
-    /* transform: translateY(20%); */
     filter: blur(.125rem);
-    transition: 1s;
+    transition: 1.5s;
 }
 
 .show {
     opacity: 1;
-    /* transform: translateY(0); */
     filter: blur(0);
 }
 
