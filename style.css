@@ -881,6 +881,7 @@ main:not(.form-container) {
     bottom: 6rem;
     left: 50%;
     font-size: 1.25rem;
+    translate: -50%;
     transform: translateY(200%);
     opacity: 0;
     animation: 
@@ -931,8 +932,8 @@ main:not(.form-container) {
 
 .my-photo2 {
     display: none;
-    width: auto;
-    height: 25rem;
+    width: 100%;
+    max-width: 25rem;
     border-radius: .625rem;
 }
 
@@ -940,7 +941,7 @@ main:not(.form-container) {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    width: 39.25rem;
+    max-width: 39.25rem;
     font-weight: 400;
 }
 
@@ -1199,7 +1200,7 @@ main:not(.form-container) {
     }
 
     .right-column {
-        width: 565px;
+        max-width: 37rem;
     }
 
     .tech-icons {
@@ -1222,7 +1223,13 @@ main:not(.form-container) {
         display: none;
     }
 
+    .my-photo2 {
+        display: block;
+    }
+
     .section2 {
+        flex-direction: column;
+        gap: 3rem;
         margin-inline: 10%;
     }
 }
