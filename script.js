@@ -398,7 +398,7 @@ projectsContainer.addEventListener('touchend', function(event) {
     var deltaY = endY - startY
 
     if (Math.abs(deltaX) > Math.abs(deltaY)) {
-        if (Math.abs(deltaX) > 12) {
+        if (Math.abs(deltaX) > 20) {
             if (deltaX > 0) {
                 if (event.target.classList[0] != 'fa-sharp') {
                     handleToLeft()
