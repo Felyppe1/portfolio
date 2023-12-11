@@ -235,7 +235,6 @@ let visibleProject = 0
 var showingForm = false
 const body = document.querySelector('body')
 function showForm() {
-    console.log('showForm')
     const behindFormContainer = document.querySelector('.behind-form-container')
     behindFormContainer.style.display = 'block'
 
@@ -250,7 +249,6 @@ function showForm() {
 function closeForm() {
     const behindFormContainer = document.querySelector('.behind-form-container')
     behindFormContainer.style.display = 'none'
-    console.log('entrei aqui')
 
     const formContainer = document.querySelector('.form-container')
     formContainer.style.transform = 'translate(-50%, -50%) scale(0)'
