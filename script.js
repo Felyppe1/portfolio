@@ -398,13 +398,15 @@ projectsContainer.addEventListener('touchend', function(event) {
     var deltaY = endY - startY
 
     if (Math.abs(deltaX) > Math.abs(deltaY)) {
-        if (deltaX > 0) {
-            if (event.target.classList[0] != 'fa-sharp') {
-                handleToLeft()
-            }
-        } else {
-            if (event.target.classList[0] != 'fa-sharp') {
-                handleToRight()
+        if (Math.abs(deltaX) > 12) {
+            if (deltaX > 0) {
+                if (event.target.classList[0] != 'fa-sharp') {
+                    handleToLeft()
+                }
+            } else {
+                if (event.target.classList[0] != 'fa-sharp') {
+                    handleToRight()
+                }
             }
         }
     }
