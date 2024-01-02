@@ -1170,6 +1170,13 @@ main:not(.form-container) {
     background-color: #bbb;
 }
 
+.projectSoon img {
+  width: 171%;
+  opacity: .15;
+  position: absolute;
+  z-index: -1;
+}
+
 .projectSoon p {
     font-size: 2.813rem;
 }
