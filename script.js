@@ -339,7 +339,7 @@ document.addEventListener('click', (event)=>{
 
 let portuguese = true
 function handleChangeLanguage() {
-    let textsList = document.querySelectorAll(".texts")
+    let textsList = document.querySelectorAll('[data-text]')
 
     let portugueseAnimation = document.querySelector('.portugueseAnimation')
     let englishAnimation = document.querySelector('.englishAnimation')

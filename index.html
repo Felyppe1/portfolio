@@ -28,8 +28,8 @@
     <header>
         <div class="navigation">
             <p onclick="scrollToSection(this)" class="portfolio" id="portfolio">Portfolio</p>
-            <p onclick="scrollToSection(this)" class='aboutMe texts' id="aboutMe">Sobre Mim</p>
-            <p onclick="scrollToSection(this)" class='projects texts' id="projects">Projetos</p>
+            <p onclick="scrollToSection(this)" class='aboutMe' id="aboutMe" data-text>Sobre Mim</p>
+            <p onclick="scrollToSection(this)" class='projects' id="projects" data-text>Projetos</p>
         </div>
         <div class="buttons-header">
             <div class="lang-div">
@@ -37,14 +37,14 @@
                     <img class="usaFlag" src="images/usa-icon.png" alt="USA flag icon">
                     <img class="brazilFlag hideFlag" src="images/brazil-icon.png" alt="Brazilian flag icon">
                 </div>
-                <button class='texts' onclick="handleChangeLanguage()">English</button>
+                <button onclick="handleChangeLanguage()" data-text>English</button>
             </div>
             <div onclick='changeTheme()' class="theme-div">
                 <i class="fa-solid fa-moon"></i>
                 <i class="fa-solid fa-sun"></i>
             </div>
             <button onclick='showForm()' class="contact-btn">
-                <p class="contactBtnText texts">Contato</p>
+                <p class="contactBtnText" data-text>Contato</p>
             </button>
         </div>
 
@@ -56,17 +56,17 @@
         <div class="menu-options">
             <div class="menu-column1">
                 <div>
-                    <p class="menuText1 texts">Navegação</p>
+                    <p class="menuText1" data-text>Navegação</p>
                     <div class="divider"></div>
                 </div>
                 <p onclick="scrollToSection(this); showMenu();" class="portfolio2" id="portfolio">Portfolio</p>
-                <p onclick="scrollToSection(this); showMenu();" class="aboutMe2 texts" id="aboutMe">Sobre Mim</p>
-                <p onclick="scrollToSection(this); showMenu();" class='projects2 texts' id="projects">Projetos</p>
+                <p onclick="scrollToSection(this); showMenu();" class="aboutMe2" id="aboutMe" data-text>Sobre Mim</p>
+                <p onclick="scrollToSection(this); showMenu();" class='projects2' id="projects" data-text>Projetos</p>
             </div>
             <div class="menu-column2">
                 <div class="theme-menu-div">
                     <div>
-                        <p class="menuText5 texts">Tema</p>
+                        <p class="menuText5" data-text>Tema</p>
                         <div class="divider"></div>
                     </div>
                     <div onclick='changeTheme()' class="theme-div2">
@@ -76,7 +76,7 @@
                 </div>
                 <div class="lang-menu-div">
                     <div>
-                        <p class="menuText6 texts">Idioma</p>
+                        <p class="menuText6" data-text>Idioma</p>
                         <div class="divider"></div>
                     </div>
                     <div class="lang-div2">
@@ -84,7 +84,7 @@
                             <img class="usaFlag" src="images/usa-icon.png" alt="USA flag icon">
                             <img class="brazilFlag hideFlag" src="images/brazil-icon.png" alt="USA flag icon">
                         </div>
-                        <button class='texts' onclick="handleChangeLanguage()">English</button>
+                        <button onclick="handleChangeLanguage()" data-text>English</button>
                     </div>
                 </div>
             </div>
@@ -95,7 +95,7 @@
     </header>
     <main>
         <div class="email-sent">
-            <p class="texts">Seu email foi enviado com sucesso!</p>
+            <p data-text>Seu email foi enviado com sucesso!</p>
             <button onclick="closeMessage()"><i class="fa-solid fa-xmark"></i></button>
         </div>
         
@@ -103,11 +103,11 @@
         
         <div class="form-container">
             <i onclick='closeForm()' class="fa-regular fa-circle-xmark"></i>
-            <h2 class="formSubtitle texts">Contato</h2>
-            <p class="formText3 texts">Interessado em trabalharmos juntos? Me envie um email!</p>
+            <h2 class="formSubtitle" data-text>Contato</h2>
+            <p class="formText3" data-text>Interessado em trabalharmos juntos? Me envie um email!</p>
             <div class='form'>
                 <div>
-                    <label class="nameLabel texts" for="name">Nome</label>
+                    <label class="nameLabel" for="name" data-text>Nome</label>
                     <input onfocus='typeForm(this)' onblur="losesFocus(this)" type="text" id="name" name="name" autocomplete="off" required>
                 </div>
                 <div>
@@ -117,11 +117,11 @@
                     <i class="fa-solid fa-circle-exclamation"></i>
                 </div>
                 <div>
-                    <label class="subjectLabel texts" for="subject">Assunto</label>
+                    <label class="subjectLabel" for="subject" data-text>Assunto</label>
                     <input onfocus='typeForm(this)' onblur="losesFocus(this)" type="text" id="subject" name="subject" autocomplete="off" required>
                 </div>
                 <div>
-                    <label class='texts' id="message-label" for="message">Mensagem</label>
+                    <label id="message-label" for="message" data-text>Mensagem</label>
                     <textarea onfocus='typeForm(this)' onblur="losesFocus(this)" name="message" id="message" cols="30" rows="3" autocomplete="off" required></textarea>
                 </div>
                 <input onclick="sendEmail()" type="submit" name='submit' value="Enviar">
@@ -168,17 +168,17 @@
             <img class="my-photo " src="images/selfie.jpg" alt="Foto do Felyppe">
             <img class="my-photo2" src="images/selfie2.jpg" alt="Foto do Felyppe">
             <div class="right-column">
-                <h2 class="subtitle1 texts">Sobre mim</h2>
+                <h2 class="subtitle1" data-text>Sobre mim</h2>
                 <div>
-                    <p class="section2Text2 texts">Meu nome é Luiz Felyppe e eu sou programador full-stack. Atualmente, faço Sistemas de Informação na UFF (Universidade Federal Fluminense) e trabalho na</p> 
+                    <p class="section2Text2" data-text>Meu nome é Luiz Felyppe e eu sou programador full-stack. Atualmente, faço Sistemas de Informação na UFF (Universidade Federal Fluminense) e trabalho na</p> 
                     <a href="https://injunior.com.br/" target="_blank">
                         IN Júnior
                         <i class="fa-solid fa-arrow-up-right-from-square"></i>.
                     </a>
                 </div>
                 
-                <p class="section2Text3 texts">Focado na área de desenvolvimento web, sou apaixonado por tecnologia e estou em constante aprendizado visando a melhorar minhas habilidades na programação. <!-- Quer transformar suas ideias em código? <span class="get-in-touch">Entre em contato</span> --></p>
-                <h2 class="subtitle2 texts">Tecnologias</h2>
+                <p class="section2Text3" data-text>Focado na área de desenvolvimento web, sou apaixonado por tecnologia e estou em constante aprendizado visando a melhorar minhas habilidades na programação. <!-- Quer transformar suas ideias em código? <span class="get-in-touch">Entre em contato</span> --></p>
+                <h2 class="subtitle2" data-text>Tecnologias</h2>
                 <div class="tech-div">
                     <!-- <div class="tech-row1">
                         <div>
@@ -223,7 +223,7 @@
             </div>
         </section>
         <section class="PROPORTION3 section3 hidden">
-            <h2 class="section3Subtitle texts">Projetos</h2>
+            <h2 class="section3Subtitle" data-text>Projetos</h2>
             
             <div class="PROPORTION3 projects-container">
                 <i onclick="handleToRight(this)" class="fa-sharp fa-solid fa-chevron-right shownButton"></i>
@@ -236,13 +236,13 @@
                     <!-- </div> -->
                     <div class="PROPORTION3 project-info-div">  
                         <p class="project-name">Coffee Delivery</p>
-                        <p class="project-description  texts">Um e-commerce de cafés proposto como desafio no curso da Rocketseat. Esse projeto foi realizado para fixar conceitos de React JS com TypeScript.</p>
+                        <p class="project-description" data-text>Um e-commerce de cafés proposto como desafio no curso da Rocketseat. Esse projeto foi realizado para fixar conceitos de React JS com TypeScript.</p>
                         <div clas="PROPORTION3 ">
                             <div class="PROPORTION3 project-links-div">
                                 <a class='live-project' href="https://coffee-delivery-seven-mu.vercel.app/" target="_blank"><i class="fa-sharp fa-solid fa-desktop"></i> Website</a>
                                 <a class='PROPORTION3 source-code' href="https://github.com/Felyppe1/coffee-delivery" target="_blank">
                                     <i class="fa-solid fa-code"></i> 
-                                    <p class="texts">Código fonte</p>
+                                    <p data-text>Código fonte</p>
                                 </a>
                             </div>
                         </div>
@@ -252,14 +252,14 @@
                 <div class="PROPORTION3 projects-div project2">
                     <img class='project-img' src="images/auth-project.png" alt="">
                     <div class="PROPORTION3 project-info-div">  
-                        <p class="project-name texts">Sistema de Autenticação</p>
-                        <p class="project-description texts">Um sistema de login feito em ReactJS e NodeJS utilizando JsonWebToken com refresh token para unir segurança com uma experiência contínua, além de ter persistência da sessão.</p>
+                        <p class="project-name" data-text>Sistema de Autenticação</p>
+                        <p class="project-description" data-text>Um sistema de login feito em ReactJS e NodeJS utilizando JsonWebToken com refresh token para unir segurança com uma experiência contínua, além de ter persistência da sessão.</p>
                         <div class="PROPORTION3 ">
                             <div class="PROPORTION3 project-links-div">
                                 <a class='live-project' href="https://full-stack-user-authorization-nw74.vercel.app/" target="_blank"><i class="fa-sharp fa-solid fa-desktop"></i> Website</a>
                                 <a class='PROPORTION3 source-code' href="https://github.com/Felyppe1/full-stack-user-authorization" target="_blank">
                                     <i class="fa-solid fa-code"></i>
-                                    <p class="texts">Código fonte</p> 
+                                    <p data-text>Código fonte</p> 
                                 </a>
                             </div>
                         </div>
@@ -271,14 +271,14 @@
                         <img class='project-img' src="images/calculadora.png" alt="">
                     <!-- </div> -->
                     <div class="PROPORTION3 project-info-div">  
-                        <p class="project-name texts">Calculadora</p>
-                        <p class="project-description texts">A réplica de uma calculadora que tenho em casa com praticamente as mesmas funcionalidades. Na próxima versão estará completa. Projeto realizado para praticar JavaScript.</p>
+                        <p class="project-name" data-text>Calculadora</p>
+                        <p class="project-description" data-text>A réplica de uma calculadora que tenho em casa com praticamente as mesmas funcionalidades. Na próxima versão estará completa. Projeto realizado para praticar JavaScript.</p>
                         <div class="PROPORTION3 ">
                             <div class="PROPORTION3 project-links-div">
                                 <a class='live-project' href="https://felyppe1.github.io/calculadora/" target="_blank"><i class="fa-sharp fa-solid fa-desktop"></i> Website</a>
                                 <a class='PROPORTION3 source-code' href="https://github.com/Felyppe1/calculadora" target="_blank">
                                     <i class="fa-solid fa-code"></i>
-                                    <p class="texts">Código fonte</p> 
+                                    <p data-text>Código fonte</p> 
                                 </a>
                             </div>
                         </div>
@@ -290,14 +290,14 @@
                         <img class='project-img' src="images/lista-afazeres.png" alt="">
                     <!-- </div> -->
                     <div class="PROPORTION3 project-info-div">  
-                        <p class="project-name texts">Lista de Afazeres</p>
-                        <p class="project-description texts">Uma lista de afazeres para você não esquecer das suas tarefas! Esse projeto foi feito no curso da Rocketseat e foi o meu primeiro usando React JS.</p>
+                        <p class="project-name" data-text>Lista de Afazeres</p>
+                        <p class="project-description" data-text>Uma lista de afazeres para você não esquecer das suas tarefas! Esse projeto foi feito no curso da Rocketseat e foi o meu primeiro usando React JS.</p>
                         <div class="PROPORTION3 ">
                             <div class="PROPORTION3 project-links-div">
                                 <a class='live-project' href="https://lista-de-afazeres-wheat.vercel.app" target="_blank"><i class="fa-sharp fa-solid fa-desktop"></i> Website</a>
                                 <a class='PROPORTION3 source-code' href="https://github.com/Felyppe1/lista-de-afazeres" target="_blank">
                                     <i class="fa-solid fa-code"></i>
-                                    <p class="texts">Código fonte</p> 
+                                    <p data-text>Código fonte</p> 
                                 </a>
                             </div>
                         </div>
@@ -309,14 +309,14 @@
                         <img class='project-img' src="images/formulario.png" alt="">
                     <!-- </div> -->
                     <div class="PROPORTION3 project-info-div">  
-                        <p class="project-name texts">Formulário Paginado</p>
-                        <p class="project-description texts">Um formulário multietapas qualquer que eu fiz para treinar validações de input do usuário usando a biblioteca zod (estava sem programar em React).</p>
+                        <p class="project-name" data-text>Formulário Paginado</p>
+                        <p class="project-description" data-text>Um formulário multietapas qualquer que eu fiz para treinar validações de input do usuário usando a biblioteca zod (estava sem programar em React).</p>
                         <div class="PROPORTION3 ">
                             <div class="PROPORTION3 project-links-div">
                                 <a class='live-project' href="https://multi-step-form-three-gamma.vercel.app/" target="_blank"><i class="fa-sharp fa-solid fa-desktop"></i> Website</a>
                                 <a class='PROPORTION3 source-code' href="https://github.com/Felyppe1/multi-step-form" target="_blank">
                                     <i class="fa-solid fa-code"></i>
-                                    <p class="texts">Código fonte</p> 
+                                    <p data-text>Código fonte</p> 
                                 </a>
                             </div>
                         </div>
@@ -324,7 +324,7 @@
                 </div>
 
                 <div class="PROPORTION3 projects-div projectSoon">
-                    <p class="soon texts">Em breve</p>
+                    <p class="soon" data-text>Em breve</p>
                     <img src="images/movie-theater.png" alt="">
                 </div>
             </div>
