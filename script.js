@@ -1,5 +1,5 @@
 var showingMenu = false
-function showMenu() {
+function handleToggleMenuVisibility() {
     // TODO: use accessibility attr to detect if popover is opened
     // How to lock tabindex inside popover
 
@@ -24,9 +24,12 @@ function showMenu() {
 
     showingMenu = !showingMenu
 }
+let elementsToggleMenuVisibility = document.querySelectorAll('[data-toggle-menu-visibility]')
+elementsToggleMenuVisibility.forEach(elem => elem.addEventListener('click', handleToggleMenuVisibility))
+
 
 var darkMode = true
-function changeTheme() {
+function handleChangeTheme() {
     let faMoonList = document.querySelectorAll('.fa-moon')
     let faSunList = document.querySelectorAll('.fa-sun')
     let menuOptions = document.querySelector('.menu-options')
@@ -71,6 +74,9 @@ function changeTheme() {
         darkMode = true
     }
 }
+let themeButtons = document.querySelectorAll('[data-theme-button]')
+themeButtons.forEach(button => button.addEventListener('click', handleChangeTheme))
+
 
 function handleToRight() {
     let indice = 0
@@ -113,11 +119,11 @@ function handleToRight() {
         visibleProject++
 
         let leftButton = document.querySelector('.fa-chevron-left')
-        leftButton.classList.remove('hiddenButton')
+        leftButton.classList.remove('hidden')
 
         if (visibleProject == projects.length - 1) {
             let rightButton = document.querySelector('.fa-chevron-right')
-            rightButton.classList.add('hiddenButton')
+            rightButton.classList.add('hidden')
         }
     }
 }
@@ -163,14 +169,19 @@ function handleToLeft() {
         visibleProject--
 
         let rightButton = document.querySelector('.fa-chevron-right')
-        rightButton.classList.remove('hiddenButton')
+        rightButton.classList.remove('hidden')
 
         if (visibleProject == 0) {
             let leftButton = document.querySelector('.fa-chevron-left')
-            leftButton.classList.add('hiddenButton')
+            leftButton.classList.add('hidden')
         }
     }
 }
+let arrowRight = document.querySelector('[data-projects-section__arrow-right')
+let arrowLeft = document.querySelector('[data-projects-section__arrow-left')
+arrowRight.addEventListener('click', handleToRight)
+arrowLeft.addEventListener('click', handleToLeft)
+
 
 let projects = document.querySelectorAll('.projects-div')
 let currentPage = document.querySelector('.current-page')
@@ -208,32 +219,7 @@ pagesTotalNumber.innerText = projects.length
 let visibleProject = 0
 
 
-/*Show and close form*/
-var showingForm = false
-const body = document.querySelector('body')
-function showForm() {
-    const behindFormContainer = document.querySelector('.behind-form-container')
-    behindFormContainer.style.display = 'block'
 
-    const formContainer = document.querySelector('.form-container')
-    formContainer.style.transform = 'translate(-50%, -50%) scale(1)'
-    formContainer.style.transition = '.5s'
-
-    body.style.overflow = 'hidden' /*Body was created down the code*/
-    showingForm = true
-}
-
-function closeForm() {
-    const behindFormContainer = document.querySelector('.behind-form-container')
-    behindFormContainer.style.display = 'none'
-
-    const formContainer = document.querySelector('.form-container')
-    formContainer.style.transform = 'translate(-50%, -50%) scale(0)'
-    formContainer.style.transition = '0s'
-
-    body.style.removeProperty('overflow') /*Body was created down the code*/
-    showingForm = false
-}
 
 /*Animation of the form labels*/
 function typeForm(htmlTag) {
@@ -291,7 +277,7 @@ const observer = new IntersectionObserver(
         threshold: 0.2
     }
 )
-const hiddenElements = document.querySelectorAll('.hidden')
+const hiddenElements = document.querySelectorAll('[data-hidden-effect]')
 hiddenElements.forEach(el => observer.observe(el))
 
 
@@ -310,7 +296,7 @@ document.addEventListener('click', (event)=>{
     if (!menuOptions.contains(event.target) && 
         !hamburgerMenu.contains(event.target) &&
         showingMenu) {
-            showMenu()
+            handleToggleMenuVisibility()
     }
 })
 
@@ -359,6 +345,9 @@ function handleChangeLanguage() {
         portuguese = true
     }
 }
+let langButtons = document.querySelectorAll('[data-lang-button]')
+langButtons.forEach(button => button.addEventListener('click', handleChangeLanguage))
+
 
 var startX, startY
 let projectsContainer = document.querySelector('.projects-container')
@@ -388,6 +377,34 @@ projectsContainer.addEventListener('touchend', function(event) {
         }
     }
 })
+
+
+/*Related to form*/
+var showingForm = false
+const body = document.querySelector('body')
+function showForm() {
+    const behindFormContainer = document.querySelector('.behind-form-container')
+    behindFormContainer.style.display = 'block'
+
+    const formContainer = document.querySelector('.form-container')
+    formContainer.style.transform = 'translate(-50%, -50%) scale(1)'
+    formContainer.style.transition = '.5s'
+
+    body.style.overflow = 'hidden' /*Body was created down the code*/
+    showingForm = true
+}
+
+function closeForm() {
+    const behindFormContainer = document.querySelector('.behind-form-container')
+    behindFormContainer.style.display = 'none'
+
+    const formContainer = document.querySelector('.form-container')
+    formContainer.style.transform = 'translate(-50%, -50%) scale(0)'
+    formContainer.style.transition = '0s'
+
+    body.style.removeProperty('overflow') /*Body was created down the code*/
+    showingForm = false
+}
 
 function sendEmail() {
     let nameInput = document.querySelector('#name')
@@ -425,7 +442,6 @@ function sendEmail() {
         })
         .catch(error => console.log(error))
 }
-
 
 function closeMessage() {
     let successMessage = document.querySelector('.email-sent')

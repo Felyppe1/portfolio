@@ -23,14 +23,18 @@
 }
 
 html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 
 button {
-  background-color: transparent;
+    background-color: transparent;
 }
 
 .hidden {
+    display: none !important;
+}
+
+.hidden-effect {
     opacity: 0;
     filter: blur(.125rem);
     transition: 1.5s;
@@ -179,6 +183,8 @@ header p {
     font-size: 1.438rem;
     transform: translateX(200%);
 }
+
+
 
 .contact-btn {
     background-color: var(--second-color);
@@ -992,12 +998,8 @@ main:not(.form-container) {
     justify-content: center;
 }
 
-.hiddenButton {
-    display: none !important;
-}
-
-.projects-container .fa-chevron-right,
-.projects-container .fa-chevron-left {
+.projects-section__arrow-right,
+.projects-section__arrow-left {
     position: absolute;
     top: 50%;
     transform: translate(0, -50%);
@@ -1008,16 +1010,16 @@ main:not(.form-container) {
     width: fit-content;
 }
 
-.projects-container .fa-chevron-right {
+.projects-section__arrow-right {
     right: 3.5rem;
 }
 
-.projects-container .fa-chevron-left {
+.projects-section__arrow-left {
     left: 3.5rem;
 }
 
-.projects-container .fa-chevron-left:active,
-.projects-container .fa-chevron-right:active {
+.projects-section__arrow-left:active,
+.projects-section__arrow-right:active {
     opacity: .5;
 }
 
@@ -1195,11 +1197,11 @@ main:not(.form-container) {
 }
 
 @media screen and (max-width: 950px) {
-    .projects-container .fa-chevron-right {
+    .projects-section__arrow-right {
         right: 1.5rem;
     }
 
-    .projects-container .fa-chevron-left {
+    .projects-section__arrow-left {
         left: 1.5rem;
     }
 }
@@ -1314,12 +1316,12 @@ main:not(.form-container) {
 }
 
 @media screen and (max-width: 470px) {
-    .projects-container .fa-chevron-left {
+    .projects-section__arrow-left {
         left: 0.5rem;
         font-size: 4rem;
     }
 
-    .projects-container .fa-chevron-right {
+    .projects-section__arrow-right {
         right: 0.5rem;
         font-size: 4rem;
     }
@@ -1363,8 +1365,8 @@ main:not(.form-container) {
 }
 
 @media (max-width: 380px) {
-    .projects-container .fa-chevron-right,
-    .projects-container .fa-chevron-left {
+    .projects-section__arrow-right,
+    .projects-section__arrow-left {
         font-size: 3.5rem;
     }
 }

@@ -40,23 +40,23 @@
             </ul>
         </nav>
         <div class="buttons-header">
-            <button type="button" onclick="handleChangeLanguage()" class="lang-button hideable-lang-button hover-effect">
+            <button type="button" data-lang-button class="lang-button hideable-lang-button hover-effect">
                 <div>
                     <img class="usaFlag" src="images/usa-icon.png" alt="USA flag icon">
                     <img class="brazilFlag hideFlag" src="images/brazil-icon.png" alt="Brazilian flag icon">
                 </div>
                 <span data-text>English</span>
             </button>
-            <button type="button" onclick="changeTheme()" class="theme-button hideable-theme-button">
-                <i class="fa-solid fa-moon"></i>
-                <i class="fa-solid fa-sun"></i>
+            <button type="button" data-theme-button class="theme-button hideable-theme-button">
+                <i class="fa-solid fa-moon theme-button__moon"></i>
+                <i class="fa-solid fa-sun theme-button__sun"></i>
             </button>
             <button onclick='showForm()' class="contact-btn" data-text>
                 Contato
             </button>
         </div>
 
-        <button onclick="showMenu()" class="hamburger-menu">
+        <button data-toggle-menu-visibility class="hamburger-menu">
             <span class="hamburger-menu__lines line1"></span>
             <span class="hamburger-menu__lines line2"></span>
             <span class="hamburger-menu__lines line3"></span>
@@ -67,27 +67,27 @@
                 <nav class="menu-options__nav">
                     <ul class="menu-options__list">
                         <li>
-                            <a href="#section1" onclick="showMenu()" tabindex="-1" class="menu-options__link">Portfolio</a>
+                            <a href="#section1" data-toggle-menu-visibility tabindex="-1" class="menu-options__link">Portfolio</a>
                         </li>
                         <li>
-                            <a href="#section2" onclick="showMenu()" tabindex="-1" class="menu-options__link" data-text>Sobre mim</a>
+                            <a href="#section2" data-toggle-menu-visibility tabindex="-1" class="menu-options__link" data-text>Sobre mim</a>
                         </li>
                         <li>
-                            <a href="#section3" onclick="showMenu()" tabindex="-1" class="menu-options__link" data-text>Projetos</a>
+                            <a href="#section3" data-toggle-menu-visibility tabindex="-1" class="menu-options__link" data-text>Projetos</a>
                         </li>
                     </ul>
                 </nav>
             </div>
             <div class="menu-options__container">
                 <p class="menu-options__text" data-text>Tema</p>
-                <button onclick='changeTheme()' tabindex="-1" class="theme-button">
+                <button data-theme-button tabindex="-1" class="theme-button">
                     <i class="fa-solid fa-moon"></i>
                     <i class="fa-solid fa-sun"></i>
                 </button>
             </div>
             <div class="menu-options__container">
                 <p class="menu-options__text" data-text>Idioma</p>
-                <button type="button" onclick="handleChangeLanguage()" tabindex="-1" class="lang-button  menu-options__lang-button">
+                <button type="button" tabindex="-1" data-lang-button class="lang-button  menu-options__lang-button">
                     <div>
                         <img class="usaFlag" src="images/usa-icon.png" alt="USA flag icon">
                         <img class="brazilFlag hideFlag" src="images/brazil-icon.png" alt="Brazilian flag icon">
@@ -135,7 +135,7 @@
             </div>
         </div>
 
-        <section id="section1" class="section1 hidden">
+        <section id="section1" data-hidden-effect class="section1 hidden-effect">
             <div class="title">
                 <div class="PROPORTION1 portugueseAnimation">
                     <div class="PROPORTION1">
@@ -169,9 +169,9 @@
                 </div>
                 
             </div>
-            <i onclick='scrollToSection(this)' id="arrowDown1" class="fa-solid fa-angles-down"></i>
+            <i id="arrowDown1" class="fa-solid fa-angles-down"></i>
         </section>
-        <section id="section2" class="section2 hidden">
+        <section id="section2" data-hidden-effect class="section2 hidden-effect">
             <img class="my-photo " src="images/selfie.jpg" alt="Foto do Felyppe">
             <img class="my-photo2" src="images/selfie2.jpg" alt="Foto do Felyppe">
             <div class="right-column">
@@ -229,12 +229,12 @@
                 </div>
             </div>
         </section>
-        <section id="section3" class="PROPORTION3 section3 hidden">
-            <h2 class="section3Subtitle" data-text>Projetos</h2>
+        <section id="section3" data-hidden-effect class="PROPORTION3 section3 hidden-effect projects-section">
+            <h2 class="section3Subtitle projects-section__title" data-text>Projetos</h2>
             
-            <div class="PROPORTION3 projects-container">
-                <i onclick="handleToRight(this)" class="fa-sharp fa-solid fa-chevron-right shownButton"></i>
-                <i onclick="handleToLeft(this)" class="fa-sharp fa-solid fa-chevron-left hiddenButton"></i>
+            <div class="PROPORTION3 projects-container projects-section__container">
+                <i data-projects-section__arrow-right class="projects-section__arrow-right fa-sharp fa-solid fa-chevron-right"></i>
+                <i data-projects-section__arrow-left class="projects-section__arrow-left hidden fa-sharp fa-solid fa-chevron-left"></i>
 
                 
                 <div class="PROPORTION3 projects-div project1">
