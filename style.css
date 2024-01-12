@@ -138,7 +138,7 @@ header p {
     gap: 1rem;
 }
 
-.theme-div, .theme-div2 {
+.theme-button {
     background-color: var(--second-color);
     width: 2.25rem;
     height: 2.125rem;
@@ -152,18 +152,18 @@ header p {
     cursor: pointer;
 }
 
-.theme-div i, .theme-div2 i {
+.theme-button i {
     color: var(--bg-color);
     position: absolute;
     transition: .3s;
 }
 
 @media (hover: hover) and (pointer: fine) {
-    .theme-div:hover, .theme-div2:hover {
+    .theme-button:hover {
         background-color: var(--bg-color);
     }
     
-    .theme-div:hover i, .theme-div2:hover i {
+    .theme-button:hover i {
         color: var(--second-color);
     }
 }
@@ -1235,7 +1235,7 @@ main:not(.form-container) {
 }
 
 @media screen and (max-width: 880px) {
-    .navigation, .theme-div, .lang-div {
+    .navigation, .hideable-theme-button, .lang-div {
         display: none !important;
     }
     
