@@ -32,10 +32,10 @@
                     <a href="#section1" class="portfolio">Portfolio</a>
                 </li>
                 <li class="hover-effect">
-                    <a href="#section2" class="aboutMe" data-text>Sobre mim</a>
+                    <a href="#section2" class="aboutMe" data-text="0">Sobre mim</a>
                 </li>
                 <li class="hover-effect">
-                    <a href="#section3" class="projects" data-text>Projetos</a>
+                    <a href="#section3" class="projects" data-text="1">Projetos</a>
                 </li>
             </ul>
         </nav>
@@ -45,13 +45,13 @@
                     <img class="usaFlag" src="images/usa-icon.png" alt="USA flag icon">
                     <img class="brazilFlag hideFlag" src="images/brazil-icon.png" alt="Brazilian flag icon">
                 </div>
-                <span data-text>English</span>
+                <span data-text="2">English</span>
             </button>
             <button type="button" data-theme-button class="theme-button hideable-theme-button">
                 <i class="fa-solid fa-moon theme-button__moon"></i>
                 <i class="fa-solid fa-sun theme-button__sun"></i>
             </button>
-            <button onclick='showForm()' class="contact-btn" data-text>
+            <button onclick='showForm()' class="contact-btn" data-text="3">
                 Contato
             </button>
         </div>
@@ -63,78 +63,41 @@
         </button>
         <div class="menu-options">
             <div class="menu-options__container">
-                <p class="menu-options__text" data-text>Navegação</p>
+                <p class="menu-options__text" data-text="4">Navegação</p>
                 <nav class="menu-options__nav">
                     <ul class="menu-options__list">
                         <li>
                             <a href="#section1" data-toggle-menu-visibility tabindex="-1" class="menu-options__link">Portfolio</a>
                         </li>
                         <li>
-                            <a href="#section2" data-toggle-menu-visibility tabindex="-1" class="menu-options__link" data-text>Sobre mim</a>
+                            <a href="#section2" data-toggle-menu-visibility tabindex="-1" class="menu-options__link" data-text="5">Sobre mim</a>
                         </li>
                         <li>
-                            <a href="#section3" data-toggle-menu-visibility tabindex="-1" class="menu-options__link" data-text>Projetos</a>
+                            <a href="#section3" data-toggle-menu-visibility tabindex="-1" class="menu-options__link" data-text="6">Projetos</a>
                         </li>
                     </ul>
                 </nav>
             </div>
             <div class="menu-options__container">
-                <p class="menu-options__text" data-text>Tema</p>
+                <p class="menu-options__text" data-text="7">Tema</p>
                 <button data-theme-button tabindex="-1" class="theme-button">
                     <i class="fa-solid fa-moon"></i>
                     <i class="fa-solid fa-sun"></i>
                 </button>
             </div>
             <div class="menu-options__container">
-                <p class="menu-options__text" data-text>Idioma</p>
+                <p class="menu-options__text" data-text="8">Idioma</p>
                 <button type="button" tabindex="-1" data-lang-button class="lang-button  menu-options__lang-button">
                     <div>
                         <img class="usaFlag" src="images/usa-icon.png" alt="USA flag icon">
                         <img class="brazilFlag hideFlag" src="images/brazil-icon.png" alt="Brazilian flag icon">
                     </div>
-                    <span data-text>English</span>
+                    <span data-text="9">English</span>
                 </button>
             </div>
-            
-            
-            
         </div>
     </header>
     <main>
-        <div class="email-sent">
-            <p data-text>Seu email foi enviado com sucesso!</p>
-            <button onclick="closeMessage()"><i class="fa-solid fa-xmark"></i></button>
-        </div>
-        
-        <div class="behind-form-container"></div>
-        
-        <div class="form-container">
-            <i onclick='closeForm()' class="fa-regular fa-circle-xmark"></i>
-            <h2 class="formSubtitle" data-text>Contato</h2>
-            <p class="formText3" data-text>Interessado em trabalharmos juntos? Me envie um email!</p>
-            <div class='form'>
-                <div>
-                    <label class="nameLabel" for="name" data-text>Nome</label>
-                    <input onfocus='typeForm(this)' onblur="losesFocus(this)" type="text" id="name" name="name" autocomplete="off" required>
-                </div>
-                <div>
-                    <label for="email">Email</label>
-                    <input onfocus='typeForm(this)' onblur="losesFocus(this)" type="text" id="email" name="email" autocomplete="off" required>
-                    <i class="fa-solid fa-circle-check"></i>
-                    <i class="fa-solid fa-circle-exclamation"></i>
-                </div>
-                <div>
-                    <label class="subjectLabel" for="subject" data-text>Assunto</label>
-                    <input onfocus='typeForm(this)' onblur="losesFocus(this)" type="text" id="subject" name="subject" autocomplete="off" required>
-                </div>
-                <div>
-                    <label id="message-label" for="message" data-text>Mensagem</label>
-                    <textarea onfocus='typeForm(this)' onblur="losesFocus(this)" name="message" id="message" cols="30" rows="3" autocomplete="off" required></textarea>
-                </div>
-                <input onclick="sendEmail()" type="submit" name='submit' value="Enviar">
-            </div>
-        </div>
-
         <section id="section1" data-hidden-effect class="section1 hidden-effect">
             <div class="title">
                 <div class="PROPORTION1 portugueseAnimation">
@@ -175,17 +138,17 @@
             <img class="my-photo " src="images/selfie.jpg" alt="Foto do Felyppe">
             <img class="my-photo2" src="images/selfie2.jpg" alt="Foto do Felyppe">
             <div class="right-column">
-                <h2 class="subtitle1" data-text>Sobre mim</h2>
+                <h2 class="subtitle1" data-text="16">Sobre mim</h2>
                 <div>
-                    <p class="section2Text2" data-text>Meu nome é Luiz Felyppe e eu sou programador full-stack. Atualmente, faço Sistemas de Informação na UFF (Universidade Federal Fluminense) e trabalho na</p> 
+                    <p class="section2Text2" data-text="17">Meu nome é Luiz Felyppe e eu sou programador full-stack. Atualmente, faço Sistemas de Informação na UFF (Universidade Federal Fluminense) e trabalho na</p> 
                     <a href="https://injunior.com.br/" target="_blank">
                         IN Júnior
                         <i class="fa-solid fa-arrow-up-right-from-square"></i>.
                     </a>
                 </div>
                 
-                <p class="section2Text3" data-text>Focado na área de desenvolvimento web, sou apaixonado por tecnologia e estou em constante aprendizado visando a melhorar minhas habilidades na programação. <!-- Quer transformar suas ideias em código? <span class="get-in-touch">Entre em contato</span> --></p>
-                <h2 class="subtitle2" data-text>Tecnologias</h2>
+                <p class="section2Text3" data-text="18">Focado na área de desenvolvimento web, sou apaixonado por tecnologia e estou em constante aprendizado visando a melhorar minhas habilidades na programação. <!-- Quer transformar suas ideias em código? <span class="get-in-touch">Entre em contato</span> --></p>
+                <h2 class="subtitle2" data-text="19">Tecnologias</h2>
                 <div class="tech-div">
                     <!-- <div class="tech-row1">
                         <div>
@@ -229,114 +192,114 @@
                 </div>
             </div>
         </section>
-        <section id="section3" data-hidden-effect class="PROPORTION3 section3 hidden-effect projects-section">
-            <h2 class="section3Subtitle projects-section__title" data-text>Projetos</h2>
+        <section id="section3" data-hidden-effect class="projects-section hidden-effect">
+            <h2 class="projects-section__title" data-text="20">Projetos</h2>
             
-            <div class="PROPORTION3 projects-container projects-section__container">
+            <div class="projects-section__container">
                 <i data-projects-section__arrow-right class="projects-section__arrow-right fa-sharp fa-solid fa-chevron-right"></i>
                 <i data-projects-section__arrow-left class="projects-section__arrow-left hidden fa-sharp fa-solid fa-chevron-left"></i>
 
                 
-                <div class="PROPORTION3 projects-div project1">
+                <div class="projects-div project1">
                     <!-- <div class="project-img-div"> -->
                         <img class='project-img' src="images/coffee-delivery.png" alt="">
                     <!-- </div> -->
-                    <div class="PROPORTION3 project-info-div">  
+                    <div class="project-info-div">  
                         <p class="project-name">Coffee Delivery</p>
-                        <p class="project-description" data-text>Um e-commerce de cafés proposto como desafio no curso da Rocketseat. Esse projeto foi realizado para fixar conceitos de React JS com TypeScript.</p>
-                        <div clas="PROPORTION3 ">
-                            <div class="PROPORTION3 project-links-div">
+                        <p class="project-description" data-text="21">Um e-commerce de cafés proposto como desafio no curso da Rocketseat. Esse projeto foi realizado para fixar conceitos de React JS com TypeScript.</p>
+                        <div>
+                            <div class="project-links-div">
                                 <a class='live-project' href="https://coffee-delivery-seven-mu.vercel.app/" target="_blank"><i class="fa-sharp fa-solid fa-desktop"></i> Website</a>
-                                <a class='PROPORTION3 source-code' href="https://github.com/Felyppe1/coffee-delivery" target="_blank">
+                                <a class=' source-code' href="https://github.com/Felyppe1/coffee-delivery" target="_blank">
                                     <i class="fa-solid fa-code"></i> 
-                                    <p data-text>Código fonte</p>
+                                    <p data-text="22">Código fonte</p>
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="PROPORTION3 projects-div project2">
+                <div class="projects-div project2">
                     <img class='project-img' src="images/auth-project.png" alt="">
-                    <div class="PROPORTION3 project-info-div">  
-                        <p class="project-name" data-text>Sistema de Autenticação</p>
-                        <p class="project-description" data-text>Um sistema de login feito em ReactJS e NodeJS utilizando JsonWebToken com refresh token para unir segurança com uma experiência contínua, além de ter persistência da sessão.</p>
-                        <div class="PROPORTION3 ">
-                            <div class="PROPORTION3 project-links-div">
+                    <div class=" project-info-div">  
+                        <p class="project-name" data-text="23">Sistema de Autenticação</p>
+                        <p class="project-description" data-text="24">Um sistema de login feito em ReactJS e NodeJS utilizando JsonWebToken com refresh token para unir segurança com uma experiência contínua, além de ter persistência da sessão.</p>
+                        <div>
+                            <div class="project-links-div">
                                 <a class='live-project' href="https://full-stack-user-authorization-nw74.vercel.app/" target="_blank"><i class="fa-sharp fa-solid fa-desktop"></i> Website</a>
-                                <a class='PROPORTION3 source-code' href="https://github.com/Felyppe1/full-stack-user-authorization" target="_blank">
+                                <a class='source-code' href="https://github.com/Felyppe1/full-stack-user-authorization" target="_blank">
                                     <i class="fa-solid fa-code"></i>
-                                    <p data-text>Código fonte</p> 
+                                    <p data-text="25">Código fonte</p> 
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="PROPORTION3 projects-div project3">
+                <div class="projects-div project3">
                     <!-- <div class="project-img-div"> -->
                         <img class='project-img' src="images/calculadora.png" alt="">
                     <!-- </div> -->
-                    <div class="PROPORTION3 project-info-div">  
-                        <p class="project-name" data-text>Calculadora</p>
-                        <p class="project-description" data-text>A réplica de uma calculadora que tenho em casa com praticamente as mesmas funcionalidades. Na próxima versão estará completa. Projeto realizado para praticar JavaScript.</p>
-                        <div class="PROPORTION3 ">
-                            <div class="PROPORTION3 project-links-div">
+                    <div class="project-info-div">  
+                        <p class="project-name" data-text="26">Calculadora</p>
+                        <p class="project-description" data-text="27">A réplica de uma calculadora que tenho em casa com praticamente as mesmas funcionalidades. Na próxima versão estará completa. Projeto realizado para praticar JavaScript.</p>
+                        <div>
+                            <div class="project-links-div">
                                 <a class='live-project' href="https://felyppe1.github.io/calculadora/" target="_blank"><i class="fa-sharp fa-solid fa-desktop"></i> Website</a>
-                                <a class='PROPORTION3 source-code' href="https://github.com/Felyppe1/calculadora" target="_blank">
+                                <a class='source-code' href="https://github.com/Felyppe1/calculadora" target="_blank">
                                     <i class="fa-solid fa-code"></i>
-                                    <p data-text>Código fonte</p> 
+                                    <p data-text="28">Código fonte</p> 
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="PROPORTION3 projects-div project4">
+                <div class="projects-div project4">
                     <!-- <div class="project-img-div"> -->
                         <img class='project-img' src="images/lista-afazeres.png" alt="">
                     <!-- </div> -->
-                    <div class="PROPORTION3 project-info-div">  
-                        <p class="project-name" data-text>Lista de Afazeres</p>
-                        <p class="project-description" data-text>Uma lista de afazeres para você não esquecer das suas tarefas! Esse projeto foi feito no curso da Rocketseat e foi o meu primeiro usando React JS.</p>
-                        <div class="PROPORTION3 ">
-                            <div class="PROPORTION3 project-links-div">
+                    <div class="project-info-div">  
+                        <p class="project-name" data-text="29">Lista de Afazeres</p>
+                        <p class="project-description" data-text="30">Uma lista de afazeres para você não esquecer das suas tarefas! Esse projeto foi feito no curso da Rocketseat e foi o meu primeiro usando React JS.</p>
+                        <div>
+                            <div class="project-links-div">
                                 <a class='live-project' href="https://lista-de-afazeres-wheat.vercel.app" target="_blank"><i class="fa-sharp fa-solid fa-desktop"></i> Website</a>
-                                <a class='PROPORTION3 source-code' href="https://github.com/Felyppe1/lista-de-afazeres" target="_blank">
+                                <a class='source-code' href="https://github.com/Felyppe1/lista-de-afazeres" target="_blank">
                                     <i class="fa-solid fa-code"></i>
-                                    <p data-text>Código fonte</p> 
+                                    <p data-text="31">Código fonte</p> 
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="PROPORTION3 projects-div project5">
+                <div class="projects-div project5">
                     <!-- <div class="project-img-div"> -->
                         <img class='project-img' src="images/formulario.png" alt="">
                     <!-- </div> -->
-                    <div class="PROPORTION3 project-info-div">  
-                        <p class="project-name" data-text>Formulário Paginado</p>
-                        <p class="project-description" data-text>Um formulário multietapas qualquer que eu fiz para treinar validações de input do usuário usando a biblioteca zod (estava sem programar em React).</p>
-                        <div class="PROPORTION3 ">
-                            <div class="PROPORTION3 project-links-div">
+                    <div class=" project-info-div">  
+                        <p class="project-name" data-text="32">Formulário Paginado</p>
+                        <p class="project-description" data-text="33">Um formulário multietapas qualquer que eu fiz para treinar validações de input do usuário usando a biblioteca zod (estava sem programar em React).</p>
+                        <div class=" ">
+                            <div class="project-links-div">
                                 <a class='live-project' href="https://multi-step-form-three-gamma.vercel.app/" target="_blank"><i class="fa-sharp fa-solid fa-desktop"></i> Website</a>
-                                <a class='PROPORTION3 source-code' href="https://github.com/Felyppe1/multi-step-form" target="_blank">
+                                <a class=' source-code' href="https://github.com/Felyppe1/multi-step-form" target="_blank">
                                     <i class="fa-solid fa-code"></i>
-                                    <p data-text>Código fonte</p> 
+                                    <p data-text="34">Código fonte</p> 
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="PROPORTION3 projects-div projectSoon">
-                    <p class="soon" data-text>Em breve</p>
+                <div class="projects-div projectSoon">
+                    <p class="soon" data-text="35">Em breve</p>
                     <img src="images/movie-theater.png" alt="">
                 </div>
             </div>
 
-            <div class="PROPORTION3 pagination">
+            <div class="pagination">
                 <div class="current-page">
 
                 </div>
@@ -345,5 +308,38 @@
             </div>
         </section>
     </main>
+    <div class="email-sent">
+        <p data-text="10">Seu email foi enviado com sucesso!</p>
+        <button onclick="closeMessage()"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    
+    <div class="behind-form-container"></div>
+    
+    <div class="form-container">
+        <i onclick='closeForm()' class="fa-regular fa-circle-xmark"></i>
+        <h2 class="formSubtitle" data-text="11">Contato</h2>
+        <p class="formText3" data-text="12">Interessado em trabalharmos juntos? Me envie um email!</p>
+        <div class='form'>
+            <div>
+                <label class="nameLabel" for="name" data-text="13">Nome</label>
+                <input onfocus='typeForm(this)' onblur="losesFocus(this)" type="text" id="name" name="name" autocomplete="off" required>
+            </div>
+            <div>
+                <label for="email">Email</label>
+                <input onfocus='typeForm(this)' onblur="losesFocus(this)" type="text" id="email" name="email" autocomplete="off" required>
+                <i class="fa-solid fa-circle-check"></i>
+                <i class="fa-solid fa-circle-exclamation"></i>
+            </div>
+            <div>
+                <label class="subjectLabel" for="subject" data-text="14">Assunto</label>
+                <input onfocus='typeForm(this)' onblur="losesFocus(this)" type="text" id="subject" name="subject" autocomplete="off" required>
+            </div>
+            <div>
+                <label id="message-label" for="message" data-text="15">Mensagem</label>
+                <textarea onfocus='typeForm(this)' onblur="losesFocus(this)" name="message" id="message" cols="30" rows="3" autocomplete="off" required></textarea>
+            </div>
+            <button type="submit" name='submit' onclick="sendEmail()" class="form__submit-button" data-text="36">Enviar</button>
+        </div>
+    </div>
 </body>
 </html>

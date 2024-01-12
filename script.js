@@ -311,8 +311,10 @@ function handleChangeLanguage() {
     let brazilFlags = document.querySelectorAll('.brazilFlag')
 
     if (portuguese) {
-        textsList.forEach((text, index) => {
-            text.innerText = language.english[index]
+        textsList.forEach(text => {
+            const textValue = text.dataset.text
+            console.log(text.dataset.text)
+            text.innerText = language.english[textValue]
         })
 
         portugueseAnimation.classList.add('hideAnimation')
@@ -328,8 +330,9 @@ function handleChangeLanguage() {
         portuguese = false
     }
     else {
-        textsList.forEach((text, index) => {
-            text.innerText = language.portuguese[index]
+        textsList.forEach(text => {
+            const textValue = text.dataset.text
+            text.innerText = language.portuguese[textValue]
         })
 
         portugueseAnimation.classList.remove('hideAnimation')
@@ -350,7 +353,7 @@ langButtons.forEach(button => button.addEventListener('click', handleChangeLangu
 
 
 var startX, startY
-let projectsContainer = document.querySelector('.projects-container')
+let projectsContainer = document.querySelector('.projects-section')
 projectsContainer.addEventListener('touchstart', (event)=>{
     startX = event.touches[0].clientX
     startY = event.touches[0].clientY

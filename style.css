@@ -19,11 +19,16 @@
     text-decoration: none;
     font-weight: 600;
     list-style: none;
-    /* outline: none; */
 }
 
 html {
     scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--texts-font);
+    background-color: var(--bg-color);
+    position: relative;
 }
 
 button {
@@ -341,16 +346,6 @@ header p {
 
 
 
-main {
-    font-family: var(--texts-font);
-    background-color: var(--bg-color);
-    overflow-y: hidden;
-    position: relative;
-}
-
-main:not(.form-container) {
-    pointer-events: auto;
-}
 
 .behind-form-container {
     display: none;
@@ -545,7 +540,7 @@ main:not(.form-container) {
     color: rgb(200, 157, 0);
 }
 
-.form > input {
+.form__submit-button {
     background-color: #043593 !important;
     color: #fafafa;
     width: 9.375rem;
@@ -554,11 +549,11 @@ main:not(.form-container) {
     font-size: 1.2rem;
 }
 
-.form > input:hover {
+.form__submit-button:hover {
     opacity: .8;
 }
 
-.form > input:focus {
+.form__submit-button:focus {
     opacity: .8;
 }
 /* .form-container::before {
@@ -572,7 +567,7 @@ main:not(.form-container) {
 } */
 
 
-.section1, .section2, .section3, .section4 {
+.section1, .section2, .projects-section, .section4 {
     min-height: calc(100vh + .625rem);
 }
 
@@ -976,7 +971,7 @@ main:not(.form-container) {
 
 
 
-.section3 {
+.projects-section {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -986,11 +981,11 @@ main:not(.form-container) {
     overflow: hidden;
 }
 
-.section3 h2 {
+.projects-section__title {
     font-size: 2.5rem;
 }
 
-.projects-container {
+.projects-section__container {
     position: relative;
     width: 100%;
     min-height: 31.25rem;
@@ -1394,7 +1389,7 @@ main:not(.form-container) {
         height: 550px;
     }
 
-    .section3 {
+    .projects-section {
         height: 750px;
     }
 
