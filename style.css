@@ -240,6 +240,42 @@ header p {
     z-index: 6;
 }
 
+.hamburger-menu__lines {
+    background-color: var(--second-color);
+    width: 100%;
+    height: .3rem;
+    position: absolute;
+    border-radius: .625rem;
+    transition: .4s;
+}
+
+.hamburger-menu--selected > .line1 {
+    transform: rotate(42deg) translate(0.375rem, 0.563rem);
+    width: 2.5rem;
+}
+
+.hamburger-menu--selected > .line2 {
+  opacity: 0;
+}
+
+.hamburger-menu--selected > .line3 {
+    transform: rotate(-42deg) translate(0.375rem, -0.563rem);
+    width: 2.5rem;
+}
+
+.line1 {
+    top: 0;
+}
+
+.line2 {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.line3 {
+    bottom: 0;
+}
+
 .menu-options {
     background-color: rgb(34 34 34);
     width: 17.5rem;
@@ -258,6 +294,11 @@ header p {
     gap: 1rem;
     border-radius: 12.5rem;
     padding: 2.5rem 3rem 3rem 2rem;
+}
+
+.menu-options--opened {
+    transform: translateX(0);
+    border-radius: 0;
 }
 
 .menu-options__container {
@@ -287,28 +328,6 @@ header p {
 
 .menu-options__link {
     color: #fafafa;
-}
-
-.lines {
-    background-color: var(--second-color);
-    width: 100%;
-    height: .3rem;
-    position: absolute;
-    border-radius: .625rem;
-    transition: .4s;
-}
-
-.line1 {
-    top: 0;
-}
-
-.line2 {
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.line3 {
-    bottom: 0;
 }
 
 

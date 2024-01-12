@@ -1,34 +1,28 @@
 var showingMenu = false
 function showMenu() {
-    let line1 = document.querySelector('.line1')
-    let line2 = document.querySelector('.line2')
-    let line3 = document.querySelector('.line3')
-    let menuOptions = document.querySelector('.menu-options')
-    if (showingMenu) {
-        line1.style.transform = ''
-        line1.style.width = ''
-        line2.style.opacity = '1'
-        line3.style.transform = ''
-        line3.style.width = ''
+    // TODO: use accessibility attr to detect if popover is opened
+    // How to lock tabindex inside popover
 
-        menuOptions.style.transform = 'translateX(110%)'
-        menuOptions.style.borderRadius = '12.5rem'
-        
-        showingMenu = false
+    let hamburgerMenu = document.querySelector('.hamburger-menu')
+    let menuOptions = document.querySelector('.menu-options')
+    let focusableElements = menuOptions.querySelectorAll('button, a')
+
+    if (showingMenu) {
+        hamburgerMenu.classList.remove('hamburger-menu--selected')
+        menuOptions.classList.remove('menu-options--opened')
+        focusableElements.forEach(elem => {
+            elem.setAttribute('tabindex', '-1')
+        })
     }
     else {
-        line2.style.opacity = '0'
-
-        line1.style.transform = 'rotate(42deg) translate(0.375rem, 0.563rem)'
-        line1.style.width = '2.5rem'
-        line3.style.transform = 'rotate(-42deg) translate(0.375rem, -0.563rem)'
-        line3.style.width = '2.5rem'
-
-        menuOptions.style.transform = 'translateX(0)'
-        menuOptions.style.borderRadius = '0px'
-
-        showingMenu = true
+        hamburgerMenu.classList.add('hamburger-menu--selected')
+        menuOptions.classList.add('menu-options--opened')
+        focusableElements.forEach(elem => {
+            elem.removeAttribute('tabindex')
+        })
     }
+
+    showingMenu = !showingMenu
 }
 
 var darkMode = true

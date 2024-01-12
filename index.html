@@ -56,38 +56,38 @@
             </button>
         </div>
 
-        <div onclick="showMenu()" class="hamburger-menu">
-            <div class="lines line1"></div>
-            <div class="lines line2"></div>
-            <div class="lines line3"></div>
-        </div>
+        <button onclick="showMenu()" class="hamburger-menu">
+            <span class="hamburger-menu__lines line1"></span>
+            <span class="hamburger-menu__lines line2"></span>
+            <span class="hamburger-menu__lines line3"></span>
+        </button>
         <div class="menu-options">
             <div class="menu-options__container">
                 <p class="menu-options__text" data-text>Navegação</p>
                 <nav class="menu-options__nav">
                     <ul class="menu-options__list">
                         <li>
-                            <a href="#section1" onclick="showMenu()" class="menu-options__link">Portfolio</a>
+                            <a href="#section1" onclick="showMenu()" tabindex="-1" class="menu-options__link">Portfolio</a>
                         </li>
                         <li>
-                            <a href="#section2" onclick="showMenu()" class="menu-options__link" data-text>Sobre mim</a>
+                            <a href="#section2" onclick="showMenu()" tabindex="-1" class="menu-options__link" data-text>Sobre mim</a>
                         </li>
                         <li>
-                            <a href="#section3" onclick="showMenu()" class="menu-options__link" data-text>Projetos</a>
+                            <a href="#section3" onclick="showMenu()" tabindex="-1" class="menu-options__link" data-text>Projetos</a>
                         </li>
                     </ul>
                 </nav>
             </div>
             <div class="menu-options__container">
                 <p class="menu-options__text" data-text>Tema</p>
-                <button onclick='changeTheme()' class="theme-button">
+                <button onclick='changeTheme()' tabindex="-1" class="theme-button">
                     <i class="fa-solid fa-moon"></i>
                     <i class="fa-solid fa-sun"></i>
                 </button>
             </div>
             <div class="menu-options__container">
                 <p class="menu-options__text" data-text>Idioma</p>
-                <button type="button" onclick="handleChangeLanguage()" class="lang-button  menu-options__lang-button">
+                <button type="button" onclick="handleChangeLanguage()" tabindex="-1" class="lang-button  menu-options__lang-button">
                     <div>
                         <img class="usaFlag" src="images/usa-icon.png" alt="USA flag icon">
                         <img class="brazilFlag hideFlag" src="images/brazil-icon.png" alt="Brazilian flag icon">
