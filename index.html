@@ -26,11 +26,19 @@
 </head>
 <body>
     <header>
-        <div class="navigation">
-            <p onclick="scrollToSection(this)" class="portfolio" id="portfolio">Portfolio</p>
-            <p onclick="scrollToSection(this)" class='aboutMe' id="aboutMe" data-text>Sobre Mim</p>
-            <p onclick="scrollToSection(this)" class='projects' id="projects" data-text>Projetos</p>
-        </div>
+        <nav class="navigation">
+            <ul class="navigation__list">
+                <li>
+                    <a href="#section1" class="portfolio">Portfolio</a>
+                </li>
+                <li>
+                    <a href="#section2" class="aboutMe" data-text>Sobre mim</a>
+                </li>
+                <li>
+                    <a href="#section3" class="projects" data-text>Projetos</a>
+                </li>
+            </ul>
+        </nav>
         <div class="buttons-header">
             <div class="lang-div">
                 <div>
@@ -54,38 +62,37 @@
             <div class="lines line3"></div>
         </div>
         <div class="menu-options">
-            <div class="menu-column1">
-                <div>
-                    <p class="menuText1" data-text>Navegação</p>
-                    <div class="divider"></div>
-                </div>
-                <p onclick="scrollToSection(this); showMenu();" class="portfolio2" id="portfolio">Portfolio</p>
-                <p onclick="scrollToSection(this); showMenu();" class="aboutMe2" id="aboutMe" data-text>Sobre Mim</p>
-                <p onclick="scrollToSection(this); showMenu();" class='projects2' id="projects" data-text>Projetos</p>
+            <div class="menu-options__container">
+                <p class="menu-options__text" data-text>Navegação</p>
+                <nav class="menu-options__nav">
+                    <ul class="menu-options__list">
+                        <li>
+                            <a href="#section1" onclick="showMenu()" class="menu-options__link">Portfolio</a>
+                        </li>
+                        <li>
+                            <a href="#section2" onclick="showMenu()" class="menu-options__link" data-text>Sobre mim</a>
+                        </li>
+                        <li>
+                            <a href="#section3" onclick="showMenu()" class="menu-options__link" data-text>Projetos</a>
+                        </li>
+                    </ul>
+                </nav>
             </div>
-            <div class="menu-column2">
-                <div class="theme-menu-div">
-                    <div>
-                        <p class="menuText5" data-text>Tema</p>
-                        <div class="divider"></div>
-                    </div>
-                    <div onclick='changeTheme()' class="theme-div2">
-                        <i class="fa-solid fa-moon"></i>
-                        <i class="fa-solid fa-sun"></i>
-                    </div>
+            <div class="menu-options__container">
+                <p class="menu-options__text" data-text>Tema</p>
+                <div onclick='changeTheme()' class="theme-div2">
+                    <i class="fa-solid fa-moon"></i>
+                    <i class="fa-solid fa-sun"></i>
                 </div>
-                <div class="lang-menu-div">
+            </div>
+            <div class="menu-options__container">
+                <p class="menu-options__text" data-text>Idioma</p>
+                <div class="lang-div2">
                     <div>
-                        <p class="menuText6" data-text>Idioma</p>
-                        <div class="divider"></div>
+                        <img class="usaFlag" src="images/usa-icon.png" alt="USA flag icon">
+                        <img class="brazilFlag hideFlag" src="images/brazil-icon.png" alt="USA flag icon">
                     </div>
-                    <div class="lang-div2">
-                        <div>
-                            <img class="usaFlag" src="images/usa-icon.png" alt="USA flag icon">
-                            <img class="brazilFlag hideFlag" src="images/brazil-icon.png" alt="USA flag icon">
-                        </div>
-                        <button onclick="handleChangeLanguage()" data-text>English</button>
-                    </div>
+                    <button onclick="handleChangeLanguage()" data-text>English</button>
                 </div>
             </div>
             
@@ -128,7 +135,7 @@
             </div>
         </div>
 
-        <section class="section1 hidden">
+        <section id="section1" class="section1 hidden">
             <div class="title">
                 <div class="PROPORTION1 portugueseAnimation">
                     <div class="PROPORTION1">
@@ -164,7 +171,7 @@
             </div>
             <i onclick='scrollToSection(this)' id="arrowDown1" class="fa-solid fa-angles-down"></i>
         </section>
-        <section class="section2 hidden">
+        <section id="section2" class="section2 hidden">
             <img class="my-photo " src="images/selfie.jpg" alt="Foto do Felyppe">
             <img class="my-photo2" src="images/selfie2.jpg" alt="Foto do Felyppe">
             <div class="right-column">
@@ -222,7 +229,7 @@
                 </div>
             </div>
         </section>
-        <section class="PROPORTION3 section3 hidden">
+        <section id="section3" class="PROPORTION3 section3 hidden">
             <h2 class="section3Subtitle" data-text>Projetos</h2>
             
             <div class="PROPORTION3 projects-container">

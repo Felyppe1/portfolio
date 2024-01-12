@@ -31,23 +31,6 @@ function showMenu() {
     }
 }
 
-function scrollToSection(htmlElement) {
-    if (htmlElement.id == 'portfolio') {
-        let section1 = document.querySelector('.section1')
-        section1.scrollIntoView( {behavior : 'smooth'})
-    }
-    else {
-        if (htmlElement.id == 'aboutMe' || htmlElement.id == 'arrowDown1') {
-            let section2 = document.querySelector('.section2') 
-            section2.scrollIntoView( {behavior : 'smooth'})
-        }
-        else {
-            let section3 = document.querySelector('.section3')
-            section3.scrollIntoView( {behavior : 'smooth'})
-        }
-    }
-}
-
 var darkMode = true
 function changeTheme() {
     let faMoonList = document.querySelectorAll('.fa-moon')

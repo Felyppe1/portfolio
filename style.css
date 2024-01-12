@@ -9,6 +9,10 @@
     --section1-font-size: 1rem;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 * {
     padding: 0;
     margin: 0;
@@ -18,7 +22,8 @@
     border: none;
     text-decoration: none;
     font-weight: 600;
-    outline: none;
+    list-style: none;
+    /* outline: none; */
 }
 
 
@@ -57,7 +62,7 @@ header p {
     cursor: pointer;
 }
 
-.navigation, .buttons-header {
+.navigation__list, .buttons-header {
     display: flex;
     align-items: center;
     gap: 3rem;
@@ -265,7 +270,6 @@ header p {
 .menu-options {
     background-color: rgb(34 34 34);
     width: 17.5rem;
-    height: 25rem;
     position: absolute;
     top: 0;
     right: -1px;
@@ -279,47 +283,37 @@ header p {
     flex-direction: column;
     align-items: start;
     gap: 1rem;
-    padding-left: 2rem;
     border-radius: 12.5rem;
-    padding-top: 2.5rem;
+    padding: 2.5rem 3rem 3rem 2rem;
 }
 
-.menu-column1, .menu-column2 {
-    width: 100%
-}
-
-.menu-column1 {
+.menu-options__container {
     display: flex;
     flex-direction: column;
-    gap: .6rem;
+    gap: 1rem;
+    width: 100%;
 }
 
-.menu-column1 > div,
-.theme-menu-div > div:nth-child(1),
-.lang-menu-div > div:nth-child(1) {
-    display: flex;
-    flex-direction: column;
-    gap: .5rem;
-    width: 80%;
-    margin-bottom: 1rem;
-}
-
-.theme-menu-div > div:nth-child(1),
-.lang-menu-div > div:nth-child(1) {
-    margin-top: 1rem;
-}
-
-.menu-column1 > div:nth-child(1) p,
-.theme-menu-div > div:nth-child(1) p,
-.lang-menu-div > div:nth-child(1) p {
+.menu-options__text {
     font-size: .8rem;
     font-weight: 300;
     color: #ffffffcf;
+    padding-bottom: .5rem;
+    border-bottom: 1px solid #ffffffcf;
 }
 
-.divider {
-    background-color: #ffffffcf;
-    height: .031rem;
+.menu-options__nav {
+  margin-block: .5rem;
+}
+
+.menu-options__list {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.menu-options__link {
+    color: #fafafa;
 }
 
 .lines {
@@ -342,11 +336,6 @@ header p {
 
 .line3 {
     bottom: 0;
-}
-
-.portfolio2, .aboutMe2, .projects2 {
-    color: #fafafa;
-    width: max-content;
 }
 
 
@@ -1403,14 +1392,6 @@ main:not(.form-container) {
 
 /*=========================Para celular deitado=========================*/
 @media screen and (max-height: 25rem) {
-    .menu-column1 {
-        margin-top: 1rem;
-    }
-
-    .menu-column2 > div:nth-child(1) {
-        margin-top: 0;
-    }
-
     .section1 {
         height: calc(100vh + 9rem);
     }
