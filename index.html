@@ -28,31 +28,31 @@
     <header>
         <nav class="navigation">
             <ul class="navigation__list">
-                <li>
+                <li class="hover-effect">
                     <a href="#section1" class="portfolio">Portfolio</a>
                 </li>
-                <li>
+                <li class="hover-effect">
                     <a href="#section2" class="aboutMe" data-text>Sobre mim</a>
                 </li>
-                <li>
+                <li class="hover-effect">
                     <a href="#section3" class="projects" data-text>Projetos</a>
                 </li>
             </ul>
         </nav>
         <div class="buttons-header">
-            <div class="lang-div">
+            <button type="button" onclick="handleChangeLanguage()" class="lang-button hideable-lang-button hover-effect">
                 <div>
                     <img class="usaFlag" src="images/usa-icon.png" alt="USA flag icon">
                     <img class="brazilFlag hideFlag" src="images/brazil-icon.png" alt="Brazilian flag icon">
                 </div>
-                <button onclick="handleChangeLanguage()" data-text>English</button>
-            </div>
+                <span data-text>English</span>
+            </button>
             <button type="button" onclick="changeTheme()" class="theme-button hideable-theme-button">
                 <i class="fa-solid fa-moon"></i>
                 <i class="fa-solid fa-sun"></i>
             </button>
-            <button onclick='showForm()' class="contact-btn">
-                <p class="contactBtnText" data-text>Contato</p>
+            <button onclick='showForm()' class="contact-btn" data-text>
+                Contato
             </button>
         </div>
 
@@ -87,13 +87,13 @@
             </div>
             <div class="menu-options__container">
                 <p class="menu-options__text" data-text>Idioma</p>
-                <div class="lang-div2">
+                <button type="button" onclick="handleChangeLanguage()" class="lang-button  menu-options__lang-button">
                     <div>
                         <img class="usaFlag" src="images/usa-icon.png" alt="USA flag icon">
-                        <img class="brazilFlag hideFlag" src="images/brazil-icon.png" alt="USA flag icon">
+                        <img class="brazilFlag hideFlag" src="images/brazil-icon.png" alt="Brazilian flag icon">
                     </div>
-                    <button onclick="handleChangeLanguage()" data-text>English</button>
-                </div>
+                    <span data-text>English</span>
+                </button>
             </div>
             
             

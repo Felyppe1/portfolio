@@ -9,10 +9,6 @@
     --section1-font-size: 1rem;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 * {
     padding: 0;
     margin: 0;
@@ -26,6 +22,13 @@ html {
     /* outline: none; */
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+button {
+  background-color: transparent;
+}
 
 .hidden {
     opacity: 0;
@@ -68,43 +71,43 @@ header p {
     gap: 3rem;
 }
 
-.portfolio, .aboutMe, .projects, .lang-div {
+.hover-effect {
     position: relative;
     transition: .1s;
 }
 
-.portfolio::before, .aboutMe::before, .projects::before, .lang-div::before {
+.hover-effect::before {
     content: '';
     background: var(--second-color);
     position: absolute;
     left: 50%;
     transform: translate(-50%, 500%);
     opacity: 0;
-    transition: .6s;
+    transition: .5s;
     width: .438rem;
     height: .438rem;
     border-radius: 50%;
 }
 
-.portfolio:hover, .aboutMe:hover, .projects:hover, .lang-div:hover {
-    /* color: var(--third-color); */
+.hover-effect:hover {
     font-weight: 700;
     transform: scale(1.1);
 }
 
-.portfolio:hover::before, .aboutMe:hover::before, .projects:hover::before, .lang-div:hover::before {
+.hover-effect:hover::before {
     transform: translate(-50%, 380%);
     opacity: 1;
 }
 
-.lang-div, .lang-div2 {
+.lang-button {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    width: fit-content;
     cursor: pointer;
 }
 
-.lang-div > div, .lang-div2 > div {
+.lang-button > div {
     object-fit: contain;
     width: 1.813rem;
     height: 1.813rem;
@@ -122,13 +125,13 @@ header p {
     display: none;
 }
 
-.lang-div button, .lang-div2 button {
+.lang-button button {
     cursor: pointer;
     background-color: transparent;
     font-size: 1.1rem;
 }
 
-.lang-div2 button {
+.menu-options__lang-button {
     color: #fafafa;
 }
 
@@ -191,42 +194,12 @@ header p {
     transition: background-color .3s;
 }
 
-.contact-btn p {
-    color: var(--bg-color);
-    z-index: 2;
-    position: relative;
-    transition: background-color .3s;
-}
-
 @media (hover: hover) and (pointer: fine) {
     .contact-btn:hover {
         background-color: var(--bg-color);
-    }
-    
-    .contact-btn:hover p {
         color: var(--second-color);
     }
 }
-
-/* .contact-btn::before {
-    content: '';
-    background: #1c4fae;
-    position: absolute;
-    width: 178px;
-    height: 168px;
-    border-radius: 77px;
-    transform: translate(-50%, 30%);
-    transition: .5s;
-    z-index: 1;
-}
-
-.contact-btn:hover::before {
-    transform: translate(-50%, -50%);
-} */
-
-/* .contact-btn:hover p {
-    color: #fafafa;
-} */
 
 @keyframes shakeBtn {
     1% {
@@ -1235,7 +1208,7 @@ main:not(.form-container) {
 }
 
 @media screen and (max-width: 880px) {
-    .navigation, .hideable-theme-button, .lang-div {
+    .navigation, .hideable-theme-button, .hideable-lang-button {
         display: none !important;
     }
     
