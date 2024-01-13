@@ -1122,7 +1122,7 @@ header p {
 }
 
 .project-soon {
-    position: absolute;
+    position: relative;
     justify-content: center;
     align-items: center;
     background-color: #bbb;
@@ -1147,15 +1147,27 @@ header p {
     margin-bottom: 1rem;
 }
 
-.current-page {
+.pages {
     position: relative;
     width: .625rem;
     overflow: hidden;
 }
 
-.current-page p {
+.pages span {
     position: absolute;
     transition: .4s;
+}
+
+.page[data-page-state="behind"] {
+    translate: 0 -200%;
+}
+
+.page[data-page-state="current"] {
+    translate: 0;
+}
+
+.page[data-page-state="ahead"] {
+    translate: 0 200%;
 }
 
 @media screen and (max-width: 1060px) {

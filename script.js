@@ -89,8 +89,12 @@ function handleToRight() {
     projectsListElem.style.translate = `-${widthOffset + translateOffset}rem`
 
     projects[visibleProject].classList.remove('project-focus')
+    pagesElement.children[visibleProject].setAttribute('data-page-state', 'behind')
+    
     visibleProject++
+
     projects[visibleProject].classList.add('project-focus')
+    pagesElement.children[visibleProject].setAttribute('data-page-state', 'current')
 
     arrowLeft.classList.remove('hidden')
     if (visibleProject == projects.length - 1) {
@@ -105,7 +109,11 @@ function handleToLeft() {
     projectsListElem.style.translate = `-${widthOffset + translateOffset}rem`
 
     projects[visibleProject].classList.remove('project-focus')
+    pagesElement.children[visibleProject].setAttribute('data-page-state', 'ahead')
+
     visibleProject--
+
+    pagesElement.children[visibleProject].setAttribute('data-page-state', 'current')
     projects[visibleProject].classList.add('project-focus')
 
     arrowRight.classList.remove('hidden')
@@ -120,22 +128,16 @@ arrowLeft.addEventListener('click', handleToLeft)
 
 
 let projects = document.querySelectorAll('[data-project]')
-let currentPage = document.querySelector('.current-page')
-let indice = 0
-projects.forEach(project => {
-    //CRIA AS TAGS <p> PARA CADA PÁGINA
-    let pageElement = document.createElement('p')
-    pageElement.innerText = indice + 1
-    if (indice != 0) {
-        pageElement.style.translate = '0 200%'
-    }
-    pageElement.classList.add('pages')
-    currentPage.append(pageElement)
-
-    indice++
+let pagesElement = document.querySelector('[data-pages]')
+projects.forEach((_, index) => {
+    let span = document.createElement('span')
+    span.classList.add('page')
+    span.innerText = index + 1
+    span.setAttribute('data-page-state', index == 0 ? 'current' : 'ahead')
+    pagesElement.append(span)
 })
-const pagesTotalNumber = document.querySelector('.pages-total-number')
-pagesTotalNumber.innerText = projects.length
+const totalPagesElement = document.querySelector('[data-total-pages]')
+totalPagesElement.innerText = projects.length
 let visibleProject = 0
 
 function setProjectWidth() {
