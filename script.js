@@ -78,107 +78,43 @@ let themeButtons = document.querySelectorAll('[data-theme-button]')
 themeButtons.forEach(button => button.addEventListener('click', handleChangeTheme))
 
 
+
+
+
+
 function handleToRight() {
-    let indice = 0
-    if (visibleProject < projects.length - 1) {
-        projects.forEach(project => {
-            let pagesList = document.querySelectorAll('.pages')
+    if (visibleProject >= projects.length - 1) return
 
-            if (indice == visibleProject) {
-                project.style.translate = '-100%'
-                project.style.scale = '.7'
-                project.style.opacity = '.3'
+    translateOffset += projectWidth
+    projectsListElem.style.translate = `-${widthOffset + translateOffset}rem`
 
-                pagesList[indice].style.translate = '0 -200%'
-            }
-            else if (indice == visibleProject + 1) {
-                project.style.translate = '0'
-                project.style.scale = '1'
-                project.style.opacity = '1'
+    projects[visibleProject].classList.remove('project-focus')
+    visibleProject++
+    projects[visibleProject].classList.add('project-focus')
 
-                pagesList[indice].style.translate = '0 0'
-            }
-            else if (indice > visibleProject + 1) {
-                //let translateNumber = Number(window.getComputedStyle(project).translate.replace(/\W+/g, ''))
-                //project.style.translate = `${translateNumber - 85}%` 
-
-                project.style.translate = `${100 + (85 * ((indice - visibleProject) - 2))}%`
-                project.style.scale = '.7'
-                project.style.opacity = '.3'
-            }
-            else if (indice < visibleProject) {
-                //let translateNumber = Number(window.getComputedStyle(project).translate.replace(/\W+/g, ''))
-                //project.style.translate = `${-translateNumber - 85}%`
-                
-                project.style.translate = `${-100 + (-85 * (visibleProject - indice))}%`
-                project.style.scale = '.7'
-                project.style.opacity = '.3'
-            }
-            indice++         
-        })
-        visibleProject++
-
-        let leftButton = document.querySelector('.fa-chevron-left')
-        leftButton.classList.remove('hidden')
-
-        if (visibleProject == projects.length - 1) {
-            let rightButton = document.querySelector('.fa-chevron-right')
-            rightButton.classList.add('hidden')
-        }
+    arrowLeft.classList.remove('hidden')
+    if (visibleProject == projects.length - 1) {
+        arrowRight.classList.add('hidden')
     }
 }
 
 function handleToLeft() {
-    let indice = 0
-    if (visibleProject > 0) {
-        let pagesList = document.querySelectorAll('.pages')
+    if (visibleProject <= 0) return
 
-        projects.forEach(project => {
-            if (indice == visibleProject) {
-                project.style.translate = '100%'
-                project.style.scale = '.7'
-                project.style.opacity = '.3'
+    translateOffset -= projectWidth
+    projectsListElem.style.translate = `-${widthOffset + translateOffset}rem`
 
-                pagesList[indice].style.translate = '0 200%'
-            }
-            else if (indice > visibleProject) {
-                //let translateNumber = Number(window.getComputedStyle(project).translate.replace(/\W+/g, ''))
-                //project.style.translate = `${translateNumber + 85}%`
-                
-                project.style.translate = `${100 + (85 * (indice - visibleProject))}%`
-                project.style.scale = '.7'
-                project.style.opacity = '.3'
-            }
-            else if (indice == visibleProject - 1) {
-                project.style.translate = '0'
-                project.style.scale = '1'
-                project.style.opacity = '1'
+    projects[visibleProject].classList.remove('project-focus')
+    visibleProject--
+    projects[visibleProject].classList.add('project-focus')
 
-                pagesList[indice].style.translate = '0 0'
-            }
-            else if (indice < visibleProject - 1) {
-                //let translateNumber = Number(window.getComputedStyle(project).translate.replace(/\W+/g, ''))
-                //project.style.translate = `${-translateNumber + 85}%`
-
-                project.style.translate = `${-100 + (85 * ((indice - visibleProject) + 2))}%`
-                project.style.scale = '.7'
-                project.style.opacity = '.3'
-            }
-            indice++
-        })
-        visibleProject--
-
-        let rightButton = document.querySelector('.fa-chevron-right')
-        rightButton.classList.remove('hidden')
-
-        if (visibleProject == 0) {
-            let leftButton = document.querySelector('.fa-chevron-left')
-            leftButton.classList.add('hidden')
-        }
+    arrowRight.classList.remove('hidden')
+    if (visibleProject == 0) {
+        arrowLeft.classList.add('hidden')
     }
 }
-let arrowRight = document.querySelector('[data-projects-section__arrow-right')
-let arrowLeft = document.querySelector('[data-projects-section__arrow-left')
+let arrowRight = document.querySelector('[data-projects-section__arrow-right]')
+let arrowLeft = document.querySelector('[data-projects-section__arrow-left]')
 arrowRight.addEventListener('click', handleToRight)
 arrowLeft.addEventListener('click', handleToLeft)
 
@@ -187,22 +123,6 @@ let projects = document.querySelectorAll('[data-project]')
 let currentPage = document.querySelector('.current-page')
 let indice = 0
 projects.forEach(project => {
-    if (indice == 0) {
-        project.style.translate = '0'
-    }
-    else {
-        if (indice == 1) {
-            project.style.translate = '100%'
-            project.style.scale = '.7'
-            project.style.opacity = '.3'
-        }
-        else {
-            project.style.translate = `${((indice - 1) * 85) + 100}%`
-            project.style.scale = '.7'
-            project.style.opacity = '.3'
-        }
-    }
-
     //CRIA AS TAGS <p> PARA CADA PÁGINA
     let pageElement = document.createElement('p')
     pageElement.innerText = indice + 1
@@ -217,6 +137,28 @@ projects.forEach(project => {
 const pagesTotalNumber = document.querySelector('.pages-total-number')
 pagesTotalNumber.innerText = projects.length
 let visibleProject = 0
+
+function setProjectWidth() {
+    fontSize = parseFloat(getComputedStyle(document.documentElement).fontSize)
+    projectWidth = parseFloat(getComputedStyle(projects[0]).width) / fontSize
+    
+    widthOffset = projectWidth / 2
+    translateOffset = projectWidth * visibleProject
+    projectsListElem.style.translate = `-${widthOffset + translateOffset}rem`
+}
+
+let fontSize = 0
+let projectWidth = 0
+let widthOffset = 0
+let translateOffset = 0
+const projectsListElem = document.querySelector('[data-projects-section__list]')
+
+const resizeObserver = new ResizeObserver(entries => {
+    if (entries[0]) {
+        setProjectWidth()
+    }
+})
+resizeObserver.observe(document.body)
 
 
 
