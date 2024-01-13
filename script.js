@@ -183,7 +183,7 @@ arrowRight.addEventListener('click', handleToRight)
 arrowLeft.addEventListener('click', handleToLeft)
 
 
-let projects = document.querySelectorAll('.projects-div')
+let projects = document.querySelectorAll('[data-project]')
 let currentPage = document.querySelector('.current-page')
 let indice = 0
 projects.forEach(project => {
