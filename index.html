@@ -21,8 +21,10 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="fontawesome/css/all.min.css">
     <!-- <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon"> -->
+
     <script src="languages.js"></script>
-    <script defer src="script.js"></script>
+    <script src="js/modules/modal.js" defer></script>
+    <script src="script.js" defer></script>
 </head>
 <body>
     <header>
@@ -51,7 +53,7 @@
                 <i class="fa-solid fa-moon theme-button__moon"></i>
                 <i class="fa-solid fa-sun theme-button__sun"></i>
             </button>
-            <button onclick='showForm()' class="contact-btn" data-text="3">
+            <button data-open-modal="contact-form" class="contact-btn" data-text="3">
                 Contato
             </button>
         </div>
@@ -302,30 +304,32 @@
     </main>
     <div class="email-sent">
         <p data-text="10">Seu email foi enviado com sucesso!</p>
-        <button onclick="closeMessage()"><i class="fa-solid fa-xmark"></i></button>
+        <button data-close-toast><i class="fa-solid fa-xmark"></i></button>
     </div>
     
     <div class="behind-form-container"></div>
     
-    <div data-modal="contact-form" data-state="close" class="form-container">
-        <i onclick='closeForm()' class="fa-regular fa-circle-xmark"></i>
+    <div data-modal="contact-form" class="modal">
+        <button data-close-modal="contact-form" class="close-modal-button">
+          <i class="fa-regular fa-circle-xmark"></i>
+        </button>
         <h2 class="formSubtitle" data-text="11">Contato</h2>
         <p class="formText3" data-text="12">Interessado em trabalharmos juntos? Me envie um email!</p>
         <form data-contact-form class='contact-form'>
-            <label for="name" data-text="13" class="contact-form__label">
-                <span class="contact-form__span">Nome</span>
+            <label for="name" class="contact-form__label">
+                <span class="contact-form__span" data-text="13">Nome</span>
                 <input data-contact-form-input type="text" id="name" name="name" autocomplete="off" >
             </label>
             <label for="email" class="contact-form__label">
                 <span class="contact-form__span">Email</span>
                 <input data-contact-form-input="email" type="email" id="email" name="email" autocomplete="off" >
             </label>
-            <label for="subject" data-text="14" class="contact-form__label">
-                <span class="contact-form__span">Assunto</span>
+            <label for="subject" class="contact-form__label">
+                <span class="contact-form__span" data-text="14">Assunto</span>
                 <input data-contact-form-input type="text" id="subject" name="subject" autocomplete="off" >
             </label>
-            <label for="message" data-text="15" id="message-label" class="contact-form__label">
-                <span class="contact-form__span">Mensagem</span>
+            <label for="message" id="message-label" class="contact-form__label">
+                <span class="contact-form__span" data-text="15">Mensagem</span>
                 <textarea data-contact-form-input name="message" id="message" cols="30" rows="3" autocomplete="off" ></textarea>
             </label>
             <button type="submit" name='submit' class="contact-form__submit-button" data-text="36">Enviar</button>

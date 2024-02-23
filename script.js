@@ -155,16 +155,9 @@ hiddenElements.forEach(el => observer.observe(el))
 
 /*When click outside the popup, it closes*/ 
 document.addEventListener('click', (event)=>{
-    const formContainer = document.querySelector('.form-container')
-    const contactBtn = document.querySelector('.contact-btn')
     const menuOptions = document.querySelector('.menu-options')
     const hamburgerMenu = document.querySelector('.hamburger-menu')
 
-    if (!formContainer.contains(event.target) && 
-        !contactBtn.contains(event.target) &&
-        showingForm) {
-            closeForm()
-    }
     if (!menuOptions.contains(event.target) && 
         !hamburgerMenu.contains(event.target) &&
         showingMenu) {
@@ -255,35 +248,19 @@ projectsContainer.addEventListener('touchend', function(event) {
 
 
 /*Related to form*/
-var showingForm = false
-const body = document.querySelector('body')
-function showForm() {
-    const behindFormContainer = document.querySelector('.behind-form-container')
-    behindFormContainer.style.display = 'block'
-
-    const formContainer = document.querySelector('.form-container')
-    formContainer.style.transform = 'translate(-50%, -50%) scale(1)'
-    formContainer.style.transition = '.5s'
-
-    body.style.overflow = 'hidden' /*Body was created down the code*/
-    showingForm = true
-}
-
-function closeForm() {
-    const behindFormContainer = document.querySelector('.behind-form-container')
-    behindFormContainer.style.display = 'none'
-
-    const formContainer = document.querySelector('.form-container')
-    formContainer.style.transform = 'translate(-50%, -50%) scale(0)'
-    formContainer.style.transition = '0s'
-
-    body.style.removeProperty('overflow') /*Body was created down the code*/
-    showingForm = false
-}
+const contactFormModalContainer = document.querySelector('[data-modal="contact-form"]')
+const contactFormModal = new Modal({
+    modal: contactFormModalContainer,
+    modalTrigger: document.querySelector('[data-open-modal="contact-form"'),
+    modalClose: contactFormModalContainer.querySelector('[data-close-modal="contact-form"]')
+})
 
 function clearContactForm({ clearFields }) {
     contactFormInputList.forEach(input => {
-        if (clearFields) input.value = ''
+        if (clearFields) {
+            input.value = ''
+            input.setAttribute('data-filled', 'false')
+        }
         input.removeAttribute('data-state')
         input.nextElementSibling?.remove()
     })
@@ -299,7 +276,7 @@ contactForm.addEventListener('submit', (event) => {
 
     const createError = (errorMessage, label) => {
         let p = document.createElement('p')
-        p.classList.add('form-container__error')
+        p.classList.add('contact-form__error')
         p.innerText = errorMessage
 
         label.append(p)
@@ -369,7 +346,7 @@ function sendEmail() {
     emailjs.send(serviceId, templateId, params)
     .then(response => {
         clearContactForm({ clearFields: true })
-        closeForm()
+        contactFormModal.closeModal()
 
         let successMessage = document.querySelector('.email-sent')
         successMessage.style.display = 'flex'
@@ -381,7 +358,5 @@ function sendEmail() {
     .catch(error => console.log(error))
 }
 
-function closeMessage() {
-    let successMessage = document.querySelector('.email-sent')
-    successMessage.style.display = 'none'
-}
+let closeToast = document.querySelector('[data-close-toast]')
+closeToast.addEventListener('click', () => closeToast.parentNode.classList.add('hidden'))

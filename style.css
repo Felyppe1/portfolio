@@ -372,7 +372,9 @@ header p {
 
 
 
-.behind-form-container {
+
+
+.behind-modal {
     display: none;
     background-color: rgba(0, 0, 0, 0.788);
     position: absolute;
@@ -456,51 +458,65 @@ header p {
     font-size: 2rem;
 }
 
-.form-container {
+/* MODAL */
+.modal-basics {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    scale: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 5;
+}
+
+.modal-basics[data-state="open"] {
+    scale: 1;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 3;
+}
+
+.overlay--dark {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+
+
+.modal {
     background-color: var(--modal);
-    /* color: var(--modal); */
     max-width: 33rem;
     width: 85%;
     min-height: 31.25rem;
     display: flex;
-    position: fixed;
-    z-index: 5;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0);
     flex-direction: column;
     padding: 2rem 1.5rem;
-    transition: 
-        transform .5s,
-        background-color .5s;
-    border-radius: .938rem;
+    border-radius: .75rem;
 }
 
-.not-working {
-    background-color: #d87724;
-    color: #fafafa;
-    padding: .125rem .5rem;
-    border-radius: .625rem;
+.close-modal-button {
     position: absolute;
-    top: .188rem;
-    right: 11rem;
-    font-weight: 400 !important;
+    top: .825rem;
+    right: 1.5rem;
+    cursor: pointer; 
 }
 
-.form-container .fa-circle-xmark {
-    position: absolute;
-    top: .813rem;
-    right: 1.563rem;
+.close-modal-button * {
     font-size: 1.75rem;
-    cursor: pointer;
-    transition: .3s;
+    transition: .15s;
 }
 
-.form-container .fa-circle-xmark:hover {
-    color: rgb(255, 49, 49);
+.close-modal-button:hover * {
+    color: hsl(0, 100%, 60%);
 }
 
-.form-container > p:not(.not-working) {
+.modal > p {
     font-weight: 500;
     margin-top: .3rem;
     margin-bottom: 1.5rem;
@@ -528,12 +544,6 @@ header p {
     width: max-content;
 }
 
-/* .contact-form__label span::after {
-    content: " *";
-    color: rgb(223, 107, 29);
-    font-weight: 300;
-} */
-
 .contact-form__label:focus-within span,
 .contact-form__label:has([data-filled="true"]) span {
     translate: 0;
@@ -545,7 +555,7 @@ header p {
     background-color: transparent;
     border: .125rem solid var(--foreground);
     padding: .375rem .438rem .25rem .438rem;
-    font-weight: 300;
+    font-weight: 400;
     letter-spacing: .05rem;
     font-family: var(--primary-font);
     resize: none;
@@ -556,7 +566,7 @@ header p {
     border-color: hsl(0deg 100% 64%) !important;
 }
 
-.form-container__error {
+.contact-form__error {
     position: absolute;
     top: .1rem;
     right: 0;
@@ -601,7 +611,7 @@ header p {
 .contact-form__submit-button:focus {
     opacity: .8;
 }
-/* .form-container::before {
+/* .modal::before {
     content: '';
     background: rgba(0, 0, 0, 0.634);
     position: absolute;
@@ -1409,7 +1419,7 @@ header p {
 }
 
 @media screen and (max-width: 300px) {
-    .form-container {
+    .modal {
         width: 90%;
     }
 }
