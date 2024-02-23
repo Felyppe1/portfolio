@@ -1,25 +1,25 @@
 :root {
     --background: hsl(0, 0%, 5%);
-    --foreground: hsl(0, 0%, 96%);
+    --foreground: hsl(0, 0%, 93%);
 
     --popover: hsl(0, 0%, 13%);
-    --popover-foreground: hsl(0, 0%, 96%);
+    --popover-foreground: hsl(0, 0%, 93%);
 
     --modal: hsl(0, 0%, 13%);
-    --modal-foreground: hsl(0, 0%, 96%);
+    --modal-foreground: hsl(0, 0%, 93%);
 
     --primary-font: 'Noto Sans Tamil', sans-serif;
     --section1-font: 'IBM Plex Mono', monospace;
 }
 
 .light {
-    --background: hsl(0, 0%, 94%);
+    --background: hsl(0, 0%, 93%);
     --foreground: hsl(0, 0%, 5%);
 
     --popover: hsl(0, 0%, 37%);
-    --popover-foreground: hsl(0, 0%, 96%);
+    --popover-foreground: hsl(0, 0%, 93%);
 
-    --modal: hsl(0, 0%, 96%);
+    --modal: hsl(0, 0%, 92%);
     --modal-foreground: hsl(0, 0%, 5%);
 
     --primary-font: 'Noto Sans Tamil', sans-serif;
@@ -459,7 +459,7 @@ header p {
 .form-container {
     background-color: var(--modal);
     /* color: var(--modal); */
-    max-width: 37.5rem;
+    max-width: 33rem;
     width: 85%;
     min-height: 31.25rem;
     display: flex;
@@ -506,67 +506,86 @@ header p {
     margin-bottom: 1.5rem;
 }
 
-.form {
+.contact-form {
     display: flex;
     flex-direction: column;
     gap: 1rem;
 }
 
-.form > div {
+.contact-form__label {
     display: flex;
     flex-direction: column;
     gap: 0.2rem;
     position: relative;
 }
 
-.form > div label {
-    transform: translate(.625rem, 160%);
-    /* transform: translate(.438rem, 150%); */
-    transition: .27s;
+
+.contact-form__label span {
+    translate: .625rem 1.9rem;
+    transition: .24s;
     opacity: .6;
     cursor: initial;
     width: max-content;
 }
 
-/* #message-label {
-    transform: translate(.438rem, 339%);
+/* .contact-form__label span::after {
+    content: " *";
+    color: rgb(223, 107, 29);
+    font-weight: 300;
 } */
 
-.form > div input,
-.form > div textarea {
+.contact-form__label:focus-within span,
+.contact-form__label:has([data-filled="true"]) span {
+    translate: 0;
+    opacity: 1;
+}
+
+.contact-form__label input,
+.contact-form__label textarea {
     background-color: transparent;
     border: .125rem solid var(--foreground);
-    /* border-bottom: .125rem solid var(--foreground); */
     padding: .375rem .438rem .25rem .438rem;
-    /* padding: 0 0 .313rem .438rem; */
     font-weight: 300;
     letter-spacing: .05rem;
     font-family: var(--primary-font);
     resize: none;
 }
 
+.contact-form__label input[data-state="invalid"],
+.contact-form__label textarea[data-state="invalid"] {
+    border-color: hsl(0deg 100% 64%) !important;
+}
+
+.form-container__error {
+    position: absolute;
+    top: .1rem;
+    right: 0;
+    font-size: .9rem;
+    font-weight: 500;
+    color: hsl(0deg 100% 64%);
+}
+
 #email {
     padding: .375rem 2.125rem .25rem .438rem;
 }
 
-.form > div .fa-circle-check,
-.form > div .fa-circle-exclamation {
+.contact-form__label .fa-circle-check,
+.contact-form__label .fa-circle-exclamation {
     position: absolute;
     right: .625rem;
     top: 1.938rem;
-    /* top: 1.688rem; */
-    display: none;
+    /* display: none; */
 }
 
-.form > div .fa-circle-check {
+.contact-form__label .fa-circle-check {
     color: rgb(0, 151, 0);
 }
 
-.form > div .fa-circle-exclamation {
+.contact-form__label .fa-circle-exclamation {
     color: rgb(200, 157, 0);
 }
 
-.form__submit-button {
+.contact-form__submit-button {
     background-color: #043593 !important;
     color: #fafafa;
     width: 9.375rem;
@@ -575,11 +594,11 @@ header p {
     font-size: 1.2rem;
 }
 
-.form__submit-button:hover {
+.contact-form__submit-button:hover {
     opacity: .8;
 }
 
-.form__submit-button:focus {
+.contact-form__submit-button:focus {
     opacity: .8;
 }
 /* .form-container::before {
@@ -1279,7 +1298,9 @@ header p {
         font-size: 90%;
     }
 
-
+    .contact-form__label span {
+      translate: .625rem 2rem;
+    }
 }
 
 @media (max-width: 710px) {

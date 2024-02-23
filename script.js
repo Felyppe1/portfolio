@@ -136,50 +136,7 @@ resizeObserver.observe(document.body)
 
 
 
-/*Animation of the form labels*/
-function typeForm(htmlTag) {
-    htmlTag.previousElementSibling.style.transform = 'translate(0)'
-    htmlTag.previousElementSibling.style.opacity = '1'
-}
 
-function losesFocus(htmlTag) {
-    if (htmlTag.value == '') {
-        htmlTag.previousElementSibling.style.removeProperty('transform')
-        htmlTag.previousElementSibling.style.opacity = '.6'
-        if (htmlTag.id == 'email') {
-            htmlTag.nextElementSibling.style.removeProperty('display')
-            htmlTag.nextElementSibling.nextElementSibling.style.removeProperty('display')
-        }
-    }
-    else {
-        if (htmlTag.id == 'email') {
-            let user = htmlTag.value.substring(0, htmlTag.value.indexOf('@'))
-            let domain = htmlTag.value.substring(htmlTag.value.indexOf('@') + 1)
-        
-            //REFAZER USANDO REGEX
-            if ((user.length < 1) ||  
-                (domain.length < 3) ||
-                (user.search('@') != -1) || //if find @
-                (domain.search('@') != -1) || //if find @
-                (user.search(' ') != -1) || //if find ' '
-                (domain.search(' ') != -1) || //if find ' '
-                (domain.search('.') == -1) || //if don't find .
-                (domain.indexOf('.') < 1) || //if . is the first letter
-                (domain.lastIndexOf('.') == domain.length - 1)) { //if . is the last letter
-                    htmlTag.nextElementSibling.style.removeProperty('display')
-                    htmlTag.nextElementSibling.nextElementSibling.style.display = 'inline'
-                    /* let circleExclamation = document.querySelector('.fa-circle-exclamation')
-                    circleExclamation.style.display = 'inline' */
-                }
-            else {
-                htmlTag.nextElementSibling.style.display = 'inline'
-                htmlTag.nextElementSibling.nextElementSibling.style.removeProperty('display')
-            }
-            }
-            
-        }
-        
-}
 
 /*When the div is on the screen, the animation starts */
 const observer = new IntersectionObserver(
@@ -324,12 +281,83 @@ function closeForm() {
     showingForm = false
 }
 
+function clearContactForm({ clearFields }) {
+    contactFormInputList.forEach(input => {
+        if (clearFields) input.value = ''
+        input.removeAttribute('data-state')
+        input.nextElementSibling?.remove()
+    })
+}
+
+let contactForm = document.querySelector('[data-contact-form]')
+contactForm.addEventListener('submit', (event) => {
+    event.preventDefault()
+
+    clearContactForm({ clearFields: false })
+
+    let isFormValid = true
+
+    const createError = (errorMessage, label) => {
+        let p = document.createElement('p')
+        p.classList.add('form-container__error')
+        p.innerText = errorMessage
+
+        label.append(p)
+
+        label.querySelector('[data-contact-form-input]').setAttribute('data-state', 'invalid')
+
+        isFormValid = false
+    }
+
+
+    let nameInput = contactForm.querySelector('#name')
+    if (nameInput.value == '' || nameInput.value == null) {
+        createError('Nome é obrigatório', nameInput.parentNode)
+    }
+    
+    const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
+    let emailInput = contactForm.querySelector('#email')
+    if (emailInput.value == '' || emailInput.value == null) {
+        createError('Email é obrigatório', emailInput.parentNode)
+    } else if (!emailRegex.test(emailInput.value)) {
+        createError('Email inválido', emailInput.parentNode)
+    }
+
+    let subjectInput = contactForm.querySelector('#subject')
+    if (subjectInput.value == '' || subjectInput.value == null) {
+        createError('Assunto é obrigatório', subjectInput.parentNode)
+    }
+
+    let messageInput = contactForm.querySelector('#message')
+    if (messageInput.value == '' || messageInput.value == null) {
+        createError('Mensagem é obrigatório', messageInput.parentNode)
+    }
+
+    if (isFormValid) {
+        sendEmail()
+    }
+})
+
+let contactFormInputList = contactForm.querySelectorAll('[data-contact-form-input]')
+contactFormInputList.forEach(input => {
+    input.setAttribute('data-state', 'pristine')
+
+    input.addEventListener('blur', () => {
+        if (input.value != '') {
+            input.setAttribute('data-filled', 'true')
+        } else {
+            input.setAttribute('data-filled', 'false')
+        }
+    })
+})
+
+
 function sendEmail() {
-    let nameInput = document.querySelector('#name')
-    let emailInput = document.querySelector('#email')
-    let subjectInput = document.querySelector('#subject')
-    let messageInput = document.querySelector('#message')
-    var params = {
+    const nameInput = contactForm.querySelector('#name')
+    const emailInput = contactForm.querySelector('#email')
+    const subjectInput = contactForm.querySelector('#subject')
+    const messageInput = contactForm.querySelector('#message')
+    const params = {
         name: nameInput.value,
         email: emailInput.value,
         subject: subjectInput.value,
@@ -339,26 +367,18 @@ function sendEmail() {
     const templateId = "template_9qgvdbs"
 
     emailjs.send(serviceId, templateId, params)
-        .then(resp => {
-            nameInput.value = ''
-            emailInput.value = ''
-            subjectInput.value = ''
-            messageInput.value = ''
+    .then(response => {
+        clearContactForm({ clearFields: true })
+        closeForm()
 
-            losesFocus(nameInput)
-            losesFocus(emailInput)
-            losesFocus(subjectInput)
-            losesFocus(messageInput)
-            closeForm()
+        let successMessage = document.querySelector('.email-sent')
+        successMessage.style.display = 'flex'
 
-            let successMessage = document.querySelector('.email-sent')
-            successMessage.style.display = 'flex'
-
-            setTimeout(()=>{
-                successMessage.style.display = 'none'
-            }, 5000)
-        })
-        .catch(error => console.log(error))
+        setTimeout(()=>{
+            successMessage.style.display = 'none'
+        }, 5000)
+    })
+    .catch(error => console.log(error))
 }
 
 function closeMessage() {

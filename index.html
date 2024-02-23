@@ -13,9 +13,9 @@
         src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
     </script>
     <script type="text/javascript">
-        (function(){
-            emailjs.init("z-rl9nbSzgGvjO2Nh");
-        })();
+        (function() {
+            emailjs.init("z-rl9nbSzgGvjO2Nh")
+        })()
     </script>
 
     <link rel="stylesheet" href="style.css">
@@ -307,31 +307,29 @@
     
     <div class="behind-form-container"></div>
     
-    <div class="form-container">
+    <div data-modal="contact-form" data-state="close" class="form-container">
         <i onclick='closeForm()' class="fa-regular fa-circle-xmark"></i>
         <h2 class="formSubtitle" data-text="11">Contato</h2>
         <p class="formText3" data-text="12">Interessado em trabalharmos juntos? Me envie um email!</p>
-        <div class='form'>
-            <div>
-                <label class="nameLabel" for="name" data-text="13">Nome</label>
-                <input onfocus='typeForm(this)' onblur="losesFocus(this)" type="text" id="name" name="name" autocomplete="off" required>
-            </div>
-            <div>
-                <label for="email">Email</label>
-                <input onfocus='typeForm(this)' onblur="losesFocus(this)" type="text" id="email" name="email" autocomplete="off" required>
-                <i class="fa-solid fa-circle-check"></i>
-                <i class="fa-solid fa-circle-exclamation"></i>
-            </div>
-            <div>
-                <label class="subjectLabel" for="subject" data-text="14">Assunto</label>
-                <input onfocus='typeForm(this)' onblur="losesFocus(this)" type="text" id="subject" name="subject" autocomplete="off" required>
-            </div>
-            <div>
-                <label id="message-label" for="message" data-text="15">Mensagem</label>
-                <textarea onfocus='typeForm(this)' onblur="losesFocus(this)" name="message" id="message" cols="30" rows="3" autocomplete="off" required></textarea>
-            </div>
-            <button type="submit" name='submit' onclick="sendEmail()" class="form__submit-button" data-text="36">Enviar</button>
-        </div>
+        <form data-contact-form class='contact-form'>
+            <label for="name" data-text="13" class="contact-form__label">
+                <span class="contact-form__span">Nome</span>
+                <input data-contact-form-input type="text" id="name" name="name" autocomplete="off" >
+            </label>
+            <label for="email" class="contact-form__label">
+                <span class="contact-form__span">Email</span>
+                <input data-contact-form-input="email" type="email" id="email" name="email" autocomplete="off" >
+            </label>
+            <label for="subject" data-text="14" class="contact-form__label">
+                <span class="contact-form__span">Assunto</span>
+                <input data-contact-form-input type="text" id="subject" name="subject" autocomplete="off" >
+            </label>
+            <label for="message" data-text="15" id="message-label" class="contact-form__label">
+                <span class="contact-form__span">Mensagem</span>
+                <textarea data-contact-form-input name="message" id="message" cols="30" rows="3" autocomplete="off" ></textarea>
+            </label>
+            <button type="submit" name='submit' class="contact-form__submit-button" data-text="36">Enviar</button>
+        </form>
     </div>
 </body>
 </html>
