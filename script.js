@@ -28,54 +28,25 @@ let elementsToggleMenuVisibility = document.querySelectorAll('[data-toggle-menu-
 elementsToggleMenuVisibility.forEach(elem => elem.addEventListener('click', handleToggleMenuVisibility))
 
 
-var darkMode = true
 function handleChangeTheme() {
-    let faMoonList = document.querySelectorAll('.fa-moon')
-    let faSunList = document.querySelectorAll('.fa-sun')
-    let menuOptions = document.querySelector('.menu-options')
-    let formContainer = document.querySelector('.form-container')
-    let inputList = document.querySelectorAll('input')
-    let textarea = document.querySelector('textarea')
-    
     if (darkMode) {
-        for (faMoon of faMoonList) {
-            faMoon.style.transform = 'translateX(-200%)'
-        }
-        for (faSun of faSunList) {
-            faSun.style.transform = 'translateX(0)'
-        }
-        document.documentElement.style.setProperty('--bg-color', '#f4f4f4');
-        document.documentElement.style.setProperty('--second-color', '#0e0e0e');
-        menuOptions.style.backgroundColor = 'rgb(95 95 95)'
-        formContainer.style.backgroundColor = '#fafafa'
-        for (input of inputList) {
-            input.style.backgroundColor = '#fafafa'
-        }
-        textarea.style.backgroundColor = '#fafafa'
+        document.documentElement.className = 'light'
+
+        themeButtonList.forEach(button => button.setAttribute('data-theme', 'light'))
 
         darkMode = false
     }
     else {
-        for (faMoon of faMoonList) {
-            faMoon.style.transform = 'translateX(0)'
-        }
-        for (faSun of faSunList) {
-            faSun.style.transform = 'translateX(200%)'
-        }
-        document.documentElement.style.setProperty('--bg-color', '#0e0e0e');
-        document.documentElement.style.setProperty('--second-color', '#f4f4f4');
-        menuOptions.style.backgroundColor = 'rgb(34 34 34)'
-        formContainer.style.backgroundColor = 'rgb(27 27 27)'
-        for (input of inputList) {
-            input.style.backgroundColor = 'rgb(27 27 27)'
-        }
-        textarea.style.backgroundColor = 'rgb(27 27 27)'
+        document.documentElement.className = 'dark'
+
+        themeButtonList.forEach(button => button.setAttribute('data-theme', 'dark'))
 
         darkMode = true
     }
 }
-let themeButtons = document.querySelectorAll('[data-theme-button]')
-themeButtons.forEach(button => button.addEventListener('click', handleChangeTheme))
+let darkMode = true
+let themeButtonList = document.querySelectorAll('[data-theme-button]')
+themeButtonList.forEach(button => button.addEventListener('click', handleChangeTheme))
 
 
 

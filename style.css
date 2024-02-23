@@ -1,12 +1,29 @@
 :root {
-    --bg-color: #0e0e0e;
-    --second-color: #f4f4f4;
-    /* --bg-color: #fafafa;
-    --second-color:#0e0e0e; */
-    --third-color: #239AFC;
-    --texts-font: 'Noto Sans Tamil', sans-serif;
+    --background: hsl(0, 0%, 5%);
+    --foreground: hsl(0, 0%, 96%);
+
+    --popover: hsl(0, 0%, 13%);
+    --popover-foreground: hsl(0, 0%, 96%);
+
+    --modal: hsl(0, 0%, 13%);
+    --modal-foreground: hsl(0, 0%, 96%);
+
+    --primary-font: 'Noto Sans Tamil', sans-serif;
     --section1-font: 'IBM Plex Mono', monospace;
-    --section1-font-size: 1rem;
+}
+
+.light {
+    --background: hsl(0, 0%, 94%);
+    --foreground: hsl(0, 0%, 5%);
+
+    --popover: hsl(0, 0%, 37%);
+    --popover-foreground: hsl(0, 0%, 96%);
+
+    --modal: hsl(0, 0%, 96%);
+    --modal-foreground: hsl(0, 0%, 5%);
+
+    --primary-font: 'Noto Sans Tamil', sans-serif;
+    --section1-font: 'IBM Plex Mono', monospace;
 }
 
 * {
@@ -14,7 +31,7 @@
     margin: 0;
     box-sizing: border-box;
     font-size: 1rem;
-    color: var(--second-color);
+    color: var(--foreground);
     border: none;
     text-decoration: none;
     font-weight: 600;
@@ -26,8 +43,8 @@ html {
 }
 
 body {
-    font-family: var(--texts-font);
-    background-color: var(--bg-color);
+    font-family: var(--primary-font);
+    background-color: var(--background);
     position: relative;
 }
 
@@ -57,8 +74,7 @@ h2 {
 }
 
 header {
-    font-family: var(--texts-font);
-    background-color: var(--bg-color);
+    background-color: var(--background);
     width: 100%;
     min-height: 3.75rem;
     display: flex;
@@ -87,7 +103,7 @@ header p {
 
 .hover-effect::before {
     content: '';
-    background: var(--second-color);
+    background: var(--foreground);
     position: absolute;
     left: 50%;
     transform: translate(-50%, 500%);
@@ -151,10 +167,10 @@ header p {
 }
 
 .theme-button {
-    background-color: var(--second-color);
+    background-color: var(--foreground);
     width: 2.25rem;
     height: 2.125rem;
-    border: .125rem solid var(--second-color);
+    border: .125rem solid var(--foreground);
     border-radius: .5rem;
     display: flex;
     justify-content: center;
@@ -165,38 +181,46 @@ header p {
 }
 
 .theme-button i {
-    color: var(--bg-color);
+    color: var(--background);
     position: absolute;
     transition: .3s;
 }
 
 @media (hover: hover) and (pointer: fine) {
     .theme-button:hover {
-        background-color: var(--bg-color);
+        background-color: var(--background);
     }
     
     .theme-button:hover i {
-        color: var(--second-color);
+        color: var(--foreground);
     }
 }
 
 .fa-moon {
-    font-size: 1.688rem;
+    font-size: 1.675rem;
 }
 
 .fa-sun {
-    font-size: 1.438rem;
-    transform: translateX(200%);
+    font-size: 1.325rem;
+    translate: 200%;
+}
+
+.theme-button[data-theme="light"] .fa-moon {
+  translate: -200%;
+}
+
+.theme-button[data-theme="light"] .fa-sun {
+  translate: 0;
 }
 
 
 
 .contact-btn {
-    background-color: var(--second-color);
-    color: var(--bg-color);
+    background-color: var(--foreground);
+    color: var(--background);
     width: 8.125rem;
     height: 2.188rem;
-    border: .125rem solid var(--second-color);
+    border: .125rem solid var(--foreground);
     border-radius: 1.25rem;
     animation: shakeBtn 10s 10s infinite;
     cursor: pointer;
@@ -207,8 +231,8 @@ header p {
 
 @media (hover: hover) and (pointer: fine) {
     .contact-btn:hover {
-        background-color: var(--bg-color);
-        color: var(--second-color);
+        background-color: var(--background);
+        color: var(--foreground);
     }
 }
 
@@ -252,7 +276,7 @@ header p {
 }
 
 .hamburger-menu__lines {
-    background-color: var(--second-color);
+    background-color: var(--foreground);
     width: 100%;
     height: .3rem;
     position: absolute;
@@ -288,7 +312,7 @@ header p {
 }
 
 .menu-options {
-    background-color: rgb(34 34 34);
+    background-color: var(--popover);
     width: 17.5rem;
     position: absolute;
     top: 0;
@@ -322,9 +346,10 @@ header p {
 .menu-options__text {
     font-size: .8rem;
     font-weight: 300;
-    color: #ffffffcf;
+    color: var(--popover-foreground);
     padding-bottom: .5rem;
-    border-bottom: 1px solid #ffffffcf;
+    border-bottom: 1px solid var(--popover-foreground);
+    opacity: .8;
 }
 
 .menu-options__nav {
@@ -338,7 +363,7 @@ header p {
 }
 
 .menu-options__link {
-    color: #fafafa;
+    color: var(--popover-foreground);
 }
 
 
@@ -432,7 +457,8 @@ header p {
 }
 
 .form-container {
-    background-color: rgb(27 27 27)/* rgb(34 34 34) */;
+    background-color: var(--modal);
+    /* color: var(--modal); */
     max-width: 37.5rem;
     width: 85%;
     min-height: 31.25rem;
@@ -508,14 +534,14 @@ header p {
 
 .form > div input,
 .form > div textarea {
-    background-color: rgb(27 27 27);
-    border: .125rem solid var(--second-color);
-    /* border-bottom: .125rem solid var(--second-color); */
+    background-color: transparent;
+    border: .125rem solid var(--foreground);
+    /* border-bottom: .125rem solid var(--foreground); */
     padding: .375rem .438rem .25rem .438rem;
     /* padding: 0 0 .313rem .438rem; */
     font-weight: 300;
     letter-spacing: .05rem;
-    font-family: var(--texts-font);
+    font-family: var(--primary-font);
     resize: none;
 }
 
@@ -649,7 +675,7 @@ header p {
 .developer::before,
 .developer::after {
     content: '';
-    background: var(--bg-color);
+    background: var(--background);
     position: absolute;
     top: 0;
     right: 0;
@@ -678,13 +704,13 @@ header p {
 
 @keyframes blink {
     100% {
-        background: var(--second-color);
+        background: var(--foreground);
     }
 }
 
 @keyframes stay {
     100% {
-        background: var(--second-color);
+        background: var(--foreground);
     }
 }
 
@@ -710,13 +736,13 @@ header p {
 
 @keyframes blink2 {
     100% {
-        background: var(--second-color);
+        background: var(--foreground);
     }
 }
 
 @keyframes stay2 {
     100% {
-        background: var(--second-color);
+        background: var(--foreground);
     }
 }
 
@@ -742,13 +768,13 @@ header p {
 
 @keyframes blink5 {
     100% {
-        background: var(--second-color);
+        background: var(--foreground);
     }
 }
 
 @keyframes stay5 {
     100% {
-        background: var(--second-color);
+        background: var(--foreground);
     }
 }
 
@@ -773,7 +799,7 @@ header p {
 
 @keyframes stay6 {
     100% {
-        background: var(--second-color);
+        background: var(--foreground);
     }
 }
 
@@ -799,13 +825,13 @@ header p {
 
 @keyframes blink3 {
     100% {
-        background: var(--second-color);
+        background: var(--foreground);
     }
 }
 
 @keyframes stay3 {
     100% {
-        background: var(--second-color);
+        background: var(--foreground);
     }
 }
 
@@ -998,7 +1024,7 @@ header p {
     transform: translate(0, -50%);
     z-index: 2;
     font-size: 5.313rem;
-    color: var(--second-color);
+    color: var(--foreground);
     cursor: pointer;
     width: fit-content;
 }
