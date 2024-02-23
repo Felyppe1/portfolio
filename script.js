@@ -275,11 +275,14 @@ contactForm.addEventListener('submit', (event) => {
     let isFormValid = true
 
     const createError = (errorMessage, label) => {
-        let p = document.createElement('p')
-        p.classList.add('contact-form__error')
-        p.innerText = errorMessage
+        // let p = document.createElement('p')
+        // p.classList.add('contact-form__error')
+        // p.innerText = errorMessage
 
-        label.append(p)
+        let i = document.createElement('i') //Temporary while there's no translation for the error messages
+        i.classList.add('fa-solid', 'fa-circle-exclamation', 'contact-form__error')
+
+        label.append(i)
 
         label.querySelector('[data-contact-form-input]').setAttribute('data-state', 'invalid')
 

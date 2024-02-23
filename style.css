@@ -575,24 +575,15 @@ header p {
     color: hsl(0deg 100% 64%);
 }
 
-#email {
-    padding: .375rem 2.125rem .25rem .438rem;
-}
-
-.contact-form__label .fa-circle-check,
 .contact-form__label .fa-circle-exclamation {
+    color: hsl(0deg 100% 64%);
     position: absolute;
     right: .625rem;
-    top: 1.938rem;
-    /* display: none; */
+    top: 1.925rem;
 }
 
-.contact-form__label .fa-circle-check {
-    color: rgb(0, 151, 0);
-}
-
-.contact-form__label .fa-circle-exclamation {
-    color: rgb(200, 157, 0);
+#email {
+    padding: .375rem 2.125rem .25rem .438rem;
 }
 
 .contact-form__submit-button {
@@ -1297,12 +1288,6 @@ header p {
     }
 }
 
-/* @media (max-width: 810px) {
-    .PROPORTION1 {
-        font-size: .75rem;
-    }
-} */
-
 @media screen and (max-width: 790px) {
     html {
         font-size: 90%;
@@ -1310,6 +1295,10 @@ header p {
 
     .contact-form__label span {
       translate: .625rem 2rem;
+    }
+
+    .contact-form__label .fa-circle-exclamation {
+        top: 2.075rem;
     }
 }
 
