@@ -589,9 +589,12 @@ header p {
 .contact-form__submit-button {
     background-color: #043593 !important;
     color: #fafafa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
     width: 9.375rem;
     height: 2rem;
-    cursor: pointer;
     font-size: 1.2rem;
 }
 
@@ -599,9 +602,35 @@ header p {
     opacity: .8;
 }
 
-.contact-form__submit-button:focus {
-    opacity: .8;
+.contact-form__submit-button:disabled {
+    opacity: .6;
 }
+
+.spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: spin 1s infinite ease-in-out; 
+}
+
+.spinner::before {
+    content: "";
+    border: 3px solid hsla(0, 0%, 51%, 0.429);
+    border-top-color: hsl(0, 0%, 93%);
+    border-radius: 50%;
+    width: 1rem;
+    height: 1rem;
+}
+
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg); 
+    -o-transform: rotate(360deg); 
+    transform: rotate(360deg); 
+  }
+}
+
 /* .modal::before {
     content: '';
     background: rgba(0, 0, 0, 0.634);

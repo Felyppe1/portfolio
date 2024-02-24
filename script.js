@@ -306,9 +306,15 @@ function clearContactForm({ clearFields }) {
     })
 }
 
-let contactForm = document.querySelector('[data-contact-form]')
-contactForm.addEventListener('submit', (event) => {
+async function handleSubmitContactForm(event) {
     event.preventDefault()
+
+    let submitButton = contactForm.querySelector('[data-contact-form-submit]')
+    submitButton.disabled = true
+
+    let spinner = document.createElement('span')
+    spinner.classList.add('spinner')
+    submitButton.prepend(spinner)
 
     clearContactForm({ clearFields: false })
 
@@ -354,9 +360,15 @@ contactForm.addEventListener('submit', (event) => {
     }
 
     if (isFormValid) {
-        sendEmail()
+        await sendEmail()
     }
-})
+      
+    submitButton.disabled = false
+    spinner.remove()
+}
+
+let contactForm = document.querySelector('[data-contact-form]')
+contactForm.addEventListener('submit', handleSubmitContactForm)
 
 let contactFormInputList = contactForm.querySelectorAll('[data-contact-form-input]')
 contactFormInputList.forEach(input => {
@@ -372,7 +384,7 @@ contactFormInputList.forEach(input => {
 })
 
 
-function sendEmail() {
+async function sendEmail() {
     const nameInput = contactForm.querySelector('#name')
     const emailInput = contactForm.querySelector('#email')
     const subjectInput = contactForm.querySelector('#subject')
@@ -386,19 +398,16 @@ function sendEmail() {
     const serviceId = "service_sh5qn8c"
     const templateId = "template_9qgvdbs"
 
-    emailjs.send(serviceId, templateId, params)
-    .then(response => {
-        clearContactForm({ clearFields: true })
-        contactFormModal.closeModal()
+    await emailjs.send(serviceId, templateId, params)
+    clearContactForm({ clearFields: true })
+    contactFormModal.closeModal()
 
-        let successMessage = document.querySelector('.email-sent')
-        successMessage.style.display = 'flex'
+    let successMessage = document.querySelector('.email-sent')
+    successMessage.style.display = 'flex'
 
-        setTimeout(()=>{
-            successMessage.style.display = 'none'
-        }, 5000)
-    })
-    .catch(error => console.log(error))
+    setTimeout(()=>{
+        successMessage.style.display = 'none'
+    }, 5000)
 }
 
 let closeToast = document.querySelector('[data-close-toast]')
