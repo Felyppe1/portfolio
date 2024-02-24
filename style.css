@@ -284,16 +284,16 @@ header p {
     transition: .4s;
 }
 
-.hamburger-menu--selected > .line1 {
+.hamburger-menu[data-state="open"] > .line1 {
     transform: rotate(42deg) translate(0.375rem, 0.563rem);
     width: 2.5rem;
 }
 
-.hamburger-menu--selected > .line2 {
+.hamburger-menu[data-state="open"] > .line2 {
   opacity: 0;
 }
 
-.hamburger-menu--selected > .line3 {
+.hamburger-menu[data-state="open"] > .line3 {
     transform: rotate(-42deg) translate(0.375rem, -0.563rem);
     width: 2.5rem;
 }
@@ -331,7 +331,7 @@ header p {
     padding: 2.5rem 3rem 3rem 2rem;
 }
 
-.menu-options--opened {
+.menu-options[data-state="open"] {
     transform: translateX(0);
     border-radius: 0;
 }

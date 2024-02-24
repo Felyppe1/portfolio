@@ -57,45 +57,47 @@
                 Contato
             </button>
         </div>
-
-        <button data-toggle-menu-visibility class="hamburger-menu">
-            <span class="hamburger-menu__lines line1"></span>
-            <span class="hamburger-menu__lines line2"></span>
-            <span class="hamburger-menu__lines line3"></span>
-        </button>
-        <div class="menu-options">
-            <div class="menu-options__container">
-                <p class="menu-options__text" data-text="4">Navegação</p>
-                <nav class="menu-options__nav">
-                    <ul class="menu-options__list">
-                        <li>
-                            <a href="#section1" data-toggle-menu-visibility tabindex="-1" class="menu-options__link">Portfolio</a>
-                        </li>
-                        <li>
-                            <a href="#section2" data-toggle-menu-visibility tabindex="-1" class="menu-options__link" data-text="5">Sobre mim</a>
-                        </li>
-                        <li>
-                            <a href="#section3" data-toggle-menu-visibility tabindex="-1" class="menu-options__link" data-text="6">Projetos</a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-            <div class="menu-options__container">
-                <p class="menu-options__text" data-text="7">Tema</p>
-                <button data-theme-button data-theme="dark" tabindex="-1" class="theme-button">
-                    <i class="fa-solid fa-moon"></i>
-                    <i class="fa-solid fa-sun"></i>
-                </button>
-            </div>
-            <div class="menu-options__container">
-                <p class="menu-options__text" data-text="8">Idioma</p>
-                <button type="button" tabindex="-1" data-lang-button class="lang-button menu-options__lang-button">
-                    <div>
-                        <img class="usaFlag" src="images/usa-icon.png" alt="USA flag icon">
-                        <img class="brazilFlag hideFlag" src="images/brazil-icon.png" alt="Brazilian flag icon">
-                    </div>
-                    <span data-text="9">English</span>
-                </button>
+        
+        <div data-hamburger-menu-wrapper>
+            <button data-toggle-popover="hamburger-menu" data-state="close" data-hamburger-menu-trigger class="hamburger-menu">
+                <span class="hamburger-menu__lines line1"></span>
+                <span class="hamburger-menu__lines line2"></span>
+                <span class="hamburger-menu__lines line3"></span>
+            </button>
+            <div data-popover="menu-options" data-state="close" class="menu-options">
+                <div class="menu-options__container">
+                    <p class="menu-options__text" data-text="4">Navegação</p>
+                    <nav class="menu-options__nav">
+                        <ul class="menu-options__list">
+                            <li>
+                                <a href="#section1" data-hamburger-menu-trigger tabindex="-1" class="menu-options__link">Portfolio</a>
+                            </li>
+                            <li>
+                                <a href="#section2" data-hamburger-menu-trigger tabindex="-1" class="menu-options__link" data-text="5">Sobre mim</a>
+                            </li>
+                            <li>
+                                <a href="#section3" data-hamburger-menu-trigger tabindex="-1" class="menu-options__link" data-text="6">Projetos</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="menu-options__container">
+                    <p class="menu-options__text" data-text="7">Tema</p>
+                    <button data-theme-button data-theme="dark" tabindex="-1" class="theme-button">
+                        <i class="fa-solid fa-moon"></i>
+                        <i class="fa-solid fa-sun"></i>
+                    </button>
+                </div>
+                <div class="menu-options__container">
+                    <p class="menu-options__text" data-text="8">Idioma</p>
+                    <button type="button" tabindex="-1" data-lang-button class="lang-button menu-options__lang-button">
+                        <div>
+                            <img class="usaFlag" src="images/usa-icon.png" alt="USA flag icon">
+                            <img class="brazilFlag hideFlag" src="images/brazil-icon.png" alt="Brazilian flag icon">
+                        </div>
+                        <span data-text="9">English</span>
+                    </button>
+                </div>
             </div>
         </div>
     </header>

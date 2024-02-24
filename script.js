@@ -1,33 +1,70 @@
-var showingMenu = false
-function handleToggleMenuVisibility() {
-    // TODO: use accessibility attr to detect if popover is opened
-    // How to lock tabindex inside popover
+function handleToggleHamburgerMenu() {
+    let menuOptions = hamburgerMenuWrapper.querySelector('[data-popover="menu-options"]')
+    let hamburgerMenu = hamburgerMenuWrapper.querySelector('[data-toggle-popover="hamburger-menu"')
 
-    let hamburgerMenu = document.querySelector('.hamburger-menu')
-    let menuOptions = document.querySelector('.menu-options')
-    let focusableElements = menuOptions.querySelectorAll('button, a')
+    const focusableElements = menuOptions.querySelectorAll('button, a')
 
-    if (showingMenu) {
-        hamburgerMenu.classList.remove('hamburger-menu--selected')
-        menuOptions.classList.remove('menu-options--opened')
+    const menuState = menuOptions.dataset.state
+    if (menuState === 'open') {
+        hamburgerMenu.setAttribute('data-state', 'close')
+        menuOptions.setAttribute('data-state', 'close')
         focusableElements.forEach(elem => {
             elem.setAttribute('tabindex', '-1')
         })
     }
     else {
-        hamburgerMenu.classList.add('hamburger-menu--selected')
-        menuOptions.classList.add('menu-options--opened')
+        hamburgerMenu.setAttribute('data-state', 'open')
+        menuOptions.setAttribute('data-state', 'open')
         focusableElements.forEach(elem => {
             elem.removeAttribute('tabindex')
         })
     }
-
-    showingMenu = !showingMenu
 }
-let elementsToggleMenuVisibility = document.querySelectorAll('[data-toggle-menu-visibility]')
-elementsToggleMenuVisibility.forEach(elem => elem.addEventListener('click', handleToggleMenuVisibility))
+
+function handleKeydown(event) {
+  const menuOptions = hamburgerMenuWrapper.querySelector('[data-popover="menu-options"]')
+  const menuState = menuOptions.dataset.state
+  if (menuState === 'close') return 
+
+  const focusableElements = hamburgerMenuWrapper.querySelectorAll('button, a')
+  const firstFocusable = focusableElements[0]
+  const lastFocusable = focusableElements[focusableElements.length - 1]
+
+  if (event.key === 'Tab') {
+      if (event.shiftKey && document.activeElement === firstFocusable) {
+          event.preventDefault()
+          lastFocusable.focus()
+      } else if (!event.shiftKey && document.activeElement === lastFocusable) {
+          event.preventDefault()
+          firstFocusable.focus()
+      }
+  }
+}
+
+let hamburgerMenuWrapper = document.querySelector('[data-hamburger-menu-wrapper]')
+let hamburgerMenuTriggerList = document.querySelectorAll('[data-hamburger-menu-trigger]')
+hamburgerMenuWrapper.addEventListener('keydown', handleKeydown)
+hamburgerMenuTriggerList.forEach(elem => elem.addEventListener('click', handleToggleHamburgerMenu))
+
+//TODO: add an overlay every time popup opens
+/*When click outside the popup, it closes*/ 
+document.addEventListener('click', (event)=>{
+  const hamburgerMenu = hamburgerMenuWrapper.querySelector('[data-toggle-popover="hamburger-menu"')
+  const menuOptions = hamburgerMenuWrapper.querySelector('[data-popover="menu-options"]')
+  const menuState = menuOptions.dataset.state
+
+  if (!menuOptions.contains(event.target) && 
+      !hamburgerMenu.contains(event.target) &&
+      menuState === 'open') {
+          handleToggleHamburgerMenu()
+  }
+})
 
 
+
+
+
+//TODO: not having a darkMode variable (maybe, detecting the user's system theme and adding it at first)
 function handleChangeTheme() {
     if (darkMode) {
         document.documentElement.className = 'light'
@@ -153,17 +190,9 @@ const hiddenElements = document.querySelectorAll('[data-hidden-effect]')
 hiddenElements.forEach(el => observer.observe(el))
 
 
-/*When click outside the popup, it closes*/ 
-document.addEventListener('click', (event)=>{
-    const menuOptions = document.querySelector('.menu-options')
-    const hamburgerMenu = document.querySelector('.hamburger-menu')
 
-    if (!menuOptions.contains(event.target) && 
-        !hamburgerMenu.contains(event.target) &&
-        showingMenu) {
-            handleToggleMenuVisibility()
-    }
-})
+
+
 
 let portuguese = true
 function handleChangeLanguage() {
@@ -217,6 +246,12 @@ let langButtons = document.querySelectorAll('[data-lang-button]')
 langButtons.forEach(button => button.addEventListener('click', handleChangeLanguage))
 
 
+
+
+
+
+
+
 var startX, startY
 let projectsContainer = document.querySelector('.projects-section')
 projectsContainer.addEventListener('touchstart', (event)=>{
@@ -245,6 +280,11 @@ projectsContainer.addEventListener('touchend', function(event) {
         }
     }
 })
+
+
+
+
+
 
 
 /*Related to form*/
