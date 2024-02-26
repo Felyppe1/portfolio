@@ -3,13 +3,13 @@ class Modal {
     modalTrigger
     modalClose
     modalOverlay
-    onCloseCallback
+    onClose
 
-    constructor({ modal, modalTrigger, modalClose, onCloseCallback = null}) {
+    constructor({ modal, modalTrigger, modalClose, onClose = null}) {
         this.modalTrigger = modalTrigger
         this.modalClose = modalClose
         this.modal = modal
-        this.onCloseCallback = onCloseCallback
+        this.onClose = onClose
 
         this.modal.classList.add('modal-basics')
         this.modal.setAttribute('data-state', 'close')
@@ -42,8 +42,8 @@ class Modal {
 
         this.modalTrigger?.focus()
 
-        if (typeof this.onCloseCallback === 'function') {
-            this.onCloseCallback()
+        if (typeof this.onClose === 'function') {
+            this.onClose()
         }
     }
 

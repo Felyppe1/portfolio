@@ -292,7 +292,17 @@ const contactFormModalContainer = document.querySelector('[data-modal="contact-f
 const contactFormModal = new Modal({
     modal: contactFormModalContainer,
     modalTrigger: document.querySelector('[data-open-modal="contact-form"'),
-    modalClose: contactFormModalContainer.querySelector('[data-close-modal="contact-form"]')
+    modalClose: contactFormModalContainer.querySelector('[data-close-modal="contact-form"]'),
+    onClose: () => {
+        const nameValue = contactForm.querySelector('#name').value
+        const emailValue = contactForm.querySelector('#email').value
+        const subjectValue = contactForm.querySelector('#subject').value
+        const messageValue = contactForm.querySelector('#message').value
+
+        if (nameValue == '' && emailValue == '' && subjectValue == '' && messageValue == '') {
+          clearContactForm({ clearFields: true })
+        }
+    }
 })
 
 function clearContactForm({ clearFields }) {
