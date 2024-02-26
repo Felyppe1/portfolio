@@ -266,6 +266,10 @@ header p {
     }
 }
 
+.hamburger-menu-wrapper {
+    display: none;
+}
+
 .hamburger-menu {
     width: 2.188rem;
     height: 1.688rem;
@@ -1307,7 +1311,7 @@ header p {
         display: none !important;
     }
     
-    .hamburger-menu, .menu-options {
+    .hamburger-menu-wrapper, .hamburger-menu, .menu-options {
         display: flex;
     }
 
