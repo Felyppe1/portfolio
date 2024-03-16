@@ -1118,11 +1118,13 @@ header p {
         scale 1s,
         opacity 1s;
     scale: .7;
+    opacity: .5;
     overflow: hidden;
 }
 
 .project-focus {
     scale: none;
+    opacity: 1;
 }
 
 .project * {
@@ -1217,7 +1219,6 @@ header p {
     right: 0;
     bottom: 0;
     left: 0;
-    background-image: url(/images/movie-theater.png);
     background-position: center;
     background-size: cover;
     opacity: 0.15;
