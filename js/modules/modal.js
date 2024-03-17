@@ -48,7 +48,7 @@ class Modal {
     }
 
     handleTabKey(event) {
-        const focusableElements = this.getFocusables()
+        const focusableElements = this.getModalFocusables()
 
         const firstFocusable = focusableElements[0]
         const lastFocusable = focusableElements[focusableElements.length - 1]
@@ -64,13 +64,7 @@ class Modal {
         }
     }
 
-    getFocusables() {
-        return (
-          [...this.modal.querySelectorAll(
-              'a, button, input, textarea, select, details, [tabindex]:not([tabindex="-1"])')
-          ].filter(elem => {
-              if(!elem.hasAttribute('disabled') && !elem.hasAttribute('hidden') && elem.type != 'hidden') return elem
-          })
-        )
+    getModalFocusables() {
+        return getFocusables(this.modal)
     } 
 }
