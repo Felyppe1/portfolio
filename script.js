@@ -97,11 +97,15 @@ function handleToRight() {
     projectsListElem.style.translate = `-${widthOffset + translateOffset}rem`
 
     projects[visibleProject].classList.remove('project-focus')
+    let focusableElements = getFocusables(projects[visibleProject])
+    focusableElements.forEach(element => element.setAttribute('tabindex', '-1'))
     pagesElement.children[visibleProject].setAttribute('data-page-state', 'behind')
     
     visibleProject++
 
     projects[visibleProject].classList.add('project-focus')
+    focusableElements = getFocusables(projects[visibleProject])
+    focusableElements.forEach(element => element.removeAttribute('tabindex'))
     pagesElement.children[visibleProject].setAttribute('data-page-state', 'current')
 
     arrowLeft.classList.remove('hidden')
@@ -137,7 +141,12 @@ arrowLeft.addEventListener('click', handleToLeft)
 
 let projects = document.querySelectorAll('[data-project]')
 let pagesElement = document.querySelector('[data-pages]')
-projects.forEach((_, index) => {
+projects.forEach((project, index) => {
+    if (index !== 0) {
+      const focusableElements = getFocusables(project)
+      focusableElements.forEach(element => element.setAttribute('tabindex', '-1'))
+    }
+
     let span = document.createElement('span')
     span.classList.add('page')
     span.innerText = index + 1
