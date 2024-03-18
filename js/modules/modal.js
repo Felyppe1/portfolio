@@ -8,12 +8,14 @@ class Modal {
     constructor({ modal, modalTrigger, modalClose, onClose = null}) {
         this.modalTrigger = modalTrigger
         this.modalClose = modalClose
-        this.modal = modal
         this.onClose = onClose
 
+        this.modal = document.createElement('div')
         this.modal.classList.add('modal-basics')
         this.modal.setAttribute('data-state', 'close')
-
+        this.modal.append(modal)
+        document.body.append(this.modal)
+        
         this.modalOverlay = document.createElement('div')
         this.modalOverlay.classList.add('overlay', 'overlay--dark')
         
@@ -25,7 +27,6 @@ class Modal {
 
     showModal() {
         this.modal.setAttribute('data-state', 'open')
-        this.modal.style.transition = '.3s'
         document.documentElement.style.overflow = 'hidden'
 
         document.body.append(this.modalOverlay)
@@ -35,7 +36,6 @@ class Modal {
 
     closeModal() {
         this.modal.setAttribute('data-state', 'close')
-        this.modal.style.transition = '0s'
         document.documentElement.style.removeProperty('overflow')
 
         this.modalOverlay.remove()

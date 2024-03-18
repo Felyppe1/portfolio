@@ -108,9 +108,9 @@ function handleToRight() {
     focusableElements.forEach(element => element.removeAttribute('tabindex'))
     pagesElement.children[visibleProject].setAttribute('data-page-state', 'current')
 
-    arrowLeft.classList.remove('hidden')
+    buttonLeft.classList.remove('hidden')
     if (visibleProject == projects.length - 1) {
-        arrowRight.classList.add('hidden')
+        buttonRight.classList.add('hidden')
     }
 }
 
@@ -121,22 +121,26 @@ function handleToLeft() {
     projectsListElem.style.translate = `-${widthOffset + translateOffset}rem`
 
     projects[visibleProject].classList.remove('project-focus')
+    let focusableElements = getFocusables(projects[visibleProject])
+    focusableElements.forEach(element => element.setAttribute('tabindex', '-1'))
     pagesElement.children[visibleProject].setAttribute('data-page-state', 'ahead')
 
     visibleProject--
 
     pagesElement.children[visibleProject].setAttribute('data-page-state', 'current')
+    focusableElements = getFocusables(projects[visibleProject])
+    focusableElements.forEach(element => element.removeAttribute('tabindex'))
     projects[visibleProject].classList.add('project-focus')
 
-    arrowRight.classList.remove('hidden')
+    buttonRight.classList.remove('hidden')
     if (visibleProject == 0) {
-        arrowLeft.classList.add('hidden')
+        buttonLeft.classList.add('hidden')
     }
 }
-let arrowRight = document.querySelector('[data-projects-section__arrow-right]')
-let arrowLeft = document.querySelector('[data-projects-section__arrow-left]')
-arrowRight.addEventListener('click', handleToRight)
-arrowLeft.addEventListener('click', handleToLeft)
+let buttonRight = document.querySelector('[data-projects-section__button-right]')
+let buttonLeft = document.querySelector('[data-projects-section__button-left]')
+buttonRight.addEventListener('click', handleToRight)
+buttonLeft.addEventListener('click', handleToLeft)
 
 
 let projects = document.querySelectorAll('[data-project]')

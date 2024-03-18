@@ -201,8 +201,12 @@
             <h2 class="projects-section__title" data-text="20">Projetos</h2>
             
             <div class="projects-section__container">
-                <i data-projects-section__arrow-right class="projects-section__arrow-right fa-sharp fa-solid fa-chevron-right"></i>
-                <i data-projects-section__arrow-left class="projects-section__arrow-left hidden fa-sharp fa-solid fa-chevron-left"></i>
+                <button data-projects-section__button-right class="projects-section__button-right">
+                    <i class="fa-sharp fa-solid fa-chevron-right"></i>
+                </button>
+                <button data-projects-section__button-left class="projects-section__button-left hidden">
+                    <i class="fa-sharp fa-solid fa-chevron-left"></i>
+                </button>
 
                 <ul data-projects-section__list class="projects-section__list">
                     <li data-project class="project project-focus project6">
@@ -326,8 +330,6 @@
         <p data-text="10">Seu email foi enviado com sucesso!</p>
         <button data-close-toast><i class="fa-solid fa-xmark"></i></button>
     </div>
-    
-    <div class="behind-form-container"></div>
     
     <div data-modal="contact-form" class="modal">
         <button data-close-modal="contact-form" class="close-modal-button">
