@@ -1396,11 +1396,14 @@ header p {
 @media screen and (max-width: 470px) {
     .projects-section__button-left {
         left: 0.5rem;
-        font-size: 4rem;
     }
 
     .projects-section__button-right {
         right: 0.5rem;
+    }
+
+    .projects-section__button-left i,
+    .projects-section__button-right i {
         font-size: 4rem;
     }
 }
@@ -1435,8 +1438,8 @@ header p {
 }
 
 @media (max-width: 380px) {
-    .projects-section__button-right,
-    .projects-section__button-left {
+    .projects-section__button-right i,
+    .projects-section__button-left i {
         font-size: 3.5rem;
     }
 }
