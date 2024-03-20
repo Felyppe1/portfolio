@@ -220,7 +220,6 @@ function handleChangeLanguage() {
     if (portuguese) {
         textsList.forEach(text => {
             const textValue = text.dataset.text
-            console.log(text.dataset.text)
             text.innerText = language.english[textValue]
         })
 
@@ -228,10 +227,10 @@ function handleChangeLanguage() {
         englishAnimation.classList.remove('hideAnimation')
 
         usaFlags.forEach(flag => {
-            flag.classList.add('hideFlag')
+            flag.classList.remove('hideFlag')
         })
         brazilFlags.forEach(flag => {
-            flag.classList.remove('hideFlag')
+            flag.classList.add('hideFlag')
         })
 
         portuguese = false
@@ -246,10 +245,10 @@ function handleChangeLanguage() {
         englishAnimation.classList.add('hideAnimation')
 
         usaFlags.forEach(flag => {
-            flag.classList.remove('hideFlag')
+            flag.classList.add('hideFlag')
         })
         brazilFlags.forEach(flag => {
-            flag.classList.add('hideFlag')
+            flag.classList.remove('hideFlag')
         })
 
         portuguese = true
