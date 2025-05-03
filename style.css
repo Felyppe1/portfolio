@@ -1081,6 +1081,9 @@ header p {
     width: 4.5rem;
 }
 
+.sql-icon {
+    width: 4rem;
+}
 
 .tech-row1, .tech-row2 {
     display: flex;

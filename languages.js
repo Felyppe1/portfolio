@@ -96,8 +96,8 @@ const language = {
         '14': 'Subject',
         '15': 'Message',
         '16': 'About Me',
-        '17': "My name is Luiz Felyppe and I'm a full-stack programmer. I'm currently doing bachelor in Information Systems at UFF (Fluminense Federal University) and I work at ",
-        '18': "Focused on the web development field, I'm in love with technology and I'm constantly learning in order to improve my programming abilities.",
+        '17': "My name is Luiz Felyppe and I'm a full-stack developer. I'm currently doing bachelor in Information Systems at UFF (Fluminense Federal University) and I work at ",
+        '18': "I'm focused on software and data engineering, areas in which I've been specializing. I always seek to improve my knowledge and contribute with quality solutions.",
         '19': 'Technologies',
         '20': 'Projects',
         '21': 'A coffee e-commerce proposed as a challange in the Rocketseat course. This project was made to learn concepts of React JS and TypeScript.',
@@ -115,7 +115,13 @@ const language = {
         '33': "A multi-step form that I've done to practice user input validations using the zod library (I haven't been programming in React).",
         '34': 'Source code',
         '35': 'Soon',
-        '36': 'Send'
+        '36': 'Send',
+        '37': 'Pandemic Game',
+        '38': 'The implementation of the Pandemic board game, with the main mechanics of the original game, made to apply Object Oriented Programming concepts.',
+        '39': 'Source code',
+        '40': 'CineTicket',
+        '41': 'A cinema website (not finished) made in ReactJS and NodeJS following SOLID principles, with automated tests, documentation of endpoints, among others.',
+        '42': 'Source code'
     },
     portuguese: {
         '0': 'Sobre Mim',
@@ -135,8 +141,8 @@ const language = {
         '14': 'Assunto',
         '15': 'Mensagem',
         '16': 'Sobre Mim',
-        '17': "Meu nome é Luiz Felyppe e eu sou programador full-stack. Atualmente, faço Sistemas de Informação na UFF (Universidade Federal Fluminense) e trabalho na ",
-        '18': "Focado na área de desenvolvimento web, sou apaixonado por tecnologia e estou em constante aprendizado visando a melhorar minhas habilidades na programação.",
+        '17': "Meu nome é Luiz Felyppe e sou desenvolvedor full-stack. Atualmente, curso Sistemas de Informação na Universidade Federal Fluminense (UFF) e atuo na ",
+        '18': "Tenho foco em engenharia de software e de dados, áreas nas quais venho me especializando. Busco sempre aprimorar meu conhecimento e contribuir com soluções de qualidade.",
         '19': 'Tecnologias',
         '20': 'Projetos',
         '21': 'Um e-commerce de cafés proposto como desafio no curso da Rocketseat. Esse projeto foi realizado para fixar conceitos de React JS com TypeScript.',
@@ -154,6 +160,12 @@ const language = {
         '33': 'Um formulário multietapas qualquer que eu fiz para treinar validações de input do usuário usando a biblioteca zod (estava sem programar em React).',
         '34': 'Código fonte',
         '35': 'Em breve',
-        '36': 'Enviar'
+        '36': 'Enviar',
+        '37': 'Jogo Pandemic',
+        '38': 'A implementação do jogo de tabuleiro Pandemic, com as principais mecânicas do jogo original, feito para aplicar conceitos de Programação Orientada a Objetos.',
+        '39': 'Código fonte',
+        '40': 'CineTicket',
+        '41': 'Um site de cinema (não finalizado) feito em ReactJS e NodeJS seguindo princípios SOLID, com testes automatizados, documentação dos endpoints, entre outros.',
+        '42': 'Código fonte'
     }
 }
