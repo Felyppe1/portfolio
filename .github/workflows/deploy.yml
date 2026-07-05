@@ -32,6 +32,8 @@ jobs:
           cache: npm
           cache-dependency-path: portfolio-nextjs/package-lock.json
 
+      - run: npm install -g npm@11.6.2
+
       - run: npm ci
 
       - run: npm run build
