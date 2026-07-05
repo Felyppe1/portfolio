@@ -12,7 +12,7 @@ export const translations = {
     aboutHeading: 'Sobre mim',
     aboutLead: 'Transformo ideias em software de qualidade.',
     aboutP1: 'Meu nome é Luiz Felyppe e sou desenvolvedor full-stack. Atualmente curso Sistemas de Informação na Universidade Federal Fluminense (UFF). Trabalho na BlueMetrics como Engenheiro de Software, e já tive a oportunidade de atuar na Globo, onde adquiri também experiência em Engenharia de Dados.',
-    aboutP2: 'Hoje, meu foco está no desenvolvimento de soluções com Inteligência Artificial, utilizando uma base sólida em engenharia de software para construir aplicações robustas, inteligentes e que agreguem valor real ao negócio.',
+    aboutP2: 'Hoje, meu foco está no desenvolvimento de soluções de Inteligência Artificial, utilizando uma base sólida em engenharia de software para construir aplicações robustas, inteligentes e que agreguem valor real ao negócio.',
     aboutTech: 'Tecnologias',
     workHeading: 'Projetos',
     workViewGithub: 'Ver no GitHub',
