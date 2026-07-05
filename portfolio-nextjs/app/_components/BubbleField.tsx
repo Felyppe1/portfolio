@@ -7,7 +7,7 @@ import { useEffect, useRef } from 'react'
 /* ------------------------------------------------------------------ */
 
 const CONFIG = {
-  BUBBLE_COUNT: 14,
+  BUBBLE_COUNT: 20,
   RADIUS_MIN: 16,
   RADIUS_MAX: 42,
 
@@ -32,6 +32,19 @@ const CONFIG = {
   STREAK_TARGET: 10,
   STREAK_WINDOW_MS: 3000, // max gap between pops to keep the streak alive
   CHAIN_STAGGER_MS: 70, // delay between bubbles in the pop-everything chain
+
+  // burst droplets
+  DROPLET_MS: 620,
+  DROPLET_COUNT_MIN: 5,
+  DROPLET_COUNT_MAX: 9,
+  DROPLET_R_MIN: 2, // px
+  DROPLET_R_MAX: 5,
+  DROPLET_DIST_MIN: 22, // px outward travel
+  DROPLET_DIST_MAX: 58,
+  DROPLET_GRAVITY: 26, // px extra downward pull at end of arc
+
+  // streak counter label (1x, 2x, ...)
+  LABEL_MS: 850,
 } as const
 
 /* ------------------------------------------------------------------ */
@@ -151,6 +164,71 @@ export function BubbleField() {
       bubbles.push(b)
     }
 
+    /* ----- transient FX elements (droplets, labels) ----- */
+    const fxEls = new Set<HTMLElement>()
+    const spawnFx = (el: HTMLElement, anim: Animation) => {
+      fxEls.add(el)
+      container.appendChild(el)
+      anim.onfinish = anim.oncancel = () => {
+        el.remove()
+        fxEls.delete(el)
+      }
+    }
+
+    const spawnDroplets = (b: Bubble) => {
+      const count = Math.round(
+        rand(CONFIG.DROPLET_COUNT_MIN, CONFIG.DROPLET_COUNT_MAX) * (0.6 + b.r / CONFIG.RADIUS_MAX),
+      )
+      for (let i = 0; i < count; i++) {
+        const dr = rand(CONFIG.DROPLET_R_MIN, CONFIG.DROPLET_R_MAX)
+        const el = document.createElement('span')
+        el.className =
+          'absolute left-0 top-0 rounded-full pointer-events-none ' +
+          'bg-[radial-gradient(circle_at_35%_30%,rgba(255,255,255,0.95),rgba(96,165,250,0.55)_60%,rgba(37,99,235,0.4)_100%)]'
+        el.style.width = `${dr * 2}px`
+        el.style.height = `${dr * 2}px`
+
+        const angle = rand(0, Math.PI * 2)
+        const dist = rand(CONFIG.DROPLET_DIST_MIN, CONFIG.DROPLET_DIST_MAX)
+        const ox = b.x - dr
+        const oy = b.y - dr
+        const midX = ox + Math.cos(angle) * dist * 0.6
+        const midY = oy + Math.sin(angle) * dist * 0.6 - CONFIG.DROPLET_GRAVITY * 0.35
+        const endX = ox + Math.cos(angle) * dist
+        const endY = oy + Math.sin(angle) * dist + CONFIG.DROPLET_GRAVITY
+
+        const anim = el.animate(
+          [
+            { transform: `translate3d(${ox}px, ${oy}px, 0) scale(1)`, opacity: 1 },
+            { transform: `translate3d(${midX}px, ${midY}px, 0) scale(0.85)`, opacity: 0.9, offset: 0.55 },
+            { transform: `translate3d(${endX}px, ${endY}px, 0) scale(0.35)`, opacity: 0 },
+          ],
+          { duration: CONFIG.DROPLET_MS, easing: 'cubic-bezier(0.15, 0.6, 0.3, 1)', fill: 'forwards' },
+        )
+        spawnFx(el, anim)
+      }
+    }
+
+    const showStreakLabel = (b: Bubble, count: number) => {
+      const el = document.createElement('span')
+      el.textContent = `${count}x`
+      el.className =
+        'absolute left-0 top-0 pointer-events-none select-none font-semibold ' +
+        'text-sky-500/70 dark:text-sky-300/70'
+      el.style.fontSize = `${Math.round(12 + b.r * 0.12)}px`
+      const ox = b.x
+      const oy = b.y - b.r
+      const anim = el.animate(
+        [
+          { transform: `translate3d(${ox}px, ${oy}px, 0) translate(-50%, 0) scale(0.85)`, opacity: 0 },
+          { transform: `translate3d(${ox}px, ${oy - 10}px, 0) translate(-50%, 0) scale(1)`, opacity: 0.9, offset: 0.25 },
+          { transform: `translate3d(${ox}px, ${oy - 34}px, 0) translate(-50%, 0) scale(1)`, opacity: 0 },
+        ],
+        { duration: CONFIG.LABEL_MS, easing: 'cubic-bezier(0.2, 0.7, 0.3, 1)', fill: 'forwards' },
+      )
+      spawnFx(el, anim)
+    }
+
     /* ----- pop / streak ----- */
     let streak = 0
     let lastPopAt = -Infinity
@@ -166,6 +244,7 @@ export function BubbleField() {
         ],
         { duration: CONFIG.POP_MS, easing: 'cubic-bezier(0.2, 0.8, 0.3, 1)', fill: 'forwards' },
       )
+      spawnDroplets(b)
       window.setTimeout(() => {
         b.state = 'waiting'
         b.respawnAt =
@@ -179,6 +258,7 @@ export function BubbleField() {
       if (chained) return
       streak = now - lastPopAt <= CONFIG.STREAK_WINDOW_MS ? streak + 1 : 1
       lastPopAt = now
+      showStreakLabel(b, streak)
       if (streak >= CONFIG.STREAK_TARGET) {
         streak = 0
         const alive = bubbles.filter((o) => o !== b && (o.state === 'float' || o.state === 'drag'))
@@ -356,6 +436,8 @@ export function BubbleField() {
       chainTimers = []
       cleanups.forEach((fn) => fn())
       bubbles.forEach((b) => b.el.remove())
+      fxEls.forEach((el) => el.remove())
+      fxEls.clear()
     }
   }, [])
 
