@@ -25,7 +25,15 @@ const CONFIG = {
   CLICK_MAX_MOVE: 8, // px — beyond this a press counts as drag, not pop
   CLICK_MAX_MS: 350,
 
+  // merge-while-dragging
+  MERGE_MAX_R: 220, // px cap on how big a held bubble can grow
+  MERGE_GROW_RATE: 10, // 1/s — lerp speed toward target radius
+  MERGE_ABSORB_MS: 180, // ms shrink-into-holder animation for the absorbed bubble
+
   POP_MS: 300,
+  BURST_MS: 480, // bigger pop when a held bubble hits MERGE_MAX_R
+  IMPULSE_RADIUS: 170, // px — burst shockwave nudges nearby floating bubbles
+  IMPULSE_STRENGTH: 280, // px/s at ground zero, falls off to 0 at IMPULSE_RADIUS
   RESPAWN_DELAY_MIN: 400, // ms before a popped bubble re-enters from below
   RESPAWN_DELAY_MAX: 2200,
 
@@ -61,6 +69,8 @@ interface Bubble {
   vx: number
   vy: number
   r: number
+  baseR: number // fixed radius the DOM box was created at; scale transform grows visually from this
+  targetR: number // r lerps toward this — set higher on merge-absorb
   buoyancy: number
   swayAmp: number
   swayFreq: number
@@ -98,6 +108,8 @@ export function BubbleField() {
     const bubbles: Bubble[] = []
 
     const resetKinematics = (b: Bubble) => {
+      b.r = b.baseR
+      b.targetR = b.baseR
       b.buoyancy = rand(CONFIG.BUOYANCY_MIN, CONFIG.BUOYANCY_MAX)
       b.swayAmp = rand(CONFIG.SWAY_AMP_MIN, CONFIG.SWAY_AMP_MAX)
       b.swayFreq = rand(CONFIG.SWAY_FREQ_MIN, CONFIG.SWAY_FREQ_MAX)
@@ -107,11 +119,25 @@ export function BubbleField() {
     }
 
     const spawnBelow = (b: Bubble) => {
-      b.x = rand(b.r, Math.max(b.r, width - b.r))
-      b.y = height + b.r + rand(0, 40)
+      b.x = rand(b.baseR, Math.max(b.baseR, width - b.baseR))
+      b.y = height + b.baseR + rand(0, 40)
       resetKinematics(b)
+      syncSize(b)
       b.state = 'float'
     }
+
+    // keep the DOM box itself at the current radius — scaling a small box up via CSS
+    // transform would upsample/blur it, so growth resizes width/height for real crispness
+    const syncSize = (b: Bubble) => {
+      const d = `${b.r * 2}px`
+      if (b.el.style.width !== d) {
+        b.el.style.width = d
+        b.el.style.height = d
+      }
+    }
+
+    const bubbleTransform = (b: Bubble, scale = 1) =>
+      `translate3d(${b.x - b.r}px, ${b.y - b.r}px, 0) scale(${scale})`
 
     for (let i = 0; i < CONFIG.BUBBLE_COUNT; i++) {
       const el = document.createElement('button')
@@ -142,6 +168,8 @@ export function BubbleField() {
         vx: 0,
         vy: 0,
         r,
+        baseR: r,
+        targetR: r,
         buoyancy: 0,
         swayAmp: 0,
         swayFreq: 0,
@@ -175,12 +203,15 @@ export function BubbleField() {
       }
     }
 
-    const spawnDroplets = (b: Bubble) => {
-      const count = Math.round(
-        rand(CONFIG.DROPLET_COUNT_MIN, CONFIG.DROPLET_COUNT_MAX) * (0.6 + b.r / CONFIG.RADIUS_MAX),
+    const spawnDroplets = (b: Bubble, multiplier = 1) => {
+      const count = Math.min(
+        Math.round(
+          rand(CONFIG.DROPLET_COUNT_MIN, CONFIG.DROPLET_COUNT_MAX) * (0.6 + b.r / CONFIG.RADIUS_MAX) * multiplier,
+        ),
+        50,
       )
       for (let i = 0; i < count; i++) {
-        const dr = rand(CONFIG.DROPLET_R_MIN, CONFIG.DROPLET_R_MAX)
+        const dr = rand(CONFIG.DROPLET_R_MIN, CONFIG.DROPLET_R_MAX) * Math.min(multiplier, 1.6)
         const el = document.createElement('span')
         el.className =
           'absolute left-0 top-0 rounded-full pointer-events-none ' +
@@ -189,7 +220,7 @@ export function BubbleField() {
         el.style.height = `${dr * 2}px`
 
         const angle = rand(0, Math.PI * 2)
-        const dist = rand(CONFIG.DROPLET_DIST_MIN, CONFIG.DROPLET_DIST_MAX)
+        const dist = rand(CONFIG.DROPLET_DIST_MIN, CONFIG.DROPLET_DIST_MAX) * multiplier
         const ox = b.x - dr
         const oy = b.y - dr
         const midX = ox + Math.cos(angle) * dist * 0.6
@@ -206,6 +237,58 @@ export function BubbleField() {
           { duration: CONFIG.DROPLET_MS, easing: 'cubic-bezier(0.15, 0.6, 0.3, 1)', fill: 'forwards' },
         )
         spawnFx(el, anim)
+      }
+    }
+
+    // a real glowing ring (donut-shaped radial gradient), not a thin CSS border —
+    // reads as an energy wave instead of a faint outline
+    const spawnShockwave = (b: Bubble, endScale = 2.6, opacity = 0.85) => {
+      const el = document.createElement('span')
+      el.className = 'absolute left-0 top-0 rounded-full pointer-events-none'
+      el.style.width = `${b.r * 2}px`
+      el.style.height = `${b.r * 2}px`
+      el.style.background =
+        'radial-gradient(circle, transparent 56%, rgba(224,242,255,0.95) 62%, rgba(96,165,250,0.75) 70%, rgba(37,99,235,0.35) 78%, transparent 88%)'
+      const anim = el.animate(
+        [
+          { transform: `translate3d(${b.x - b.r}px, ${b.y - b.r}px, 0) scale(1)`, opacity },
+          { transform: `translate3d(${b.x - b.r}px, ${b.y - b.r}px, 0) scale(${endScale})`, opacity: 0 },
+        ],
+        { duration: CONFIG.BURST_MS, easing: 'cubic-bezier(0.1, 0.7, 0.3, 1)', fill: 'forwards' },
+      )
+      spawnFx(el, anim)
+    }
+
+    // bright flash at the instant of impact — a hot white core with a soft blue halo
+    const spawnFlash = (b: Bubble) => {
+      const el = document.createElement('span')
+      el.className = 'absolute left-0 top-0 rounded-full pointer-events-none'
+      const fr = b.r * 1.8
+      el.style.width = `${fr * 2}px`
+      el.style.height = `${fr * 2}px`
+      el.style.background =
+        'radial-gradient(circle, rgba(255,255,255,0.98) 0%, rgba(224,242,255,0.9) 16%, rgba(147,197,253,0.6) 38%, rgba(96,165,250,0.25) 60%, rgba(96,165,250,0) 78%)'
+      const anim = el.animate(
+        [
+          { transform: `translate3d(${b.x - fr}px, ${b.y - fr}px, 0) scale(0.2)`, opacity: 1 },
+          { transform: `translate3d(${b.x - fr}px, ${b.y - fr}px, 0) scale(1.4)`, opacity: 0 },
+        ],
+        { duration: 300, easing: 'cubic-bezier(0.1, 0.7, 0.25, 1)', fill: 'forwards' },
+      )
+      spawnFx(el, anim)
+    }
+
+    // shockwave physically shoves nearby floating bubbles away — sells the burst as part of the scene
+    const impulseNearby = (b: Bubble) => {
+      for (const o of bubbles) {
+        if (o === b || o.state !== 'float') continue
+        const dx = o.x - b.x
+        const dy = o.y - b.y
+        const dist = Math.hypot(dx, dy)
+        if (dist <= 0 || dist >= CONFIG.IMPULSE_RADIUS) continue
+        const kick = CONFIG.IMPULSE_STRENGTH * (1 - dist / CONFIG.IMPULSE_RADIUS)
+        o.vx += (dx / dist) * kick
+        o.vy += (dy / dist) * kick
       }
     }
 
@@ -239,8 +322,8 @@ export function BubbleField() {
       b.state = 'popping'
       b.el.animate(
         [
-          { transform: `translate3d(${b.x - b.r}px, ${b.y - b.r}px, 0) scale(1)`, opacity: 1 },
-          { transform: `translate3d(${b.x - b.r}px, ${b.y - b.r}px, 0) scale(1.45)`, opacity: 0 },
+          { transform: bubbleTransform(b, 1), opacity: 1 },
+          { transform: bubbleTransform(b, 1.45), opacity: 0 },
         ],
         { duration: CONFIG.POP_MS, easing: 'cubic-bezier(0.2, 0.8, 0.3, 1)', fill: 'forwards' },
       )
@@ -270,10 +353,87 @@ export function BubbleField() {
       }
     }
 
+    /* ----- merge-while-dragging ----- */
+    // a bubble that grows past the cap can't hold together anymore — burst it, bigger than a normal pop
+    const burst = (b: Bubble) => {
+      if (b.state === 'popping' || b.state === 'waiting') return
+      b.state = 'popping'
+      if (b.pointerId !== -1) {
+        try {
+          b.el.releasePointerCapture(b.pointerId)
+        } catch {}
+        b.pointerId = -1
+      }
+      b.el.animate(
+        [
+          { transform: bubbleTransform(b, 1), opacity: 1, filter: 'brightness(1)', offset: 0 },
+          { transform: bubbleTransform(b, 1.15), opacity: 1, filter: 'brightness(1.3)', offset: 0.14 }, // quick bulge...
+          { transform: bubbleTransform(b, 0.88), opacity: 1, filter: 'brightness(1.8)', offset: 0.24 }, // ...snap back, overexposed (anticipation)...
+          { transform: bubbleTransform(b, 2.6), opacity: 0, filter: 'brightness(2.4)', offset: 1 }, // ...then blow apart
+        ],
+        { duration: CONFIG.BURST_MS, easing: 'cubic-bezier(0.15, 0.8, 0.25, 1)', fill: 'forwards' },
+      )
+      spawnFlash(b)
+      spawnShockwave(b, 2.3, 0.9)
+      window.setTimeout(() => spawnShockwave(b, 3.4, 0.6), 90)
+      window.setTimeout(() => spawnShockwave(b, 4.6, 0.35), 190)
+      spawnDroplets(b, 2.1)
+      impulseNearby(b)
+      window.setTimeout(() => {
+        b.state = 'waiting'
+        b.respawnAt = performance.now() + rand(CONFIG.RESPAWN_DELAY_MIN, CONFIG.RESPAWN_DELAY_MAX)
+        b.el.getAnimations().forEach((a) => a.cancel())
+        b.el.style.opacity = '0'
+      }, CONFIG.BURST_MS)
+    }
+
+    // holder passes over a floating bubble -> it's absorbed, holder grows (area-conserving).
+    // only triggers while holder.state === 'drag'; once released it's a normal floating/flung bubble again.
+    // if growth would exceed the cap, the holder can't take any more and bursts instead.
+    const absorb = (holder: Bubble, target: Bubble) => {
+      const grownR = Math.sqrt(holder.targetR ** 2 + target.r ** 2)
+      const hitCap = grownR >= CONFIG.MERGE_MAX_R
+      holder.targetR = hitCap ? CONFIG.MERGE_MAX_R : grownR
+
+      target.state = 'popping' // borrow 'popping' to freeze physics + block re-absorption mid-animation
+      target.el.animate(
+        [
+          { transform: bubbleTransform(target), opacity: 1 },
+          {
+            transform: `translate3d(${holder.x - target.r}px, ${holder.y - target.r}px, 0) scale(0.05)`,
+            opacity: 0,
+          },
+        ],
+        { duration: CONFIG.MERGE_ABSORB_MS, easing: 'cubic-bezier(0.3, 0, 0.6, 1)', fill: 'forwards' },
+      )
+      window.setTimeout(() => {
+        target.state = 'waiting'
+        target.respawnAt = performance.now() + rand(CONFIG.RESPAWN_DELAY_MIN, CONFIG.RESPAWN_DELAY_MAX)
+        target.el.getAnimations().forEach((a) => a.cancel())
+        target.el.style.opacity = '0'
+      }, CONFIG.MERGE_ABSORB_MS)
+
+      if (hitCap) {
+        holder.r = CONFIG.MERGE_MAX_R // snap to full size right before it goes
+        syncSize(holder)
+        burst(holder)
+      }
+    }
+
+    const tryAbsorb = (holder: Bubble) => {
+      for (const target of bubbles) {
+        if (holder.state !== 'drag') break // already burst mid-loop — stop feeding it
+        if (target === holder || target.state !== 'float') continue
+        const dist = Math.hypot(target.x - holder.x, target.y - holder.y)
+        if (dist < holder.r + target.r) absorb(holder, target)
+      }
+    }
+
     /* ----- pointer interaction ----- */
     const onPointerDown = (b: Bubble) => (e: PointerEvent) => {
       if (b.state !== 'float') return
       b.state = 'drag'
+      container.appendChild(b.el) // bring the held bubble to front while it grows
       b.pointerId = e.pointerId
       const rect = container.getBoundingClientRect()
       const px = e.clientX - rect.left
@@ -299,6 +459,7 @@ export function BubbleField() {
       const now = performance.now()
       b.trail.push({ x: b.x, y: b.y, t: now })
       while (b.trail.length > 2 && now - b.trail[0].t > 90) b.trail.shift()
+      tryAbsorb(b)
     }
 
     const onPointerEnd = (b: Bubble) => (e: PointerEvent) => {
@@ -387,7 +548,14 @@ export function BubbleField() {
           else if (b.x > width + b.r) b.x = -b.r
         }
 
-        b.el.style.transform = `translate3d(${b.x - b.r}px, ${b.y - b.r}px, 0)`
+        if (b.r !== b.targetR) {
+          const growK = Math.min(CONFIG.MERGE_GROW_RATE * dt, 1)
+          b.r += (b.targetR - b.r) * growK
+          if (Math.abs(b.targetR - b.r) < 0.05) b.r = b.targetR
+          syncSize(b)
+        }
+
+        b.el.style.transform = bubbleTransform(b)
       }
 
       if (shouldRun()) raf = requestAnimationFrame(tick)
